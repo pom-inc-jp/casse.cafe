@@ -128,7 +128,7 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .charge th, .charge td { padding: 20px 0; border-bottom: var(--line); }
 .charge thead th { padding-top: 0; padding-bottom: 12px; font-weight: 400; text-align: right; }
 .charge tbody th { text-align: left; }
-.charge td { text-align: right; font-family: var(--en); font-size: clamp(20px, 5vw, 28px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: 0; white-space: nowrap; }
+.charge td { text-align: right; font-family: var(--en); font-size: clamp(16px, 4.2vw, 24px); line-height: 1; font-variant-numeric: tabular-nums; letter-spacing: 0; white-space: nowrap; }
 
 /* --- ご利用案内 --- */
 .info { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 0 48px; margin-top: 32px; font-size: 14px; line-height: 1.9; }
@@ -153,7 +153,7 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .acc-list { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); margin-top: 32px; font-size: 14px; line-height: 1.9; border-bottom: var(--line); }
 .acc-list dt, .acc-list dd { padding: 14px 0; border-top: var(--line); }
 .links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; font-size: 14px; font-weight: 700; }
-.links a { padding: 10px 0; }
+.links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; }
 
 /* --- フッター --- */
 .site-foot { margin-top: 160px; }
@@ -241,6 +241,9 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
   .spine span { font-size: 10px; letter-spacing: .24em; }
   .media-band { margin-top: 72px; }
   .site-foot { margin-top: 120px; }
+  .charge { font-size: 13px; }
+  .charge th, .charge td { padding: 16px 0; }
+  .charge td { padding-left: 12px; }
 }
 
 /* --- 英語ページ（/en/） --- */
@@ -251,3 +254,15 @@ html[lang="en"] .body-text { max-width: 32em; }
 .acc-en { grid-template-columns: 8.5em minmax(0, 1fr); }
 .menu-btn { margin-top: 32px; }
 @media (max-width: 760px) { .hero-en p br { display: none; } }
+
+/* --- PCのポインター（カセットのリール）。マウスで操作する画面だけ。casse.js で付ける --- */
+.reel-cursor { position: fixed; left: 0; top: 0; z-index: 1000; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; opacity: 0; transition: opacity .2s ease; will-change: transform; }
+.reel-cursor svg { display: block; width: 24px; height: 24px; transition: transform .2s ease; }
+.reel-cursor .rim { fill: var(--ink); transition: fill .2s ease; }
+.has-reel-cursor .reel-cursor.is-on { opacity: 1; }
+.reel-cursor.is-link .rim { fill: var(--cyan); }
+.reel-cursor.is-link svg { transform: scale(1.4); }
+.reel-cursor.is-link .hub { animation: reel-spin 1.4s linear infinite; transform-origin: 12px 12px; }
+.reel-cursor.is-down svg { transform: scale(.85); }
+@keyframes reel-spin { to { transform: rotate(360deg); } }
+.has-reel-cursor, .has-reel-cursor a, .has-reel-cursor button { cursor: none; }
