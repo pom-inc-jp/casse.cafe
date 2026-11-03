@@ -257,14 +257,12 @@ html[lang="en"] .body-text { max-width: 32em; }
 .menu-btn { margin-top: 32px; }
 @media (max-width: 760px) { .hero-en p br { display: none; } }
 
-/* --- PCのポインター（カセットのリール）。マウスで操作する画面だけ。casse.js で付ける --- */
-.reel-cursor { position: fixed; left: 0; top: 0; z-index: 1000; width: 24px; height: 24px; margin: -12px 0 0 -12px; pointer-events: none; opacity: 0; transition: opacity .2s ease; will-change: transform; }
-.reel-cursor svg { display: block; width: 24px; height: 24px; transition: transform .2s ease; }
-.reel-cursor .rim { fill: var(--ink); transition: fill .2s ease; }
-.has-reel-cursor .reel-cursor.is-on { opacity: 1; }
-.reel-cursor.is-link .rim { fill: var(--cyan); }
-.reel-cursor.is-link svg { transform: scale(1.4); }
-.reel-cursor.is-link .hub { animation: reel-spin 1.4s linear infinite; transform-origin: 12px 12px; }
-.reel-cursor.is-down svg { transform: scale(.85); }
-@keyframes reel-spin { to { transform: rotate(360deg); } }
-.has-reel-cursor, .has-reel-cursor a, .has-reel-cursor button { cursor: none; }
+/* --- PCのポインター（黒い点と、少し遅れてついてくる輪）。マウスで操作する画面だけ。casse.js で付ける --- */
+.cur-dot, .cur-ring { position: fixed; left: 0; top: 0; z-index: 1000; pointer-events: none; border-radius: 50%; opacity: 0; transition: opacity .2s ease; will-change: transform; }
+.cur-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; background: var(--ink); }
+.cur-ring { width: 32px; height: 32px; margin: -16px 0 0 -16px; }
+.cur-ring::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--ink); border-radius: 50%; transition: transform .25s ease, border-color .25s ease, background-color .25s ease; }
+.has-dot-cursor .is-on { opacity: 1; }
+.cur-ring.is-link::after { transform: scale(1.6); border-color: var(--cyan); background-color: rgba(3, 163, 198, .12); }
+.cur-ring.is-down::after { transform: scale(.8); }
+.has-dot-cursor, .has-dot-cursor a, .has-dot-cursor button { cursor: none; }
