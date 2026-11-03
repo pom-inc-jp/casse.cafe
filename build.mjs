@@ -224,8 +224,8 @@ function cafeJsonLd(site) {
     description: site.description,
     email: site.email,
     hasMenu: `${site.url}/menu/`,
-    address: { '@type': 'PostalAddress', postalCode: site.store.zip, addressCountry: 'JP', addressRegion: '東京都', addressLocality: '渋谷区', streetAddress: '渋谷3-2-13 高橋ビル1階' },
-    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: '11:00', closes: '21:00' }],
+    address: { '@type': 'PostalAddress', postalCode: site.store.zip, addressCountry: 'JP', addressRegion: site.store.region, addressLocality: site.store.locality, streetAddress: site.store.street },
+    openingHoursSpecification: [{ '@type': 'OpeningHoursSpecification', dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'], opens: site.store.opens, closes: site.store.closes }],
     paymentAccepted: 'クレジットカード, PayPay, 交通系IC, QUICPay, iD',
     sameAs: [`https://www.instagram.com/${site.instagram}/`],
     parentOrganization: { '@type': 'Organization', name: '株式会社ポム', url: 'https://pom-inc.co.jp/' }
@@ -300,11 +300,47 @@ function menuSections(menu) {
 }
 
 // ---------------------------------------------------------------
+// 日本語・英語を1つのリストから作る部品（楽しみ方・ご利用案内・営業時間・フッター）
+// 英語（titleEn など）が抜けていたら書き出しを止めて知らせる
+// ---------------------------------------------------------------
+function pick(x, key, lang, where) {
+  if (lang === 'ja') return x[key];
+  const v = x[`${key}En`];
+  if (!v) throw new Error(`${where}「${x[key]}」の英語（${key}En）がありません（src/_data/site.json）`);
+  return v;
+}
+const stepList = (steps, lang) => steps.map((x, i) =>
+  `<li><span class="num">${i + 1}</span><h3>${esc(pick(x, 'title', lang, '楽しみ方'))}</h3><p>${esc(pick(x, 'text', lang, '楽しみ方'))}</p></li>`).join('\n          ');
+const infoList = (info, lang) => info.map((x) =>
+  `<div><dt>${icon(x.icon)}${esc(pick(x, 'label', lang, 'ご利用案内'))}</dt><dd>${esc(pick(x, 'text', lang, 'ご利用案内'))}</dd></div>`).join('\n          ');
+const hoursText = (st, lang) => (lang === 'en'
+  ? `${st.opens}–${st.closes} (last order ${st.lastOrder})`
+  : `${st.opens}〜${st.closes}（L.O. ${st.lastOrder}）`);
+
+// メニューの品を名前で探す（トップの抜粋の価格は menu.json から引く）
+function menuItem(menu, name) {
+  for (const c of menu.categories) for (const it of c.items) if (it.name === name) return it;
+  throw new Error(`トップのメニュー抜粋「${name}」が menu.json に見つかりません（品名を同じ文字で書いてください）`);
+}
+
+let SITE;
+function footHtml(lang) {
+  const site = SITE;
+  const f = site.footer[lang];
+  const sister = lang === 'en' ? site.store.sister.nameEn : site.store.sister.name;
+  const a = (url, text) => `<a href="${esc(url)}"${linkAttrs(url)}>${esc(text)}</a>`;
+  return lang === 'en'
+    ? `<p>${esc(f.contact)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> (${esc(f.noReserve)})</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)} / ${esc(f.sister)}: ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)} ${a('https://pom-inc.co.jp/', f.companyName)}</p>`
+    : `<p>${esc(f.contact)}：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（${esc(f.noReserve)}）</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)}号／${esc(f.sister)} ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)}：${a('https://pom-inc.co.jp/', f.companyName)}</p>`;
+}
+
+// ---------------------------------------------------------------
 // 書き出し
 // ---------------------------------------------------------------
 async function build() {
   const t0 = Date.now();
   const site = await readJSON(path.join(SRC, '_data/site.json'));
+  SITE = site;
   const media = (await readJSON(path.join(SRC, '_data/media.json'))).items || [];
   const menu = await readJSON(path.join(SRC, '_data/menu.json'));
   const news = await loadNews(site);
@@ -339,10 +375,6 @@ async function build() {
     site,
     ig,
     build: { version: t0.toString(36), year: new Date().getFullYear() },
-    nav: {
-      header: site.nav.map((n) => `<a href="${esc(n.href)}">${esc(n.label)}</a>`).join('\n      '),
-      fab: [...site.nav.map((n) => `<a href="${esc(n.href)}">${esc(n.label)}</a>`), `<a class="ig" href="${ig}" target="_blank" rel="noopener" lang="en">Instagram</a>`].join('\n  ')
-    },
     news: {
       latest: newsList(news, site, t0, { id: 'news-latest', limit: 5 }),
       all: newsList(news, site, t0, { id: 'news-all' }),
@@ -358,26 +390,31 @@ async function build() {
       titleHtml: site.about.title.map(esc).join('<br>'),
       img: img(site.about.photo, '(max-width: 760px) calc(100vw - 40px), 560px')
     },
-    steps: site.steps.map((s, i) => `<li><span class="num">${i + 1}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('\n          '),
+    steps: stepList(site.steps, 'ja'),
     charge: { table: chargeTable(site.charge), tableBi: chargeTable(site.charge, { en: true }) },
-    info: site.info.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
+    info: infoList(site.info, 'ja'),
     menuPreview: {
       img: img(site.menuPreview.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
-      items: site.menuPreview.items.map((x) => `<li><span>${esc(x.name)}</span><span class="pr">${yen(x.price)}</span></li>`).join('\n            ')
+      items: site.menuPreview.items.map((x) => {
+        const it = menuItem(menu, x.item);
+        return `<li><span>${esc(x.label || it.name)}</span><span class="pr">${yen(it.in)}</span></li>`;
+      }).join('\n            ')
     },
     gallery: site.gallery.map((g, i) => img(g, i === 0 ? '(max-width: 760px) calc(100vw - 40px), 400px' : '(max-width: 760px) calc(100vw - 40px), 800px', { cls: i === 0 ? 'g-tall' : 'g-wide' })).join('\n        '),
     store: {
       ...site.store,
       accessHtml: site.store.access.map(esc).join('<br>'),
+      hours: hoursText(site.store, 'ja'),
       img: img(site.store.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
       mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.store.mapQuery)}`
     },
     en: {
       heroTitleHtml: site.en.hero.title.map(esc).join('<br>'),
       heroLeadHtml: site.en.hero.lead.map(esc).join(' <br>'),
-      steps: site.en.steps.map((x, i) => `<li><span class="num">${i + 1}</span><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></li>`).join('\n          '),
+      steps: stepList(site.steps, 'en'),
       chargeTable: chargeTable(site.charge, { enOnly: true }),
-      info: site.en.info.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
+      info: infoList(site.info, 'en'),
+      hours: hoursText(site.store, 'en'),
       accessHtml: site.en.store.access.map(esc).join('<br>')
     },
     menu: {
@@ -394,7 +431,6 @@ async function build() {
   function langParts(lang) {
     const en = lang === 'en';
     const nav = en ? site.en.nav : site.nav;
-    const f = site.en.foot;
     return {
       lang,
       locale: en ? 'en_US' : 'ja_JP',
@@ -405,9 +441,7 @@ async function build() {
       fabOpen: en ? 'Open menu' : 'メニューを開く',
       fabClose: en ? 'Close menu' : 'メニューを閉じる',
       langSwitch: `<div class="lang" role="group" aria-label="${en ? 'Language' : '表示する言語'}"><a href="/" lang="ja"${en ? '' : ' aria-current="true"'}>JP</a><a href="/en/" lang="en"${en ? ' aria-current="true"' : ''}>EN</a></div>`,
-      foot: en
-        ? `<p>${esc(f.contact)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> (${esc(f.noReserve)})</p>\n      <p>JASRAC license ${esc(site.store.jasrac.replace('号', ''))} / ${esc(f.sister)}: <a href="${esc(site.store.sister.url)}" target="_blank" rel="noopener">RECOCO</a></p>\n      <p>${esc(f.company)} <a href="https://pom-inc.co.jp/" target="_blank" rel="noopener">POM Inc.</a></p>`
-        : `<p>取材・撮影のご依頼：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（席のご予約は受け付けていません）</p>\n      <p>JASRAC許諾番号 ${esc(site.store.jasrac)}／姉妹店 <a href="${esc(site.store.sister.url)}" target="_blank" rel="noopener">${esc(site.store.sister.name)}</a></p>\n      <p>運営：<a href="https://pom-inc.co.jp/" target="_blank" rel="noopener">株式会社ポム</a></p>`
+      foot: footHtml(lang)
     };
   }
 

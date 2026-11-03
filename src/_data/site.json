@@ -65,23 +65,33 @@
   "steps": [
     {
       "title": "チャージとドリンクを注文",
-      "text": "お支払いはキャッシュレスのみです。"
+      "text": "お支払いはキャッシュレスのみです。",
+      "titleEn": "Order",
+      "textEn": "Pay the table charge and order a drink. Cashless only."
     },
     {
       "title": "使い方の動画を見る",
-      "text": "カセットテープの扱い方を、短い動画で確認します。"
+      "text": "カセットテープの扱い方を、短い動画で確認します。",
+      "titleEn": "Watch the video",
+      "textEn": "A short video shows you how to handle cassette tapes."
     },
     {
       "title": "プレーヤーを受け取る",
-      "text": "ヘッドホンと一緒に、1人1台お貸しします。"
+      "text": "ヘッドホンと一緒に、1人1台お貸しします。",
+      "titleEn": "Get your player",
+      "textEn": "One player and a pair of headphones for each guest."
     },
     {
       "title": "棚からテープを選ぶ",
-      "text": "往年の名盤から、今のアーティストまで。"
+      "text": "往年の名盤から、今のアーティストまで。",
+      "titleEn": "Choose your tapes",
+      "textEn": "From classic albums to today's artists."
     },
     {
       "title": "席で聴く",
-      "text": "全席指定席。混雑時は90分制です。"
+      "text": "全席指定席。混雑時は90分制です。",
+      "titleEn": "Listen at your seat",
+      "textEn": "All seats are assigned. 90-minute limit when busy."
     }
   ],
   "charge": {
@@ -113,49 +123,67 @@
       "Weekdays",
       "Weekends, holidays & peak days"
     ],
-    "footnoteEn": "Students get ¥110 off the LINE member price (show your student ID). LINE membership is free and can be set up on the day. No charge for takeout only.",
-    "titleEn": "Charge ／ per person, tax included"
+    "footnoteEn": "Students get ¥110 off the LINE member price (show your student ID). LINE membership is free and can be set up on the day.",
+    "titleEn": "Charge ／ per person, tax included",
+    "takeoutNote": "テイクアウトのみの場合、チャージはかかりません。",
+    "takeoutNoteEn": "No charge for takeout only."
   },
   "info": [
     {
       "icon": "ticket",
       "label": "システム",
-      "text": "チャージ（入場料）＋1ドリンク制"
+      "text": "チャージ（入場料）＋1ドリンク制",
+      "labelEn": "System",
+      "textEn": "Table charge + one drink per person"
     },
     {
       "icon": "card",
       "label": "お支払い",
-      "text": "完全キャッシュレス（クレジットカード／PayPay／交通系IC／QUICPay／iD）"
+      "text": "完全キャッシュレス（クレジットカード／PayPay／交通系IC／QUICPay／iD）",
+      "labelEn": "Payment",
+      "textEn": "Cashless only (credit cards, PayPay, transit IC cards, QUICPay, iD)"
     },
     {
       "icon": "tag",
       "label": "割引",
-      "text": "LINE会員割引・学生割引あり（LINE会員は当日無料で登録できます）"
+      "text": "LINE会員割引・学生割引あり（LINE会員は当日無料で登録できます）",
+      "labelEn": "Discounts",
+      "textEn": "LINE member and student discounts (LINE membership is free and can be set up on the day)"
     },
     {
       "icon": "chair",
       "label": "席",
-      "text": "全席指定席・混雑時は90分制。席のご予約はできません"
+      "text": "全席指定席・混雑時は90分制。席のご予約はできません",
+      "labelEn": "Seating",
+      "textEn": "All seats are assigned. 90-minute limit when busy. No reservations"
     },
     {
       "icon": "wifi",
       "label": "設備",
-      "text": "無料Wi-Fi・電源あり。全席禁煙"
+      "text": "無料Wi-Fi・電源あり。全席禁煙",
+      "labelEn": "Facilities",
+      "textEn": "Free Wi-Fi and power outlets. Non-smoking"
     },
     {
       "icon": "paw",
       "label": "ペット",
-      "text": "ベンチ席のみご一緒できます"
+      "text": "ベンチ席のみご一緒できます",
+      "labelEn": "Pets",
+      "textEn": "Welcome on bench seats only"
     },
     {
       "icon": "nocassette",
       "label": "カセットの持ち込み",
-      "text": "防犯上の理由から、お断りしています"
+      "text": "防犯上の理由から、お断りしています",
+      "labelEn": "Your own tapes",
+      "textEn": "Not allowed, for security reasons"
     },
     {
       "icon": "parking",
       "label": "駐車場",
-      "text": "ありません（近くに大きなコインパーキングがあります）"
+      "text": "ありません（近くに大きなコインパーキングがあります）",
+      "labelEn": "Parking",
+      "textEn": "None (large coin parking nearby)"
     }
   ],
   "menuPreview": {
@@ -166,22 +194,20 @@
     },
     "items": [
       {
-        "name": "カセットテープパウンドケーキ",
-        "price": 680
+        "item": "カセットテープパウンドケーキ（塩キャラメル）",
+        "label": "カセットテープパウンドケーキ"
       },
       {
-        "name": "カフェラテ",
-        "price": 790
+        "item": "カフェラテ"
       },
       {
-        "name": "チャイラテ",
-        "price": 890
+        "item": "チャイラテ"
       },
       {
-        "name": "レモンスカッシュ",
-        "price": 770
+        "item": "レモンスカッシュ"
       }
-    ]
+    ],
+    "_説明": "items の item は menu.json の品名（name）と同じ文字で書く。価格は menu.json から引く。label を書くとトップではその名前で出す"
   },
   "gallery": [
     {
@@ -201,17 +227,24 @@
       "渋谷駅C1出口から徒歩4分",
       "表参道駅から徒歩11分"
     ],
-    "hours": "11:00〜21:00（L.O. 20:30）",
     "holiday": "なし（年末年始を除く）",
     "photo": {
       "file": "storefront",
       "alt": "CASSEの外観"
     },
-    "jasrac": "K9666751号",
+    "jasrac": "K9666751",
     "sister": {
       "name": "レコードカフェ RECOCO",
-      "url": "https://recoco.cafe/"
-    }
+      "url": "https://recoco.cafe/",
+      "nameEn": "RECOCO"
+    },
+    "region": "東京都",
+    "locality": "渋谷区",
+    "street": "渋谷3-2-13 高橋ビル1階",
+    "opens": "11:00",
+    "closes": "21:00",
+    "lastOrder": "20:30",
+    "_説明": "address は表示用。検索エンジン向けのデータは region・locality・street から作る。営業時間は opens・closes・lastOrder から日本語・英語の両方を作る"
   },
   "en": {
     "title": "CASSE | Cassette Tape Café in Shibuya, Tokyo",
@@ -253,28 +286,6 @@
       "title": "Rewinding is part of the music.",
       "text": "In an age when music is one tap away, we want you to enjoy every small step: loading a tape, pressing play, flipping from side A to side B. Never touched a cassette before? You are very welcome."
     },
-    "steps": [
-      {
-        "title": "Order",
-        "text": "Pay the table charge and order a drink. Cashless only."
-      },
-      {
-        "title": "Watch the video",
-        "text": "A short video shows you how to handle cassette tapes."
-      },
-      {
-        "title": "Get your player",
-        "text": "One player and a pair of headphones for each guest."
-      },
-      {
-        "title": "Choose your tapes",
-        "text": "From classic albums to today's artists."
-      },
-      {
-        "title": "Listen at your seat",
-        "text": "All seats are assigned. 90-minute limit when busy."
-      }
-    ],
     "charge": {
       "note": "A table charge and one drink per person are required. Prices are per person and include tax."
     },
@@ -282,62 +293,31 @@
       "text": "Our signature is a pound cake served in a cassette tape box. The menu page shows every item in English, with eat-in and to-go prices.",
       "button": "See the menu"
     },
-    "info": [
-      {
-        "icon": "ticket",
-        "label": "System",
-        "text": "Table charge + one drink per person"
-      },
-      {
-        "icon": "card",
-        "label": "Payment",
-        "text": "Cashless only (credit cards, PayPay, transit IC cards, QUICPay, iD)"
-      },
-      {
-        "icon": "tag",
-        "label": "Discounts",
-        "text": "LINE member and student discounts (LINE membership is free and can be set up on the day)"
-      },
-      {
-        "icon": "chair",
-        "label": "Seating",
-        "text": "All seats are assigned. 90-minute limit when busy. No reservations"
-      },
-      {
-        "icon": "wifi",
-        "label": "Facilities",
-        "text": "Free Wi-Fi and power outlets. Non-smoking"
-      },
-      {
-        "icon": "paw",
-        "label": "Pets",
-        "text": "Welcome on bench seats only"
-      },
-      {
-        "icon": "nocassette",
-        "label": "Your own tapes",
-        "text": "Not allowed, for security reasons"
-      },
-      {
-        "icon": "parking",
-        "label": "Parking",
-        "text": "None (large coin parking nearby)"
-      }
-    ],
     "store": {
       "address": "Takahashi Bldg. 1F, 3-2-13 Shibuya, Shibuya-ku, Tokyo 150-0002",
       "access": [
         "4 minutes' walk from Shibuya Station Exit C1",
         "11 minutes' walk from Omotesando Station"
       ],
-      "hours": "11:00–21:00 (last order 20:30)",
       "holiday": "Open every day except New Year holidays"
+    }
+  },
+  "footer": {
+    "ja": {
+      "contact": "取材・撮影のご依頼",
+      "noReserve": "席のご予約は受け付けていません",
+      "jasrac": "JASRAC許諾番号",
+      "sister": "姉妹店",
+      "company": "運営",
+      "companyName": "株式会社ポム"
     },
-    "foot": {
+    "en": {
       "contact": "Press and location inquiries",
       "noReserve": "We do not take seat reservations.",
+      "jasrac": "JASRAC license",
       "sister": "Sister shop",
-      "company": "Operated by"
+      "company": "Operated by",
+      "companyName": "POM Inc."
     }
   }
 }

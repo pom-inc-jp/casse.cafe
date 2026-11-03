@@ -23,23 +23,55 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 
 | 場所 | 中身 |
 | --- | --- |
-| `src/_data/site.json` | 店の情報・ナビ・楽しみ方・料金・ご利用案内・トップの写真と文章 |
+| `src/_data/site.json` | 店の情報・ナビ・楽しみ方・料金・ご利用案内・フッターの文言・トップの写真と文章（日本語と英語） |
 | `src/_data/menu.json` | メニューと価格（カテゴリごと）。品目ごとの写真もここで指定 |
 | `src/_data/news.json` | お知らせ |
 | `src/_data/media.json` | メディア掲載の帯（番組名・雑誌名） |
 | `src/_partials/` | 共通部品（head・ヘッダー・フッター・スマホのカセット型メニュー） |
 | `src/_templates/news-article.html` | お知らせ記事ページのひな形 |
-| `src/pages/` | トップ・メニュー・お知らせ一覧・404 |
+| `src/pages/` | トップ・メニュー・お知らせ一覧・英語ページ・404 |
 | `src/assets/css/casse.css` | 見た目（色は先頭の変数を使う） |
 | `src/assets/js/casse.js` | カセット型メニュー・お知らせの絞り込み・クリック計測 |
 | `src/assets/img/photos/` | 写真（WebP）。`名前.webp` と、小さく出すとき用の `名前-400.webp` |
 | `src/static/` | `.htaccess`・ファビコン・robots.txt など（dist/ 直下にコピー） |
 
-## メニューを変えるとき
+## 店の情報を変えるとき（`src/_data/site.json`）
 
-`src/_data/menu.json` を直す。価格は税込の数字で、`in` が店内、`out` がテイクアウト（テイクアウトなしは `null`）。
+同じ情報は1か所にだけ書く。書き出すときに、日本語ページ・英語ページ・メニューページ・検索エンジン向けのデータへ配る。
 
-写真を付けるときは、WebP を `src/assets/img/photos/` に置き、品目に `"photo": "ファイル名"` を書く（`.webp` は付けない）。正方形に切り抜くので、写したいものが端にあるときは `"photoPosition": "50% 80%"` のように位置を指定する。写真がない品は「写真を準備中」の枠が出る。
+| 変えたいもの | 直す場所 |
+| --- | --- |
+| 営業時間 | `store.opens`・`store.closes`・`store.lastOrder`（日本語と英語の表記はここから作る） |
+| 住所 | `store.address`（表示）と `store.region`・`store.locality`・`store.street`（検索エンジン向け）。英語の住所は `en.store.address` |
+| 料金 | `charge.rows` の `prices`。注記は `charge.footnote`（英語は `footnoteEn`） |
+| 楽しみ方・ご利用案内 | `steps`・`info`。1つの項目に日本語（`title`・`text`／`label`・`text`）と英語（`titleEn`・`textEn`／`labelEn`・`textEn`）を一緒に書く。英語が抜けていると書き出しが止まって知らせる |
+| トップのメニュー抜粋 | `menuPreview.items` に menu.json の品名を書く。価格は menu.json から自動で引く（品名が見つからないと書き出しが止まる） |
+| フッターの文言 | `footer.ja`・`footer.en` |
+
+## メニューを変えるとき（`src/_data/menu.json`）
+
+価格は税込の数字で、`in` が店内、`out` がテイクアウト（テイクアウトなしは `null`）。品名（`name`）を変えたら、トップの抜粋（site.json の `menuPreview.items`）も同じ名前に直す。
+
+写真を付けるときは、下の「写真を足すとき」の手順で WebP を作って `src/assets/img/photos/` に置き、品目に `"photo": "ファイル名"` を書く（`.webp` は付けない）。正方形に切り抜くので、写したいものが端にあるときは `"photoPosition": "50% 80%"` のように位置を指定する（左右・上下の順。`50% 80%` は「横は真ん中、縦は下寄り」）。写真がない品は「写真を準備中」の枠が出る。
+
+## 写真を足すとき
+
+写真は WebP にして、大きい版と小さい版（横400px）の2枚を置く。小さい版があると、スマホやメニューの小さな枠ではそちらを読み込むので軽くなる。
+
+1. ファイル名を決める（半角英小文字・数字・ハイフン。例：`iced-latte`）
+2. Google の変換ツール `cwebp` で2枚作る（Mac は `brew install webp` で入る）
+
+   ```
+   # 大きい版：横長の写真は長い辺を1600pxに（縦長なら -resize 0 1600）
+   cwebp -q 80 -resize 1600 0 元の写真.jpg -o src/assets/img/photos/iced-latte.webp
+   # 小さい版：横400px
+   cwebp -q 78 -resize 400 0 元の写真.jpg -o src/assets/img/photos/iced-latte-400.webp
+   ```
+
+   ツールを入れたくない場合は、ブラウザで使える Squoosh（https://squoosh.app/）で同じ設定にして保存してもよい。Claude に写真を渡せば、変換して置くところまで行う
+3. 使う場所に名前を書く（メニューなら menu.json の `photo`、トップの写真なら site.json の `file`）
+4. `node build.mjs` で書き出す。名前を書き間違えていると「写真が見つかりません」と出て止まる
+5. iPhone の写真（HEIC）はそのままでは使えないので、先に JPEG で書き出してから変換する
 
 ## お知らせの書き方
 
