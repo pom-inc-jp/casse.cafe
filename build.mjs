@@ -134,11 +134,22 @@ const ICONS = {
   parking: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>',
   seat: '<circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3"/>',
   quiet: '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9.5l4 5M21 9.5l-4 5"/>',
-  store: '<path d="M4 10l8-6 8 6v10H4z"/><path d="M10 20v-6h4v6"/>'
+  store: '<path d="M4 10l8-6 8 6v10H4z"/><path d="M10 20v-6h4v6"/>',
+  // 楽しみ方
+  cup: '<path d="M5 8h12v6a5 5 0 0 1-5 5h-2a5 5 0 0 1-5-5z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M9 3v2M13 3v2"/>',
+  play: '<rect x="3" y="5" width="18" height="13" rx="1.5"/><path d="M10 9v5l4.5-2.5z"/><path d="M8 21h8"/>',
+  player: '<rect x="3" y="4" width="18" height="16" rx="1.5"/><rect x="6" y="7" width="12" height="7" rx="1"/><circle cx="9.5" cy="10.5" r="1.2"/><circle cx="14.5" cy="10.5" r="1.2"/><path d="M7 17h2M11 17h2M15 17h2"/>',
+  cassette: '<rect x="3" y="6" width="18" height="12" rx="1.5"/><circle cx="9" cy="11" r="1.5"/><circle cx="15" cy="11" r="1.5"/><path d="M7.5 18l1.5-3h6l1.5 3"/>',
+  headphones: '<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><rect x="3" y="14" width="4" height="6" rx="1.5"/><rect x="17" y="14" width="4" height="6" rx="1.5"/>',
+  // 撮影・取材のご依頼
+  door: '<path d="M6 21V3h12v18"/><path d="M4 21h16"/><circle cx="14.5" cy="12" r=".8"/>',
+  kitchen: '<path d="M5 3v8a2 2 0 0 0 4 0V3M7 11v10"/><path d="M16 21V3c2.5 1.5 3 5 3 8h-3"/>',
+  layout: '<rect x="3" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><path d="M14 6.5h4.5a2.5 2.5 0 0 1 2.5 2.5v1M10 17.5H5.5A2.5 2.5 0 0 1 3 15v-1"/>',
+  nofire: '<path d="M12 21c-3.5 0-6-2.4-6-5.6 0-3.4 3-5.4 3.5-9.4 2.5 1.5 3.5 4 3.5 5.5.8-.6 1.5-1.7 1.7-3 1.5 1.5 3.3 4 3.3 6.9 0 3.2-2.5 5.6-6 5.6z"/><path d="M3 3l18 18"/>'
 };
-function icon(name) {
+function icon(name, size = 20) {
   if (!ICONS[name]) throw new Error(`アイコンが見つかりません: ${name}（使えるもの: ${Object.keys(ICONS).join(' / ')}）`);
-  return `<svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>`;
+  return `<svg class="ico" aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">${ICONS[name]}</svg>`;
 }
 
 // ---------------------------------------------------------------
@@ -212,6 +223,59 @@ function newsList(items, site, today, { id = '', limit = 0 } = {}) {
     `<time datetime="${n.date}">${dateLabel(n.date)}</time>${genreTag(n, site)}` +
     `<span class="t">${esc(n.title)}${isNew(n.date) ? '<span class="new">NEW</span>' : ''}</span></a></li>`).join('\n          ');
   return `<ul class="news"${id ? ` id="${id}"` : ''}${limit ? ` data-limit="${limit}"` : ''}>\n          ${lis}\n        </ul>`;
+}
+
+// ---------------------------------------------------------------
+// 撮影・取材のご依頼（/shooting/）。実績はお知らせ（news.json）から自動で並べる
+//   撮影実績 … タイトルに「撮影に店内をご利用」を含むメディア掲載
+//   取材実績 … それ以外のメディア掲載
+// ---------------------------------------------------------------
+function shootingParts(site, news) {
+  const sh = site.shooting;
+  if (!sh) return {};
+  const li = (n, tag = true) => `<li><a href="/news/${n.id}/"><time datetime="${n.date}">${dateLabel(n.date)}</time>${tag ? genreTag(n, site) : ''}<span class="t">${esc(n.title)}</span></a></li>`;
+  const isShoot = (n) => n.genre === 'press' && n.title.includes('撮影に店内');
+  const shoots = news.filter(isShoot);
+  const press = news.filter((n) => !isShoot(n) && n.genre === 'press');
+  const ul = (items, tag) => `<ul class="news">\n          ${items.map((n) => li(n, tag)).join('\n          ')}\n        </ul>`;
+  const mag = (t) => (t.match(/『(.+?)』/) || [])[1];
+  const shootNames = [...new Set(shoots.map((n) => mag(n.title)).filter(Boolean))];
+  const mailto = (subject, items) => `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(['お世話になっております。', '', ...items.map((x) => `・${x}：`), ''].join('\n'))}`;
+  const lis = (items) => items.map((x) => `<li>${esc(x)}</li>`).join('');
+  // ギャラリー：大きな写真1枚と、下に小さい写真の帯（動きは casse.js）。
+  // 小さい写真のリンク先が大きい写真なので、JS が動かなくても写真は見られる
+  const first = sh.gallery[0];
+  const gallery = `<div class="sg" data-gallery>
+    <figure class="sg-stage">
+      <button type="button" class="sg-open" aria-label="写真を大きく表示">${img(first, '(max-width: 760px) 100vw, 1200px')}</button>
+      <button type="button" class="sg-nav sg-prev" aria-label="前の写真"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="sg-nav sg-next" aria-label="次の写真"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <figcaption class="sg-cap"><span class="t">${esc(first.alt)}</span><span class="n">1 / ${sh.gallery.length}</span></figcaption>
+    </figure>
+    <ul class="sg-thumbs" aria-label="写真の一覧">
+      ${sh.gallery.map((p, i) => {
+        const o = photo(p.file);
+        return `<li><a href="${o.src}" data-srcset="${o.srcset}" data-alt="${esc(p.alt)}"${i === 0 ? ' aria-current="true"' : ''}>${img(p, '88px', { alt: '' })}</a></li>`;
+      }).join('\n      ')}
+    </ul>
+  </div>`;
+  return {
+    leadHtml: sh.lead.map(esc).join('<br>'),
+    photo: img(sh.photo, '(min-width: 761px) 50vw, 100vw', { lazy: false, priority: true }),
+    gallery,
+    timesHtml: sh.times.map((t) => `<li>${esc(t)}</li>`).join(''),
+    prices: sh.prices.map((x) => `<div><dt>${esc(x.label)}</dt><dd>${esc(x.value)}<small>（税抜）</small></dd></div>`).join('\n        '),
+    features: sh.features.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
+    mailItems: lis(sh.mailItems),
+    mailHref: mailto(sh.mailSubject, sh.mailItems),
+    pressMailItems: lis(sh.pressMailItems),
+    pressMailHref: mailto(sh.pressMailSubject, sh.pressMailItems),
+    shootList: ul(shoots, false),
+    pressList: ul(press, false),
+    shootNames: shootNames.map((x) => `『${esc(x)}』`).join(''),
+    shootCount: shoots.length,
+    pressCount: press.length
+  };
 }
 
 // ---------------------------------------------------------------
@@ -313,7 +377,7 @@ function pick(x, key, lang, where) {
   return v;
 }
 const stepList = (steps, lang) => steps.map((x, i) =>
-  `<li><span class="num">${i + 1}</span><h3>${esc(pick(x, 'title', lang, '楽しみ方'))}</h3><p>${esc(pick(x, 'text', lang, '楽しみ方'))}</p></li>`).join('\n          ');
+  `<li><span class="step-head"><span class="num">${i + 1}</span>${x.icon ? icon(x.icon, 28) : ''}</span><h3>${esc(pick(x, 'title', lang, '楽しみ方'))}</h3><p>${esc(pick(x, 'text', lang, '楽しみ方'))}</p></li>`).join('\n          ');
 const infoList = (info, lang) => info.map((x) =>
   `<div><dt>${icon(x.icon)}${esc(pick(x, 'label', lang, 'ご利用案内'))}</dt><dd>${esc(pick(x, 'text', lang, 'ご利用案内'))}</dd></div>`).join('\n          ');
 const hoursText = (st, lang) => (lang === 'en'
@@ -334,7 +398,7 @@ function footHtml(lang) {
   const a = (url, text) => `<a href="${esc(url)}"${linkAttrs(url)}>${esc(text)}</a>`;
   return lang === 'en'
     ? `<p>${esc(f.contact)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> (${esc(f.noReserve)})</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)} / ${esc(f.sister)}: ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)} ${a('https://pom-inc.co.jp/', f.companyName)}</p>`
-    : `<p>${esc(f.contact)}：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（${esc(f.noReserve)}）</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)}号／${esc(f.sister)} ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)}：${a('https://pom-inc.co.jp/', f.companyName)}</p>`;
+    : `<p><a href="/shooting/">${esc(f.contact)}</a>：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（${esc(f.noReserve)}）</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)}号／${esc(f.sister)} ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)}：${a('https://pom-inc.co.jp/', f.companyName)}</p>`;
 }
 
 // ---------------------------------------------------------------
@@ -391,6 +455,7 @@ async function build() {
       accessHtml: site.store.access.map(esc).join('<br>'),
       mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.store.mapQuery)}`
     },
+    shooting: shootingParts(site, news),
     menu: {
       updated: menu.updated,
       chips: menu.categories.map((c) => `<a href="#${esc(c.id)}">${esc(c.name)}<span lang="en">${esc(c.en)}</span></a>`).join('\n          '),

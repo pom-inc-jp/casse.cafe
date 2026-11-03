@@ -1,0 +1,118 @@
+---
+{ "title": "撮影・取材のご依頼", "description": "渋谷のカセットテープカフェ CASSE は、営業時間外の店内を雑誌やアパレルのルック、商品の物撮り、映像の撮影にお貸ししています。テレビや雑誌、WEBメディアの取材も受け付けています。" }
+---
+<!-- 撮影・取材のご依頼（日本語のみ）。「撮影」は施設利用料をいただく商用撮影、「取材」はメディアによる紹介。
+     言葉と料金は site.json の shooting、実績は news.json から自動で入る -->
+<div class="wrap page-top">
+  <div class="split shoot-intro">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h1 class="page-title">{{site.shooting.title}}</h1>
+      <p class="shoot-lead">{{{shooting.leadHtml}}}</p>
+      <nav class="shoot-toc" aria-label="ご依頼の種類">
+        <a class="btn btn-deep" href="#shoot"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.8l1.6-2.2h6.2L16.7 7h2.8A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>撮影のご依頼</b><span>商用撮影のための場所の貸し出し</span></a>
+        <a class="btn btn-purple" href="#press"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>取材のご依頼</b><span>テレビ・雑誌・WEBメディアでの紹介</span></a>
+      </nav>
+    </div>
+    <div class="split-photo">{{{shooting.photo}}}</div>
+  </div>
+</div>
+
+<!-- ここから 撮影（商用撮影） -->
+<section class="sec wrap" id="shoot" aria-labelledby="shoot-h">
+  <div class="indent">
+    <p class="shoot-kicker" lang="en">Location rental</p>
+    <h2 id="shoot-h" class="shoot-part">{{site.shooting.shootTitle}}</h2>
+    <p class="small-text shoot-wide">{{site.shooting.shootLead}}{{site.shooting.copy}}</p>
+  </div>
+  <div class="indent">
+  {{{shooting.gallery}}}
+  </div>
+</section>
+
+<section class="sec-s wrap" aria-labelledby="works-h">
+  <div class="indent">
+    <h3 id="works-h" class="shoot-h2">撮影の実績</h3>
+    <p class="small-text">{{{shooting.shootNames}}}などの撮影に、店内をご利用いただきました。</p>
+    <div class="shoot-list">
+      {{{shooting.shootList}}}
+    </div>
+  </div>
+</section>
+
+<section class="sec-s wrap" aria-labelledby="time-h">
+  <div class="indent two-col">
+    <div class="col-head">
+      <h3 id="time-h" class="shoot-h2">撮影できる時間と料金</h3>
+    </div>
+    <div class="col-body">
+      <h4 class="shoot-h3">撮影できる時間</h4>
+      <ul class="shoot-times">{{{shooting.timesHtml}}}</ul>
+      <p class="foot-note">{{site.shooting.timesNote}}</p>
+      <h4 class="shoot-h3">料金の目安</h4>
+      <dl class="shoot-prices">
+        {{{shooting.prices}}}
+      </dl>
+      <p class="foot-note">{{site.shooting.priceNote}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec-s wrap" aria-labelledby="facility-h">
+  <div class="indent">
+    <h3 id="facility-h" class="shoot-h2">設備とご協力できること</h3>
+    <dl class="info">
+      {{{shooting.features}}}
+    </dl>
+  </div>
+</section>
+
+<section class="sec-s wrap" id="shoot-contact" aria-labelledby="shoot-contact-h">
+  <div class="indent shoot-contact">
+    <h3 id="shoot-contact-h" class="shoot-h2">撮影のお問い合わせ</h3>
+    <p class="small-text">メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
+    <ul class="shoot-mail-items">{{{shooting.mailItems}}}</ul>
+    <p class="btns"><a class="btn btn-deep" href="{{shooting.mailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>撮影について問い合わせる</a></p>
+    <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
+  </div>
+</section>
+
+<!-- ここから 取材（メディア） -->
+<section class="sec wrap shoot-press is-press" id="press" aria-labelledby="press-h">
+  <div class="indent">
+    <p class="shoot-kicker" lang="en">Press</p>
+    <h2 id="press-h" class="shoot-part">{{site.shooting.pressTitle}}</h2>
+    <p class="small-text shoot-wide">{{site.shooting.pressLead}}</p>
+    <div class="marquee shoot-marquee">
+      {{{media.track}}}
+    </div>
+  </div>
+</section>
+
+<section class="sec-s wrap is-press" aria-labelledby="pressworks-h">
+  <div class="indent">
+    <h3 id="pressworks-h" class="shoot-h2">取材・掲載の実績</h3>
+    <div class="shoot-list">
+      {{{shooting.pressList}}}
+    </div>
+  </div>
+</section>
+
+<section class="sec-s wrap is-press" id="press-contact" aria-labelledby="press-contact-h">
+  <div class="indent shoot-contact">
+    <h3 id="press-contact-h" class="shoot-h2">取材のお問い合わせ</h3>
+    <p class="small-text">メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
+    <ul class="shoot-mail-items">{{{shooting.pressMailItems}}}</ul>
+    <p class="btns"><a class="btn btn-purple" href="{{shooting.pressMailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
+    <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
+    <p class="foot-note">店舗の住所や営業時間は<a href="/#access">店舗概要</a>をご覧ください。</p>
+  </div>
+</section>
+
+<dialog class="lightbox" aria-label="写真の拡大表示">
+  <img alt="">
+  <p class="lb-cap"></p>
+  <button type="button" class="lb-prev" aria-label="前の写真"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+  <button type="button" class="lb-next" aria-label="次の写真"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+  <button type="button" class="lb-close" aria-label="閉じる"><svg aria-hidden="true" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
+</dialog>

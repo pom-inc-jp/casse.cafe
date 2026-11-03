@@ -1,6 +1,6 @@
 /* =================================================================
    casse.css　casse.cafe の見た目
-   色は下の変数だけを使う（黒・白・メニュー表の水色が基本）
+   色は下の変数だけを使う（黒・白・メニュー表の水色が基本。紫は撮影・取材ページの「取材」側だけ）
    ================================================================= */
 :root {
   --ink: #000;
@@ -8,6 +8,8 @@
   --cyan: #03a3c6;        /* メニュー表の水色 */
   --cyan-pale: #ccedf4;   /* 水色を薄めた色（コラボのタグなど） */
   --cyan-deep: #02809c;   /* 水色を少し濃くした色。白い文字をのせるとき用（メディア掲載のタグ）。白との明るさの差 4.5:1 以上 */
+  --purple: #6b5b8e;      /* 落ち着いた紫。撮影・取材ページの「取材」側だけに使う。白い文字をのせても読める濃さ */
+  --purple-pale: #e9e5f0; /* 紫を薄めた色（取材側のボタンを押したとき） */
   --sub: #555;            /* 補足の文字 */
   --line: 1px solid var(--ink);
   --ja: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
@@ -227,6 +229,7 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .article-body blockquote { margin: 0; padding-left: 20px; border-left: 3px solid var(--cyan); }
 .notice { padding: 16px 20px; background: var(--cyan-pale); font-size: 14px; }
 .back { margin-top: 56px; font-size: 14px; font-weight: 700; }
+.back a { display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; }
 
 /* --- スマホの追従メニュー（カセット） --- */
 .fab { display: none; position: fixed; right: 12px; top: 12px; z-index: 50; flex-direction: column; align-items: flex-end; gap: 10px; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .25s ease, transform .25s ease, visibility .25s; }
@@ -277,3 +280,95 @@ html[lang="en"] .body-text { max-width: 32em; }
   .hero-media img, .hero-media video { height: clamp(360px, calc(100vh - 340px), 660px); height: clamp(360px, calc(100svh - 340px), 660px); }
   .hero-text { padding-top: 32px; }
 }
+
+/* 楽しみ方：番号の横のアイコン */
+.step-head { display: flex; align-items: center; gap: 14px; }
+.step-head .ico { flex: none; }
+
+/* 撮影・取材のご依頼（/shooting/ と トップの入口） */
+.shoot-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 48px; padding-top: 40px; padding-bottom: 40px; border-top: var(--line); border-bottom: var(--line); }
+.shoot-band h2 { font-size: clamp(18px, 2vw, 22px); }
+.shoot-band .small-text { max-width: 36em; margin-top: 8px; }
+.shoot-band .btns { margin-top: 0; }
+.shoot-intro { align-items: flex-start; }
+.shoot-lead { margin-top: 24px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.9; font-weight: 700; }
+/* 撮影と取材の2部構成。大見出し（shoot-part）の下に小見出し（shoot-h2）が続く */
+.sec-s { padding-top: 88px; }
+.shoot-kicker { font-family: var(--en); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan-deep); }
+.shoot-part { margin-top: 8px; font-size: clamp(24px, 3vw, 34px); padding-left: 18px; border-left: 4px solid var(--cyan); }
+.shoot-h2 { font-size: clamp(18px, 2vw, 22px); line-height: 1.6; padding-left: 14px; border-left: 3px solid var(--cyan); }
+.shoot-wide { max-width: 40em; }
+#shoot, #press { padding-top: var(--gap); }
+.shoot-press { margin-top: 32px; border-top: var(--line); }
+/* 取材側は紫（見出しの縦線・英字の見出し・ボタン） */
+.is-press .shoot-kicker { color: var(--purple); }
+.is-press .shoot-part, .is-press .shoot-h2 { border-left-color: var(--purple); }
+.btn-deep { background: var(--cyan-deep); color: var(--paper); }
+.btn-deep:hover { background: var(--cyan-pale); color: var(--ink); }
+.btn-purple { background: var(--purple); color: var(--paper); }
+.btn-purple:hover { background: var(--purple-pale); color: var(--ink); }
+.btn .arrow { margin-left: 10px; font-family: var(--en); }
+/* ページ冒頭の分かれ道（撮影へ／取材へ） */
+.shoot-toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; max-width: 34em; }
+.shoot-toc a { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; min-height: 88px; padding: 14px 18px; text-decoration: none; }
+.shoot-toc b { display: inline-flex; align-items: center; gap: 8px; font-size: clamp(15px, 1.6vw, 17px); white-space: nowrap; }
+.shoot-toc b .ico { margin: 0; }
+.shoot-toc b::after { content: "↓"; margin-left: 6px; font-family: var(--en); font-weight: 500; }
+.shoot-toc span { font-size: 12px; font-weight: 500; line-height: 1.6; }
+/* 撮影のギャラリー：大きな写真1枚＋下に小さい写真の帯。小さい写真を押すと入れ替わり、大きい写真を押すと拡大表示 */
+.sg { margin-top: 40px; }
+.sg-stage { position: relative; }
+.sg-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.sg-open img { width: 100%; height: clamp(260px, 52vw, 640px); object-fit: contain; }
+.sg-stage .sg-nav { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
+.sg-prev { left: 0; }
+.sg-next { right: 0; }
+.sg-cap { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 13px; }
+.sg-cap .n { font-family: var(--en); white-space: nowrap; }
+.sg-thumbs { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+.sg-thumbs li { flex: none; scroll-snap-align: start; }
+.sg-thumbs a { display: block; width: 88px; border: 2px solid transparent; }
+.sg-thumbs a[aria-current="true"] { border-color: var(--cyan); }
+.sg-thumbs img { width: 100%; aspect-ratio: 1; object-fit: cover; opacity: .6; transition: opacity .2s; }
+.sg-thumbs a:hover img, .sg-thumbs a[aria-current="true"] img { opacity: 1; }
+/* 写真の拡大表示 */
+.lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 56px 16px 48px; border: 0; background: rgba(0, 0, 0, .92); color: var(--paper); }
+.lightbox[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.lightbox::backdrop { background: rgba(0, 0, 0, .6); }
+.lightbox img { max-width: min(100%, 1400px); max-height: calc(100dvh - 140px); width: auto; height: auto; object-fit: contain; }
+.lb-cap { margin-top: 14px; font-size: 13px; text-align: center; }
+.lightbox button { position: absolute; display: grid; place-items: center; width: 48px; height: 48px; background: none; border: 0; color: var(--paper); cursor: pointer; }
+.lb-close { top: 8px; right: 8px; }
+.lb-prev { left: 4px; top: 50%; transform: translateY(-50%); }
+.lb-next { right: 4px; top: 50%; transform: translateY(-50%); }
+.shoot-list { margin-top: 32px; }
+.shoot-h3 { margin-top: 40px; font-size: 16px; line-height: 1.6; }
+.shoot-h3:first-child { margin-top: 0; }
+.shoot-times { margin-top: 12px; font-family: var(--en); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.7; }
+.shoot-times li { display: inline-block; margin-right: 1.2em; }
+.shoot-prices { margin-top: 12px; border-bottom: var(--line); }
+.shoot-prices div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-top: var(--line); }
+.shoot-prices dt { font-size: 14px; font-weight: 700; }
+.shoot-prices dd { font-size: clamp(18px, 2vw, 22px); font-weight: 700; }
+.shoot-prices small { font-size: 12px; font-weight: 500; }
+.shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
+.shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }
+.shoot-mail-items li { padding-left: 1.2em; text-indent: -1.2em; }
+.shoot-mail-items li::before { content: "・"; }
+.btn .ico { margin-right: 8px; }
+@media (max-width: 760px) {
+  .sg-thumbs a { width: 64px; }
+  .shoot-toc { grid-template-columns: minmax(0, 1fr); }
+  .shoot-toc a { min-height: 72px; }
+  .sg-stage .sg-nav { width: 36px; height: 36px; }
+  .sec-s { padding-top: 64px; }
+}
+
+/* ストーリー：PCでは写真と見出しを控えめにして、ひと目で収まる大きさに */
+@media (min-width: 761px) {
+  .about-split .split-photo { flex: 0 1 400px; }
+  .about-split h2 { font-size: clamp(20px, 2vw, 24px); }
+  .about-split .body-text { font-size: 14px; }
+}
+.has-dot-cursor .lightbox, .has-dot-cursor .lightbox button { cursor: auto; }
+.has-dot-cursor .lightbox button { cursor: pointer; }
