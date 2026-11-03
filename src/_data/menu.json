@@ -1,6 +1,7 @@
 {
-  "_説明": "メニューページ（/menu/）の中身。価格は税込。in＝店内、out＝テイクアウト（null はテイクアウトなし）。photo に assets/img/photos/ のファイル名（.webp を除く）を書くと、カテゴリの横スクロールに写真が出る。写真がない品は「写真を準備中」の枠になる。photoPosition（例：50% 80%）で正方形に切り抜く位置を調整できる",
+  "_説明": "showPhotos を true にすると、カテゴリごとの写真の横スクロールを出す（写真がそろうまでは false で隠しておく）。メニューページ（/menu/）の中身。価格は税込。in＝店内、out＝テイクアウト（null はテイクアウトなし）。photo に assets/img/photos/ のファイル名（.webp を除く）を書くと、カテゴリの横スクロールに写真が出る。写真がない品は「写真を準備中」の枠になる。photoPosition（例：50% 80%）で正方形に切り抜く位置を調整できる",
   "updated": "2026-10",
+  "showPhotos": false,
   "categories": [
     {
       "id": "espresso", "name": "エスプレッソ", "en": "Espresso",

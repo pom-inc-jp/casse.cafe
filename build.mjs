@@ -289,7 +289,7 @@ function menuSections(menu) {
             ${c.note ? `<p class="note">${esc(c.note)}${c.noteEn ? ` <span lang="en">${esc(c.noteEn)}</span>` : ''}</p>` : ''}
           </div>
           <div class="menu-cat-body">
-            <ul class="strip" aria-label="${esc(c.name)}の写真">${strip}</ul>
+            ${menu.showPhotos ? `<ul class="strip" aria-label="${esc(c.name)}の写真">${strip}</ul>` : ''}
             <div class="menu-cols" aria-hidden="true"><span>店内<span lang="en">Eat-in</span></span><span>テイクアウト<span lang="en">To go</span></span></div>
             <ul class="menu-items">
               ${rows}
