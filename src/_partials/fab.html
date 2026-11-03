@@ -1,6 +1,6 @@
 <!-- スマホのときだけ出る、右上の追従メニュー（カセットの形。スクロールでリールが回る） -->
 <div class="fab" data-fab>
-  <button class="fab-btn" type="button" aria-expanded="false" aria-controls="fab-menu" aria-label="メニューを開く">
+  <button class="fab-btn" type="button" aria-expanded="false" aria-controls="fab-menu" aria-label="{{page.fabOpen}}" data-open-label="{{page.fabOpen}}" data-close-label="{{page.fabClose}}">
     <svg width="76" height="52" viewBox="0 0 76 52" aria-hidden="true">
       <rect x="1" y="1" width="74" height="50" rx="6" fill="#000"/>
       <rect x="8" y="7" width="60" height="27" rx="3" fill="#fff"/>
@@ -12,7 +12,7 @@
       <text x="38" y="49" text-anchor="middle" fill="#fff" font-family="Jost, sans-serif" font-size="7.5" font-weight="500" letter-spacing=".8">menu</text>
     </svg>
   </button>
-  <nav class="fab-menu" id="fab-menu" aria-label="メニュー" hidden>
-  {{{nav.fab}}}
+  <nav class="fab-menu" id="fab-menu" aria-label="{{page.navLabel}}" hidden>
+  {{{page.navFab}}}
   </nav>
 </div>

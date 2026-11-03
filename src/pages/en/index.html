@@ -1,0 +1,87 @@
+---
+{ "lang": "en", "title": "English", "fullTitle": "CASSE | Cassette Tape Café in Shibuya, Tokyo", "description": "CASSE is a café in Shibuya, Tokyo, where you can listen to cassette tapes. Borrow your own player and headphones, pick tapes from our shelves and listen at your seat. 4 minutes' walk from Shibuya Station Exit C1.", "ogType": "website", "cafeJsonLd": true }
+---
+<!-- 英語の案内（要約1ページ）。メニューは日英共通の /menu/ につなぐ -->
+<section class="hero wrap">
+  <div class="hero-media">
+    <div class="spine" aria-hidden="true"><span>SIP COFFEE SPIN TAPES</span><span>EST 2025 TOKYO</span></div>
+    {{{hero.img}}}
+  </div>
+  <div class="hero-text hero-en">
+    <h1>{{{en.heroTitleHtml}}}</h1>
+    <p>{{{en.heroLeadHtml}}}</p>
+  </div>
+</section>
+
+<section class="sec wrap" aria-labelledby="about-h">
+  <div class="split">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h2 id="about-h">{{site.en.about.title}}</h2>
+      <p class="body-text">{{site.en.about.text}}</p>
+    </div>
+    <div class="split-photo portrait">{{{about.img}}}</div>
+  </div>
+</section>
+
+<section class="sec wrap" id="guide">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2>How it works</h2>
+    <ol class="steps">
+      {{{en.steps}}}
+    </ol>
+  </div>
+</section>
+
+<section class="sec wrap" id="price" aria-labelledby="price-h">
+  <div class="indent two-col">
+    <div class="col-head">
+      <span class="bar" aria-hidden="true"></span>
+      <h2 id="price-h">Charge</h2>
+      <p class="small-text">{{site.en.charge.note}}</p>
+    </div>
+    <div class="col-body">
+      {{{en.chargeTable}}}
+      <p class="foot-note">{{site.charge.footnoteEn}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="menu">
+  <div class="split">
+    <div class="split-photo portrait">{{{menuPreview.img}}}</div>
+    <div class="split-text menu-preview">
+      <span class="bar" aria-hidden="true"></span>
+      <h2>Menu</h2>
+      <p class="small-text">{{site.en.menu.text}}</p>
+      <p class="menu-btn"><a class="btn" href="/menu/">{{site.en.menu.button}}</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="info" aria-labelledby="info-h">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="info-h">Good to know</h2>
+    <dl class="info">
+      {{{en.info}}}
+    </dl>
+  </div>
+</section>
+
+<section class="sec wrap" id="access">
+  <div class="split">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h2>Access</h2>
+      <dl class="acc-list acc-en">
+        <dt>Address</dt><dd>{{site.en.store.address}}</dd>
+        <dt>Getting here</dt><dd>{{{en.accessHtml}}}</dd>
+        <dt>Hours</dt><dd>{{site.en.store.hours}}<br>{{site.en.store.holiday}}</dd>
+      </dl>
+      <p class="links"><a href="{{store.mapUrl}}" target="_blank" rel="noopener">Open in Google Maps</a><a href="{{ig}}" target="_blank" rel="noopener">Instagram</a></p>
+    </div>
+    <div class="split-photo">{{{store.img}}}</div>
+  </div>
+</section>

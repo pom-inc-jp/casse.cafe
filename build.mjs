@@ -262,10 +262,10 @@ function articleJsonLd(n, site, url) {
 // トップとメニューページの部品
 // ---------------------------------------------------------------
 // 料金の表。en を付けると英語を小さく添える（メニューページは日英共通）
-function chargeTable(charge, { en = false } = {}) {
-  const bi = (ja, e) => (en && e ? `${esc(ja)}<span class="en" lang="en">${esc(e)}</span>` : esc(ja));
+function chargeTable(charge, { en = false, enOnly = false } = {}) {
+  const bi = (ja, e) => (enOnly ? esc(e || ja) : en && e ? `${esc(ja)}<span class="en" lang="en">${esc(e)}</span>` : esc(ja));
   const cols = charge.columns.map((c, i) => `<th scope="col">${bi(c, (charge.columnsEn || [])[i])}</th>`).join('');
-  const head = `<tr><th scope="col"><span class="vh">区分</span></th>${cols}</tr>`;
+  const head = `<tr><th scope="col"><span class="vh">${enOnly ? 'Type' : '区分'}</span></th>${cols}</tr>`;
   const rows = charge.rows.map((r) => `<tr><th scope="row">${bi(r.label, r.labelEn)}</th>${r.prices.map((p) => `<td>${yen(p)}</td>`).join('')}</tr>`).join('\n              ');
   return `<div class="table-wrap"><table class="charge${en ? ' charge-bi' : ''}">\n            <thead>${head}</thead>\n            <tbody>\n              ${rows}\n            </tbody>\n          </table></div>`;
 }
@@ -372,6 +372,14 @@ async function build() {
       img: img(site.store.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
       mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.store.mapQuery)}`
     },
+    en: {
+      heroTitleHtml: site.en.hero.title.map(esc).join('<br>'),
+      heroLeadHtml: site.en.hero.lead.map(esc).join(' <br>'),
+      steps: site.en.steps.map((x, i) => `<li><span class="num">${i + 1}</span><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></li>`).join('\n          '),
+      chargeTable: chargeTable(site.charge, { enOnly: true }),
+      info: site.en.info.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
+      accessHtml: site.en.store.access.map(esc).join('<br>')
+    },
     menu: {
       updated: menu.updated,
       chips: menu.categories.map((c) => `<a href="#${esc(c.id)}">${esc(c.name)}<span lang="en">${esc(c.en)}</span></a>`).join('\n          '),
@@ -381,19 +389,44 @@ async function build() {
 
   const sitemap = [];
 
+  // 日本語と英語で変わる部分（ナビ・言語切り替え・フッター）
+  const navHtml = (list, sep) => list.map((n) => `<a href="${esc(n.href)}">${esc(n.label)}</a>`).join(sep);
+  function langParts(lang) {
+    const en = lang === 'en';
+    const nav = en ? site.en.nav : site.nav;
+    const f = site.en.foot;
+    return {
+      lang,
+      locale: en ? 'en_US' : 'ja_JP',
+      skip: en ? 'Skip to content' : '本文へ移動',
+      navLabel: en ? 'Main menu' : 'メインメニュー',
+      navHeader: navHtml(nav, '\n      '),
+      navFab: [navHtml(nav, '\n  '), `<a class="ig" href="${ig}" target="_blank" rel="noopener" lang="en">Instagram</a>`].join('\n  '),
+      fabOpen: en ? 'Open menu' : 'メニューを開く',
+      fabClose: en ? 'Close menu' : 'メニューを閉じる',
+      langSwitch: `<div class="lang" role="group" aria-label="${en ? 'Language' : '表示する言語'}"><a href="/" lang="ja"${en ? '' : ' aria-current="true"'}>JP</a><a href="/en/" lang="en"${en ? ' aria-current="true"' : ''}>EN</a></div>`,
+      foot: en
+        ? `<p>${esc(f.contact)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> (${esc(f.noReserve)})</p>\n      <p>JASRAC license ${esc(site.store.jasrac.replace('号', ''))} / ${esc(f.sister)}: <a href="${esc(site.store.sister.url)}" target="_blank" rel="noopener">RECOCO</a></p>\n      <p>${esc(f.company)} <a href="https://pom-inc.co.jp/" target="_blank" rel="noopener">POM Inc.</a></p>`
+        : `<p>取材・撮影のご依頼：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（席のご予約は受け付けていません）</p>\n      <p>JASRAC許諾番号 ${esc(site.store.jasrac)}／姉妹店 <a href="${esc(site.store.sister.url)}" target="_blank" rel="noopener">${esc(site.store.sister.name)}</a></p>\n      <p>運営：<a href="https://pom-inc.co.jp/" target="_blank" rel="noopener">株式会社ポム</a></p>`
+    };
+  }
+
   function pageCtx(meta, urlPath, extra = {}) {
     const isTop = urlPath === '/';
     return {
       ...shared,
       page: {
-        fullTitle: isTop ? `${site.fullName}｜${site.catch}` : `${meta.title}｜${site.name}`,
+        ...langParts(meta.lang || 'ja'),
+        fullTitle: meta.fullTitle || (isTop ? `${site.fullName}｜${site.catch}` : `${meta.title}｜${site.name}`),
         description: meta.description || site.description,
         url: `${site.url}${urlPath}`,
         ogType: meta.ogType || (isTop ? 'website' : 'article'),
         robots: meta.noindex ? '<meta name="robots" content="noindex">' : '',
         jsonld: meta.jsonld || '',
         image: meta.image || `${site.url}/assets/img/common/ogp.jpg`,
-        current: meta.current || ''
+        current: meta.current || '',
+        home: meta.lang === 'en' ? '/en/' : '/',
+        hreflang: ['/', '/en/'].includes(urlPath) ? `<link rel="alternate" hreflang="ja" href="${site.url}/">\n<link rel="alternate" hreflang="en" href="${site.url}/en/">\n<link rel="alternate" hreflang="x-default" href="${site.url}/">` : ''
       },
       ...extra
     };

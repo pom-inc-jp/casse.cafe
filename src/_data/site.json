@@ -212,5 +212,132 @@
       "name": "レコードカフェ RECOCO",
       "url": "https://recoco.cafe/"
     }
+  },
+  "en": {
+    "title": "CASSE | Cassette Tape Café in Shibuya, Tokyo",
+    "description": "CASSE is a café in Shibuya, Tokyo, where you can listen to cassette tapes. Borrow your own player and headphones, pick tapes from our shelves and listen at your seat. 4 minutes' walk from Shibuya Station Exit C1.",
+    "nav": [
+      {
+        "label": "How it works",
+        "href": "/en/#guide"
+      },
+      {
+        "label": "Charge",
+        "href": "/en/#price"
+      },
+      {
+        "label": "Menu",
+        "href": "/menu/"
+      },
+      {
+        "label": "Good to know",
+        "href": "/en/#info"
+      },
+      {
+        "label": "Access",
+        "href": "/en/#access"
+      }
+    ],
+    "hero": {
+      "title": [
+        "A café where you can",
+        "listen to cassette tapes"
+      ],
+      "lead": [
+        "Borrow your own player and headphones,",
+        "pick tapes from our shelves, and listen at your seat.",
+        "6 minutes' walk from Shibuya Station."
+      ]
+    },
+    "about": {
+      "title": "Rewinding is part of the music.",
+      "text": "In an age when music is one tap away, we want you to enjoy every small step: loading a tape, pressing play, flipping from side A to side B. Never touched a cassette before? You are very welcome."
+    },
+    "steps": [
+      {
+        "title": "Order",
+        "text": "Pay the table charge and order a drink. Cashless only."
+      },
+      {
+        "title": "Watch the video",
+        "text": "A short video shows you how to handle cassette tapes."
+      },
+      {
+        "title": "Get your player",
+        "text": "One player and a pair of headphones for each guest."
+      },
+      {
+        "title": "Choose your tapes",
+        "text": "From classic albums to today's artists."
+      },
+      {
+        "title": "Listen at your seat",
+        "text": "All seats are assigned. 90-minute limit when busy."
+      }
+    ],
+    "charge": {
+      "note": "A table charge and one drink per person are required. Prices are per person and include tax."
+    },
+    "menu": {
+      "text": "Our signature is a pound cake served in a cassette tape box. The menu page shows every item in English, with eat-in and to-go prices.",
+      "button": "See the menu"
+    },
+    "info": [
+      {
+        "icon": "ticket",
+        "label": "System",
+        "text": "Table charge + one drink per person"
+      },
+      {
+        "icon": "card",
+        "label": "Payment",
+        "text": "Cashless only (credit cards, PayPay, transit IC cards, QUICPay, iD)"
+      },
+      {
+        "icon": "tag",
+        "label": "Discounts",
+        "text": "LINE member and student discounts (LINE membership is free and can be set up on the day)"
+      },
+      {
+        "icon": "chair",
+        "label": "Seating",
+        "text": "All seats are assigned. 90-minute limit when busy. No reservations"
+      },
+      {
+        "icon": "wifi",
+        "label": "Facilities",
+        "text": "Free Wi-Fi and power outlets. Non-smoking"
+      },
+      {
+        "icon": "paw",
+        "label": "Pets",
+        "text": "Welcome on bench seats only"
+      },
+      {
+        "icon": "nocassette",
+        "label": "Your own tapes",
+        "text": "Not allowed, for security reasons"
+      },
+      {
+        "icon": "parking",
+        "label": "Parking",
+        "text": "None (large coin parking nearby)"
+      }
+    ],
+    "store": {
+      "address": "Takahashi Bldg. 1F, 3-2-13 Shibuya, Shibuya-ku, Tokyo 150-0002",
+      "access": [
+        "4 minutes' walk from Shibuya Station Exit C1",
+        "11 minutes' walk from Omotesando Station"
+      ],
+      "hours": "11:00–21:00 (last order 20:30)",
+      "holiday": "Open every day except New Year holidays"
+    },
+    "foot": {
+      "contact": "Press and location inquiries",
+      "noReserve": "We do not take seat reservations.",
+      "sister": "Sister shop",
+      "company": "Operated by"
+    }
   }
 }

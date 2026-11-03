@@ -20,7 +20,7 @@
     var setOpen = function (open) {
       menu.hidden = !open;
       btn.setAttribute('aria-expanded', String(open));
-      btn.setAttribute('aria-label', open ? 'メニューを閉じる' : 'メニューを開く');
+      btn.setAttribute('aria-label', btn.getAttribute(open ? 'data-close-label' : 'data-open-label'));
     };
     var update = function () {
       ticking = false;
