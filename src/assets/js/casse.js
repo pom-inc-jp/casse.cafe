@@ -128,4 +128,48 @@
     document.addEventListener('mouseup', function () { ring.classList.remove('is-down'); });
     document.documentElement.addEventListener('mouseleave', function () { dot.classList.remove('is-on'); ring.classList.remove('is-on'); });
   }
+
+  // ---------------------------------------------------------------
+  // 写真の拡大表示（撮影ページのギャラリー）。a[data-lightbox] を押すと大きく出す
+  // ---------------------------------------------------------------
+  const lb = document.querySelector('dialog.lightbox');
+  const shots = Array.prototype.slice.call(document.querySelectorAll('a[data-lightbox]'));
+  if (lb && shots.length && typeof lb.showModal === 'function') {
+    const big = lb.querySelector('img');
+    const cap = lb.querySelector('.lb-cap');
+    let cur = 0;
+    const show = function (i) {
+      cur = (i + shots.length) % shots.length;
+      const a = shots[cur];
+      const alt = (a.querySelector('img') || {}).alt || '';
+      big.src = a.getAttribute('href');
+      big.alt = alt;
+      cap.textContent = alt + '（' + (cur + 1) + ' / ' + shots.length + '）';
+    };
+    shots.forEach(function (a, i) {
+      a.addEventListener('click', function (e) {
+        e.preventDefault();
+        show(i);
+        lb.showModal();
+      });
+    });
+    lb.querySelector('.lb-prev').addEventListener('click', function () { show(cur - 1); });
+    lb.querySelector('.lb-next').addEventListener('click', function () { show(cur + 1); });
+    lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+    // 写真の外（黒いところ）を押しても閉じる
+    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+    lb.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') show(cur - 1);
+      if (e.key === 'ArrowRight') show(cur + 1);
+    });
+    // スマホは左右にスワイプで送る
+    let x0 = null;
+    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function (e) {
+      if (x0 === null) return;
+      const dx = e.changedTouches[0].clientX - x0;
+      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
+      x0 = null;
+    });
+  }
 })();

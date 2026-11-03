@@ -228,7 +228,7 @@ function newsList(items, site, today, { id = '', limit = 0 } = {}) {
 // ---------------------------------------------------------------
 // 撮影・取材のご依頼（/shooting/）。実績はお知らせ（news.json）から自動で並べる
 //   撮影実績 … タイトルに「撮影に店内をご利用」を含むメディア掲載
-//   掲載実績 … それ以外のメディア掲載とコラボ
+//   取材実績 … それ以外のメディア掲載
 // ---------------------------------------------------------------
 function shootingParts(site, news) {
   const sh = site.shooting;
@@ -236,22 +236,30 @@ function shootingParts(site, news) {
   const li = (n, tag = true) => `<li><a href="/news/${n.id}/"><time datetime="${n.date}">${dateLabel(n.date)}</time>${tag ? genreTag(n, site) : ''}<span class="t">${esc(n.title)}</span></a></li>`;
   const isShoot = (n) => n.genre === 'press' && n.title.includes('撮影に店内');
   const shoots = news.filter(isShoot);
-  const press = news.filter((n) => !isShoot(n) && ['press', 'collab'].includes(n.genre));
+  const press = news.filter((n) => !isShoot(n) && n.genre === 'press');
   const ul = (items, tag) => `<ul class="news">\n          ${items.map((n) => li(n, tag)).join('\n          ')}\n        </ul>`;
   const mag = (t) => (t.match(/『(.+?)』/) || [])[1];
   const shootNames = [...new Set(shoots.map((n) => mag(n.title)).filter(Boolean))];
-  const body = [`お世話になっております。`, ``, ...sh.mailItems.map((x) => `・${x}：`), ``].join('\n');
+  const mailto = (subject, items) => `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(['お世話になっております。', '', ...items.map((x) => `・${x}：`), ''].join('\n'))}`;
+  const lis = (items) => items.map((x) => `<li>${esc(x)}</li>`).join('');
+  // ギャラリー：小さい写真を並べ、押すと大きく表示する（casse.js の lightbox）
+  const gallery = sh.gallery.map((p) => {
+    const o = photo(p.file);
+    return `<li><a href="${o.src}" data-lightbox data-w="${o.w}" data-h="${o.h}">${img(p, '(max-width: 760px) 50vw, 25vw')}</a></li>`;
+  }).join('\n      ');
   return {
     leadHtml: sh.lead.map(esc).join('<br>'),
     photo: img(sh.photo, '(min-width: 761px) 50vw, 100vw', { lazy: false, priority: true }),
-    photos: sh.photos.map((p) => `<figure>${img(p, '(min-width: 761px) 33vw, 100vw')}</figure>`).join('\n    '),
+    gallery,
     timesHtml: sh.times.map((t) => `<li>${esc(t)}</li>`).join(''),
     prices: sh.prices.map((x) => `<div><dt>${esc(x.label)}</dt><dd>${esc(x.value)}<small>（税抜）</small></dd></div>`).join('\n        '),
     features: sh.features.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
-    mailItems: sh.mailItems.map((x) => `<li>${esc(x)}</li>`).join(''),
-    mailHref: `mailto:${site.email}?subject=${encodeURIComponent(sh.mailSubject)}&body=${encodeURIComponent(body)}`,
+    mailItems: lis(sh.mailItems),
+    mailHref: mailto(sh.mailSubject, sh.mailItems),
+    pressMailItems: lis(sh.pressMailItems),
+    pressMailHref: mailto(sh.pressMailSubject, sh.pressMailItems),
     shootList: ul(shoots, false),
-    pressList: ul(press),
+    pressList: ul(press, false),
     shootNames: shootNames.map((x) => `『${esc(x)}』`).join(''),
     shootCount: shoots.length,
     pressCount: press.length
