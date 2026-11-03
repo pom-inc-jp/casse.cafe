@@ -382,40 +382,11 @@ async function build() {
         .map(([k, v], i) => `<button type="button" data-genre="${k}" aria-pressed="${i === 0}">${esc(v)}</button>`).join('\n          ')
     },
     media: { track: mediaTrack },
-    hero: {
-      img: img(site.hero, '(max-width: 760px) calc(100vw - 96px), 1180px', { lazy: false, priority: true }),
-      leadHtml: site.hero.lead.map(esc).join('<br>')
-    },
-    about: {
-      titleHtml: site.about.title.map(esc).join('<br>'),
-      img: img(site.about.photo, '(max-width: 760px) calc(100vw - 40px), 560px')
-    },
-    steps: stepList(site.steps, 'ja'),
-    charge: { table: chargeTable(site.charge), tableBi: chargeTable(site.charge, { en: true }) },
-    info: infoList(site.info, 'ja'),
-    menuPreview: {
-      img: img(site.menuPreview.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
-      items: site.menuPreview.items.map((x) => {
-        const it = menuItem(menu, x.item);
-        return `<li><span>${esc(x.label || it.name)}</span><span class="pr">${yen(it.in)}</span></li>`;
-      }).join('\n            ')
-    },
-    gallery: site.gallery.map((g, i) => img(g, i === 0 ? '(max-width: 760px) calc(100vw - 40px), 400px' : '(max-width: 760px) calc(100vw - 40px), 800px', { cls: i === 0 ? 'g-tall' : 'g-wide' })).join('\n        '),
+    charge: { tableBi: chargeTable(site.charge, { en: true }) },
     store: {
       ...site.store,
       accessHtml: site.store.access.map(esc).join('<br>'),
-      hours: hoursText(site.store, 'ja'),
-      img: img(site.store.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
       mapUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(site.store.mapQuery)}`
-    },
-    en: {
-      heroTitleHtml: site.en.hero.title.map(esc).join('<br>'),
-      heroLeadHtml: site.en.hero.lead.map(esc).join(' <br>'),
-      steps: stepList(site.steps, 'en'),
-      chargeTable: chargeTable(site.charge, { enOnly: true }),
-      info: infoList(site.info, 'en'),
-      hours: hoursText(site.store, 'en'),
-      accessHtml: site.en.store.access.map(esc).join('<br>')
     },
     menu: {
       updated: menu.updated,
@@ -445,12 +416,48 @@ async function build() {
     };
   }
 
+  // トップ（/）と英語ページ（/en/）で使う文章・写真。テンプレートは同じで、ここだけが言語で変わる
+  function homeParts(lang) {
+    const en = lang === 'en';
+    const ui = site.ui[lang];
+    const alt = (p) => (en ? p.altEn || p.alt : p.alt);
+    const pic = (p, sizes, opts = {}) => img(p, sizes, { ...opts, alt: alt(p) });
+    const lines = (list) => list.map(esc).join(en ? ' <br>' : '<br>');
+    return {
+      ui,
+      heroTitleHtml: lines(ui.heroTitle),
+      heroLeadHtml: lines(en ? site.en.hero.lead : site.hero.lead),
+      heroImg: pic(site.hero, '(max-width: 760px) calc(100vw - 96px), 1180px', { lazy: false, priority: true }),
+      aboutTitleHtml: en ? esc(site.en.about.title) : lines(site.about.title),
+      aboutText: en ? site.en.about.text : site.about.text,
+      aboutImg: pic(site.about.photo, '(max-width: 760px) calc(100vw - 40px), 560px'),
+      steps: stepList(site.steps, lang),
+      chargeNote: en ? site.en.charge.note : site.charge.note,
+      chargeTable: chargeTable(site.charge, { enOnly: en }),
+      chargeFootnote: en ? `${site.charge.footnoteEn} ${site.charge.takeoutNoteEn}` : site.charge.footnote + site.charge.takeoutNote,
+      menuText: en ? site.en.menu.text : site.menuPreview.text,
+      menuImg: pic(site.menuPreview.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
+      menuItems: site.menuPreview.items.map((x) => {
+        const it = menuItem(menu, x.item);
+        const name = en ? it.en.split(' ／ ')[0] : x.label || it.name;
+        return `<li><span>${esc(name)}</span><span class="pr">${yen(it.in)}</span></li>`;
+      }).join('\n            '),
+      info: infoList(site.info, lang),
+      gallery: site.gallery.map((g, i) => pic(g, i === 0 ? '(max-width: 760px) calc(100vw - 40px), 400px' : '(max-width: 760px) calc(100vw - 40px), 800px', { cls: i === 0 ? 'g-tall' : 'g-wide' })).join('\n        '),
+      addressHtml: en ? esc(site.en.store.address) : `〒${esc(site.store.zip)}<br>${esc(site.store.address)}`,
+      accessHtml: lines(en ? site.en.store.access : site.store.access).replace(/ <br>/g, '<br>'),
+      hoursHtml: `${esc(hoursText(site.store, lang))}<br>${esc(en ? site.en.store.holiday : `${ui.holiday} ${site.store.holiday}`)}`,
+      storeImg: pic(site.store.photo, '(max-width: 760px) calc(100vw - 40px), 600px')
+    };
+  }
+
   function pageCtx(meta, urlPath, extra = {}) {
     const isTop = urlPath === '/';
     return {
       ...shared,
       page: {
         ...langParts(meta.lang || 'ja'),
+        t: homeParts(meta.lang || 'ja'),
         fullTitle: meta.fullTitle || (isTop ? `${site.fullName}｜${site.catch}` : `${meta.title}｜${site.name}`),
         description: meta.description || site.description,
         url: `${site.url}${urlPath}`,

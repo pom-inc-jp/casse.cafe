@@ -1,0 +1,12 @@
+<!-- トップと英語ページで共通のファーストビュー。文章は site.json（ui・hero・en.hero）から言語ごとに入る -->
+<section class="hero wrap">
+  <div class="hero-media">
+    <div class="spine" aria-hidden="true"><span lang="en">SIP COFFEE SPIN TAPES</span><span lang="en">EST 2025 TOKYO</span></div>
+    <!-- ここはのちほど動画に差し替える予定 -->
+    {{{page.t.heroImg}}}
+  </div>
+  <div class="hero-text hero-{{page.lang}}">
+    <h1>{{{page.t.heroTitleHtml}}}</h1>
+    <p>{{{page.t.heroLeadHtml}}}</p>
+  </div>
+</section>

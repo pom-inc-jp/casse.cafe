@@ -1,18 +1,9 @@
 ---
 { "cafeJsonLd": true }
 ---
-<section class="hero wrap">
-  <div class="hero-media">
-    <div class="spine" aria-hidden="true"><span lang="en">SIP COFFEE SPIN TAPES</span><span lang="en">EST 2025 TOKYO</span></div>
-    <!-- ここはのちほど動画に差し替える予定 -->
-    {{{hero.img}}}
-  </div>
-  <div class="hero-text">
-    <h1>カセットテープが<br>聴けるカフェ</h1>
-    <p>{{{hero.leadHtml}}}</p>
-  </div>
-</section>
+{{> home-hero}}
 
+<!-- ここから2つ（メディア掲載・お知らせ）は日本語のトップだけ -->
 <section class="media-band" aria-labelledby="media-h">
   <div class="wrap media-in">
     <h2 id="media-h">メディア掲載</h2>
@@ -36,82 +27,4 @@
   </div>
 </section>
 
-<section class="sec wrap" aria-labelledby="about-h">
-  <div class="split">
-    <div class="indent split-text">
-      <span class="bar" aria-hidden="true"></span>
-      <h2 id="about-h">{{{about.titleHtml}}}</h2>
-      <p class="body-text">{{site.about.text}}</p>
-    </div>
-    <div class="split-photo portrait">{{{about.img}}}</div>
-  </div>
-</section>
-
-<section class="sec wrap" id="guide">
-  <div class="indent">
-    <span class="bar" aria-hidden="true"></span>
-    <h2>楽しみ方</h2>
-    <ol class="steps">
-      {{{steps}}}
-    </ol>
-  </div>
-</section>
-
-<section class="sec wrap" id="price" aria-labelledby="price-h">
-  <div class="indent two-col">
-    <div class="col-head">
-      <span class="bar" aria-hidden="true"></span>
-      <h2 id="price-h">料金</h2>
-      <p class="small-text">{{site.charge.note}}</p>
-    </div>
-    <div class="col-body">
-      {{{charge.table}}}
-      <p class="foot-note">{{site.charge.footnote}}</p>
-    </div>
-  </div>
-</section>
-
-<section class="sec wrap" id="menu">
-  <div class="split">
-    <div class="split-photo portrait">{{{menuPreview.img}}}</div>
-    <div class="split-text menu-preview">
-      <span class="bar" aria-hidden="true"></span>
-      <h2>メニュー</h2>
-      <p class="small-text">{{site.menuPreview.text}}</p>
-      <ul class="price-list">
-        {{{menuPreview.items}}}
-      </ul>
-      <p><a class="btn" href="/menu/">メニューをすべて見る</a></p>
-    </div>
-  </div>
-</section>
-
-<section class="sec wrap" id="info" aria-labelledby="info-h">
-  <div class="indent">
-    <span class="bar" aria-hidden="true"></span>
-    <h2 id="info-h">ご利用案内</h2>
-    <dl class="info">
-      {{{info}}}
-    </dl>
-  </div>
-</section>
-
-<section class="sec wrap gallery" aria-label="店内の様子">
-  {{{gallery}}}
-</section>
-
-<section class="sec wrap" id="access">
-  <div class="split">
-    <div class="indent split-text">
-      <span class="bar" aria-hidden="true"></span>
-      <h2>アクセス</h2>
-      <dl class="acc-list">
-        <dt>住所</dt><dd>〒{{store.zip}}<br>{{store.address}}</dd>
-        <dt>行き方</dt><dd>{{{store.accessHtml}}}</dd>
-        <dt>営業時間</dt><dd>{{store.hours}}<br>定休日 {{store.holiday}}</dd>
-      </dl>
-      <p class="links"><a href="{{store.mapUrl}}" target="_blank" rel="noopener">地図を開く</a><a href="{{ig}}" target="_blank" rel="noopener" lang="en">Instagram</a></p>
-    </div>
-    <div class="split-photo">{{{store.img}}}</div>
-  </div>
-</section>
+{{> home-body}}

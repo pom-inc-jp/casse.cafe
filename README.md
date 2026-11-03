@@ -27,7 +27,7 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 | `src/_data/menu.json` | メニューと価格（カテゴリごと）。品目ごとの写真もここで指定 |
 | `src/_data/news.json` | お知らせ |
 | `src/_data/media.json` | メディア掲載の帯（番組名・雑誌名） |
-| `src/_partials/` | 共通部品（head・ヘッダー・フッター・スマホのカセット型メニュー） |
+| `src/_partials/` | 共通部品（head・ヘッダー・フッター・スマホのカセット型メニュー）。`home-hero.html`・`home-body.html` はトップと英語ページで共通の本文（言葉は site.json の `ui` などから言語ごとに入る） |
 | `src/_templates/news-article.html` | お知らせ記事ページのひな形 |
 | `src/pages/` | トップ・メニュー・お知らせ一覧・英語ページ・404 |
 | `src/assets/css/casse.css` | 見た目（色は先頭の変数を使う） |

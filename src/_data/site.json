@@ -15,7 +15,8 @@
       "プレーヤーとヘッドホンを、1人に1台。",
       "棚から選んだテープを、席でゆっくり聴けます。",
       "渋谷駅から歩いて6分です。"
-    ]
+    ],
+    "altEn": "The bright, white interior of CASSE with natural light"
   },
   "about": {
     "title": [
@@ -25,7 +26,8 @@
     "text": "スマホならすぐに聴ける時代だからこそ、テープを入れて、再生ボタンを押して、A面とB面を入れ替える。そのひと手間ごと楽しんでもらいたくて、カセットを実際に手に取れるカフェをつくりました。カセットにさわったことがない方も大歓迎です。",
     "photo": {
       "file": "tapes-table",
-      "alt": "陽の差すテーブルに並んだカセットテープとカフェラテ"
+      "alt": "陽の差すテーブルに並んだカセットテープとカフェラテ",
+      "altEn": "Cassette tapes and a café latte on a sunlit table"
     }
   },
   "nav": [
@@ -190,7 +192,8 @@
     "text": "看板は、カセットテープの箱に入ったパウンドケーキ。音楽と一緒に楽しめるドリンクとデザートを揃えています。",
     "photo": {
       "file": "pound-cake",
-      "alt": "カセットテープ型の箱に入ったパウンドケーキとコーヒー"
+      "alt": "カセットテープ型の箱に入ったパウンドケーキとコーヒー",
+      "altEn": "A pound cake in a cassette tape box, with coffee"
     },
     "items": [
       {
@@ -212,11 +215,13 @@
   "gallery": [
     {
       "file": "listening",
-      "alt": "ヘッドホンでカセットを聴きながらドリンクを飲むお客さま"
+      "alt": "ヘッドホンでカセットを聴きながらドリンクを飲むお客さま",
+      "altEn": "A guest drinking while listening to a cassette with headphones"
     },
     {
       "file": "counter",
-      "alt": "ガラスブロックのカウンターとオーディオ機器"
+      "alt": "ガラスブロックのカウンターとオーディオ機器",
+      "altEn": "The glass-block counter and audio equipment"
     }
   ],
   "store": {
@@ -230,7 +235,8 @@
     "holiday": "なし（年末年始を除く）",
     "photo": {
       "file": "storefront",
-      "alt": "CASSEの外観"
+      "alt": "CASSEの外観",
+      "altEn": "The front of CASSE"
     },
     "jasrac": "K9666751",
     "sister": {
@@ -272,10 +278,6 @@
       }
     ],
     "hero": {
-      "title": [
-        "A café where you can",
-        "listen to cassette tapes"
-      ],
       "lead": [
         "Borrow your own player and headphones,",
         "pick tapes from our shelves, and listen at your seat.",
@@ -290,8 +292,7 @@
       "note": "A table charge and one drink per person are required. Prices are per person and include tax."
     },
     "menu": {
-      "text": "Our signature is a pound cake served in a cassette tape box. The menu page shows every item in English, with eat-in and to-go prices.",
-      "button": "See the menu"
+      "text": "Our signature is a pound cake served in a cassette tape box. The menu page shows every item in English, with eat-in and to-go prices."
     },
     "store": {
       "address": "Takahashi Bldg. 1F, 3-2-13 Shibuya, Shibuya-ku, Tokyo 150-0002",
@@ -318,6 +319,45 @@
       "sister": "Sister shop",
       "company": "Operated by",
       "companyName": "POM Inc."
+    }
+  },
+  "ui": {
+    "_説明": "トップ（/）と英語ページ（/en/）の見出しなど。2つのページは同じテンプレート（_partials/home-*.html）を使い、ここの言葉だけが変わる",
+    "ja": {
+      "heroTitle": [
+        "カセットテープが",
+        "聴けるカフェ"
+      ],
+      "guide": "楽しみ方",
+      "price": "料金",
+      "menu": "メニュー",
+      "menuButton": "メニューをすべて見る",
+      "info": "ご利用案内",
+      "gallery": "店内の様子",
+      "access": "アクセス",
+      "address": "住所",
+      "gettingHere": "行き方",
+      "hours": "営業時間",
+      "holiday": "定休日",
+      "map": "地図を開く"
+    },
+    "en": {
+      "heroTitle": [
+        "A café where you can",
+        "listen to cassette tapes"
+      ],
+      "guide": "How it works",
+      "price": "Charge",
+      "menu": "Menu",
+      "menuButton": "See the menu",
+      "info": "Good to know",
+      "gallery": "Inside CASSE",
+      "access": "Access",
+      "address": "Address",
+      "gettingHere": "Getting here",
+      "hours": "Hours",
+      "holiday": "",
+      "map": "Open in Google Maps"
     }
   }
 }
