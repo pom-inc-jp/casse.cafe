@@ -345,7 +345,10 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-h3 { margin-top: 40px; font-size: 16px; line-height: 1.6; }
 .shoot-h3:first-child { margin-top: 0; }
 .shoot-times { margin-top: 12px; font-family: var(--en); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.7; }
-.shoot-times li { display: inline-block; margin-right: 1.2em; }
+.shoot-times li { display: inline-block; }
+.shoot-times .sep { margin: 0 .6em; color: var(--sub); }
+.consult { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 14px; border: 1px solid var(--cyan-deep); color: var(--cyan-deep); font-size: 14px; font-weight: 700; }
+.consult::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-deep); }
 .shoot-prices { margin-top: 12px; border-bottom: var(--line); }
 .shoot-prices div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-top: var(--line); }
 .shoot-prices dt { font-size: 14px; font-weight: 700; }
@@ -357,7 +360,9 @@ html[lang="en"] .body-text { max-width: 32em; }
 .kome li { display: flex; gap: .4em; }
 .kome .k { flex: none; }
 .shoot-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; counter-reset: none; }
-.shoot-flow li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow li { display: flex; align-items: flex-start; gap: 10px; padding: 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow b { display: block; font-size: 15px; }
+.shoot-flow small { display: block; margin-top: 2px; font-size: 12px; line-height: 1.6; }
 .shoot-flow .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--cyan-deep); color: var(--paper); font-family: var(--en); font-size: 13px; }
 .shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
 .shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }
