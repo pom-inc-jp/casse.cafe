@@ -10,6 +10,7 @@
   --cyan-deep: #02809c;   /* 水色を少し濃くした色。白い文字をのせるとき用（メディア掲載のタグ）。白との明るさの差 4.5:1 以上 */
   --purple: #6b5b8e;      /* 落ち着いた紫。撮影・取材ページの「取材」側だけに使う。白い文字をのせても読める濃さ */
   --purple-pale: #e9e5f0; /* 紫を薄めた色（取材側のボタンを押したとき） */
+  --alert: #c62828;       /* 赤。注意書きの中でも特に大事なことだけに使う（撮影の撤収時間・最低利用時間など）。白地で読める濃さ */
   --sub: #555;            /* 補足の文字 */
   --line: 1px solid var(--ink);
   --ja: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
@@ -350,6 +351,14 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-prices dt { font-size: 14px; font-weight: 700; }
 .shoot-prices dd { font-size: clamp(18px, 2vw, 22px); font-weight: 700; }
 .shoot-prices small { font-size: 12px; font-weight: 500; }
+.alert { margin-top: 16px; font-size: 14px; font-weight: 700; line-height: 1.8; color: var(--alert); }
+.alert + .foot-note { margin-top: 6px; }
+.kome { margin-top: 8px; }
+.kome li { display: flex; gap: .4em; }
+.kome .k { flex: none; }
+.shoot-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; counter-reset: none; }
+.shoot-flow li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--cyan-deep); color: var(--paper); font-family: var(--en); font-size: 13px; }
 .shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
 .shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }
 .shoot-mail-items li { padding-left: 1.2em; text-indent: -1.2em; }

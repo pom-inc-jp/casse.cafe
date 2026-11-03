@@ -33,7 +33,6 @@
 <section class="sec-s wrap" aria-labelledby="works-h">
   <div class="indent">
     <h3 id="works-h" class="shoot-h2">撮影の実績</h3>
-    <p class="small-text">{{{shooting.shootNames}}}などの撮影に、店内をご利用いただきました。</p>
     <div class="shoot-list">
       {{{shooting.shootList}}}
     </div>
@@ -48,12 +47,18 @@
     <div class="col-body">
       <h4 class="shoot-h3">撮影できる時間</h4>
       <ul class="shoot-times">{{{shooting.timesHtml}}}</ul>
+      <p class="alert">{{site.shooting.timesAlert}}</p>
       <p class="foot-note">{{site.shooting.timesNote}}</p>
       <h4 class="shoot-h3">料金の目安</h4>
       <dl class="shoot-prices">
         {{{shooting.prices}}}
       </dl>
+      <p class="alert">{{site.shooting.minTime}}</p>
       <p class="foot-note">{{site.shooting.priceNote}}</p>
+      <ul class="foot-note kome">{{{shooting.priceNotes}}}</ul>
+      <h4 class="shoot-h3">ご予約までの流れ</h4>
+      <ol class="shoot-flow">{{{shooting.flow}}}</ol>
+      <p class="foot-note">{{site.shooting.flowNote}}</p>
     </div>
   </div>
 </section>
@@ -89,15 +94,6 @@
   </div>
 </section>
 
-<section class="sec-s wrap is-press" aria-labelledby="pressworks-h">
-  <div class="indent">
-    <h3 id="pressworks-h" class="shoot-h2">取材・掲載の実績</h3>
-    <div class="shoot-list">
-      {{{shooting.pressList}}}
-    </div>
-  </div>
-</section>
-
 <section class="sec-s wrap is-press" id="press-contact" aria-labelledby="press-contact-h">
   <div class="indent shoot-contact">
     <h3 id="press-contact-h" class="shoot-h2">取材のお問い合わせ</h3>
@@ -106,6 +102,15 @@
     <p class="btns"><a class="btn btn-purple" href="{{shooting.pressMailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
     <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
     <p class="foot-note">店舗の住所や営業時間は<a href="/#access">店舗概要</a>をご覧ください。</p>
+  </div>
+</section>
+
+<section class="sec-s wrap is-press" aria-labelledby="pressworks-h">
+  <div class="indent">
+    <h3 id="pressworks-h" class="shoot-h2">取材・掲載の実績</h3>
+    <div class="shoot-list">
+      {{{shooting.pressList}}}
+    </div>
   </div>
 </section>
 
