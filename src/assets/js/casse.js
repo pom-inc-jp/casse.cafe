@@ -94,6 +94,24 @@
     (window.dataLayer = window.dataLayer || []).push({ event: 'link_click', link_type: type, link_store: 'casse', link_place: place, link_url: a.href });
   });
 
+  // --- 4b) ボタンやメニューのクリックの計測（GTM → GA4 の click_cta）
+  //   data-cta="名前" を付けた要素と、メニュー・言語切り替え・お知らせの絞り込み・メニューページの目次を送る。
+  //   送る項目：cta_name（どのボタンか）・cta_label（押した文字）・cta_place（ページ内の場所）・cta_url（行き先）
+  //   名前の一覧は README の「計測」を参照
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-cta], .gnav a, .fab-menu a, .lang a, .filters button, .chips a');
+    if (!el) return;
+    var name = el.getAttribute('data-cta') ||
+      (el.closest('.gnav') ? 'nav_header' : el.closest('.fab-menu') ? 'nav_fab' : el.closest('.lang') ? 'lang_switch' : el.closest('.filters') ? 'news_filter' : 'menu_chip');
+    var strong = el.querySelector('b');
+    var pic = el.querySelector('img');
+    var label = (el.getAttribute('aria-label') || (strong && strong.textContent) || el.textContent || (pic && pic.alt) || '').replace(/\s+/g, ' ').trim().slice(0, 60);
+    if (name === 'fab_toggle') label = el.getAttribute('aria-expanded') === 'true' ? 'close' : 'open';
+    if (name === 'gallery_thumb') label = el.getAttribute('data-alt') || label;
+    var place = el.closest('.fab') ? 'fab' : el.closest('.site-head') ? 'header' : el.closest('.site-foot') ? 'footer' : (el.closest('section[id]') || {}).id || 'main';
+    (window.dataLayer = window.dataLayer || []).push({ event: 'click_cta', cta_name: name, cta_label: label, cta_place: place, cta_url: (el.href || '').split('?')[0], cta_store: 'casse' });
+  });
+
   // --- 5) PCのポインター（黒い点と、少し遅れてついてくる輪）。マウス操作の画面で、動きを減らす設定でないときだけ ---
   var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (fine && !reduce) {

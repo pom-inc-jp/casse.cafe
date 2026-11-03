@@ -11,8 +11,8 @@
       <h1 class="page-title shoot-title">{{site.shooting.title}}</h1>
       <p class="shoot-lead">{{{shooting.leadHtml}}}</p>
       <nav class="shoot-toc" aria-label="ご依頼の種類">
-        <a class="btn btn-deep" href="#shoot"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.8l1.6-2.2h6.2L16.7 7h2.8A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>撮影のご依頼</b><span>商用撮影のための場所の貸し出し</span></a>
-        <a class="btn btn-purple" href="#press"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>取材のご依頼</b><span>テレビ・雑誌・WEBメディアでの紹介</span></a>
+        <a class="btn btn-deep" href="#shoot" data-cta="shoot_anchor"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8.5A1.5 1.5 0 0 1 4.5 7h2.8l1.6-2.2h6.2L16.7 7h2.8A1.5 1.5 0 0 1 21 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5z"/><circle cx="12" cy="13" r="3.6"/></svg>撮影のご依頼</b><span>商用撮影のための場所の貸し出し</span></a>
+        <a class="btn btn-purple" href="#press" data-cta="press_anchor"><b><svg class="ico" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5V21M8.5 21h7"/></svg>取材のご依頼</b><span>テレビ・雑誌・WEBメディアでの紹介</span></a>
       </nav>
     </div>
     <div class="split-photo">{{{shooting.photo}}}</div>
@@ -79,7 +79,7 @@
     <h3 id="shoot-contact-h" class="shoot-h2">撮影のお問い合わせ</h3>
     <p class="small-text">メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
     <ul class="shoot-mail-items">{{{shooting.mailItems}}}</ul>
-    <p class="btns"><a class="btn btn-deep" href="{{shooting.mailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>撮影について問い合わせる</a></p>
+    <p class="btns"><a class="btn btn-deep" href="{{shooting.mailHref}}" data-cta="shoot_mail"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>撮影について問い合わせる</a></p>
     <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
   </div>
 </section>
@@ -103,7 +103,7 @@
     <h3 id="press-contact-h" class="shoot-h2">取材のお問い合わせ</h3>
     <p class="small-text">メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
     <ul class="shoot-mail-items">{{{shooting.pressMailItems}}}</ul>
-    <p class="btns"><a class="btn btn-purple" href="{{shooting.pressMailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
+    <p class="btns"><a class="btn btn-purple" href="{{shooting.pressMailHref}}" data-cta="press_mail"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
     <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
     <p class="foot-note">店舗の住所や営業時間は<a href="/#access">店舗概要</a>をご覧ください。</p>
   </div>
@@ -118,7 +118,7 @@
   </div>
 </section>
 
-<p class="wrap to-top"><span class="indent"><a class="btn btn-line" href="#top"><svg class="ico" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>ページの上へ戻る</a></span></p>
+<p class="wrap to-top"><span class="indent"><a class="btn btn-line" href="#top" data-cta="to_top"><svg class="ico" aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 15l6-6 6 6"/></svg>ページの上へ戻る</a></span></p>
 
 <dialog class="lightbox" aria-label="写真の拡大表示">
   <img alt="">

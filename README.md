@@ -106,3 +106,28 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 - 変数 `CASSE_LIVE` が `true` になるまでは「試し（dry-run）」だけで、消えるファイルの一覧を実行結果に出す
 - 消さないもの：`casse_movie_app/` など `_movie_app` で終わるフォルダ、mp4 が入っているフォルダ、`.well-known/`、`wp-content/uploads/`、検索エンジンの確認ファイル
 - 切り替えたあとは、pom-inc.co.jp の `newsSources` に casse.cafe を足し、Search Console でサイトマップ（`https://casse.cafe/sitemap.xml`）を送信する
+
+## 計測（Googleタグマネージャー → GA4）
+
+サイトは `dataLayer` に次の2種類を送る（`src/assets/js/casse.js`）。GTM の「カスタムイベント」トリガーで受けて、GA4 のイベントタグで送る。
+
+| イベント | いつ | 項目 |
+|---|---|---|
+| `link_click` | Instagram・地図・メール・外部サイトへのリンクを押したとき | `link_type`（instagram / map / mail / external）・`link_place`・`link_url`・`link_store` |
+| `click_cta` | 主なボタン・メニューなどを押したとき | `cta_name`（下の表）・`cta_label`（押した文字）・`cta_place`（ページ内の場所）・`cta_url`（行き先。`?` 以降は送らない）・`cta_store` |
+
+`cta_name` の一覧。新しいボタンを計測したいときは、HTML に `data-cta="名前"` を付けて、この表に足す。
+
+| cta_name | どこ |
+|---|---|
+| shoot_entry / press_entry | トップの「撮影について」「取材について」 |
+| shoot_anchor / press_anchor | 撮影・取材ページ冒頭の「撮影のご依頼」「取材のご依頼」 |
+| shoot_mail / press_mail | 撮影・取材ページの問い合わせボタン |
+| gallery_open / gallery_prev / gallery_next / gallery_thumb | 撮影ページのギャラリー（拡大・前・次・小さい写真） |
+| menu_all | トップの「メニューをすべて見る」 |
+| menu_chip | メニューページ上の目次 |
+| news_more / news_filter | お知らせ一覧へ／カテゴリの絞り込み |
+| nav_header / nav_fab / fab_toggle | 上のメニュー／右上のカセットのメニュー（中のリンク・開け閉め） |
+| lang_switch | JP / EN の切り替え |
+| logo_header / logo_footer | ロゴ（トップへ） |
+| to_top | 「ページの上へ戻る」 |
