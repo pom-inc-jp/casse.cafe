@@ -95,9 +95,9 @@
     },
     {
       "title": "席で聴く",
-      "text": "全席指定席。混雑時は90分制です。",
+      "text": "空いていればお好きな席へ。混雑時はお席をご案内し、90分制です。",
       "titleEn": "Listen at your seat",
-      "textEn": "All seats are assigned. 90-minute limit when busy.",
+      "textEn": "Pick any free seat. When busy, we will show you to a seat (90-minute limit).",
       "icon": "headphones"
     }
   ],
@@ -160,16 +160,16 @@
     {
       "icon": "chair",
       "label": "席",
-      "text": "全席指定席・混雑時は90分制。席のご予約はできません",
+      "text": "混雑時以外はお好きな席をお選びいただけます。混雑時はお席をご案内し、90分制です。席のご予約はできません",
       "labelEn": "Seating",
-      "textEn": "All seats are assigned. 90-minute limit when busy. No reservations"
+      "textEn": "Choose any free seat unless we are busy. When busy, we will show you to a seat (90-minute limit). No reservations"
     },
     {
       "icon": "seat",
-      "label": "指定席",
-      "text": "指定された席以外には座らないでください（撮影なども含みます）",
-      "labelEn": "Assigned seats",
-      "textEn": "Please do not sit in seats other than your assigned one, including for photos"
+      "label": "ご自分の席で",
+      "text": "ほかのお客様のご迷惑になるため、ご自分の席以外には座らないでください（写真を撮るための移動も含みます）",
+      "labelEn": "Stay at your seat",
+      "textEn": "Please do not sit in other seats, including to take photos, so as not to disturb other guests"
     },
     {
       "icon": "wifi",
