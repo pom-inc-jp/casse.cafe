@@ -15,6 +15,13 @@
       ]
     },
     {
+      "id": "option", "name": "オプション", "en": "Option",
+      "items": [
+        { "name": "ソイミルクに変更", "en": "Soy milk", "in": 60, "out": 59 },
+        { "name": "エスプレッソショット追加", "en": "Extra espresso shot", "in": 60, "out": 59 }
+      ]
+    },
+    {
       "id": "non-alcohol", "name": "ノンアルコール", "en": "Non Alcohol",
       "items": [
         { "name": "紅茶", "en": "Tea ／ Ice・Hot", "in": 640, "out": 629 },
@@ -37,13 +44,6 @@
         { "name": "オレンジワイン", "en": "Orange wine", "in": 1100, "out": null },
         { "name": "ウイスキー（ソーダ／コーラ／ジンジャー）", "en": "Whiskey", "in": 950, "out": null },
         { "name": "カシス（ソーダ／オレンジ／ウーロン）", "en": "Cassis", "in": 950, "out": null }
-      ]
-    },
-    {
-      "id": "option", "name": "オプション", "en": "Option",
-      "items": [
-        { "name": "ソイミルクに変更", "en": "Soy milk", "in": 60, "out": 59 },
-        { "name": "エスプレッソショット追加", "en": "Extra espresso shot", "in": 60, "out": 59 }
       ]
     },
     {
