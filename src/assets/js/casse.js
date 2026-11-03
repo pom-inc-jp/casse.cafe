@@ -4,6 +4,7 @@
 //   2) お知らせの絞り込み（カテゴリのボタン）
 //   3) 今いるページのメニューに印を付ける
 //   4) 計測用：外部リンクや地図のクリックを GTM に送る
+//   5) PCのポインターをカセットのリールにする（リンクの上では水色になって回る）
 // =================================================================
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -92,4 +93,30 @@
     var place = a.closest('.fab-menu') ? 'fab' : a.closest('.site-foot') ? 'footer' : (a.closest('section[id]') || {}).id || 'main';
     (window.dataLayer = window.dataLayer || []).push({ event: 'link_click', link_type: type, link_store: 'casse', link_place: place, link_url: a.href });
   });
+
+  // --- 5) PCのポインター（カセットのリール）。マウス操作の画面で、動きを減らす設定でないときだけ ---
+  var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (fine && !reduce) {
+    var cur = document.createElement('div');
+    cur.className = 'reel-cursor';
+    cur.setAttribute('aria-hidden', 'true');
+    cur.innerHTML = '<svg viewBox="0 0 24 24"><circle class="rim" cx="12" cy="12" r="11"/>' +
+      '<g class="hub"><circle cx="12" cy="12" r="5" fill="#fff"/>' +
+      '<path d="M12 7v2.2M12 14.8V17M7.7 9.5l1.9 1.1M14.4 13.4l1.9 1.1M7.7 14.5l1.9-1.1M14.4 10.6l1.9-1.1" stroke="#000" stroke-width="1.3" stroke-linecap="round"/></g></svg>';
+    document.body.appendChild(cur);
+    document.documentElement.classList.add('has-reel-cursor');
+    var mx = 0, my = 0, raf = 0;
+    var draw = function () { raf = 0; cur.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)'; };
+    document.addEventListener('mousemove', function (e) {
+      mx = e.clientX; my = e.clientY;
+      cur.classList.add('is-on');
+      if (!raf) raf = window.requestAnimationFrame(draw);
+    }, { passive: true });
+    document.addEventListener('mouseover', function (e) {
+      cur.classList.toggle('is-link', !!e.target.closest('a, button, [role="button"]'));
+    });
+    document.addEventListener('mousedown', function () { cur.classList.add('is-down'); });
+    document.addEventListener('mouseup', function () { cur.classList.remove('is-down'); });
+    document.documentElement.addEventListener('mouseleave', function () { cur.classList.remove('is-on'); });
+  }
 })();
