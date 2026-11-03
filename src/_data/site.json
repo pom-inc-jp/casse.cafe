@@ -42,12 +42,12 @@
       "href": "/#price"
     },
     {
-      "label": "ご利用案内",
-      "href": "/#info"
-    },
-    {
       "label": "メニュー",
       "href": "/menu/"
+    },
+    {
+      "label": "ご利用案内",
+      "href": "/#info"
     },
     {
       "label": "アクセス",
