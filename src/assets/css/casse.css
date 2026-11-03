@@ -325,9 +325,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 .sg-next { right: 0; }
 .sg-cap { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 13px; }
 .sg-cap .n { font-family: var(--en); white-space: nowrap; }
-.sg-thumbs { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
-.sg-thumbs li { flex: none; scroll-snap-align: start; }
-.sg-thumbs a { display: block; width: 88px; border: 2px solid transparent; }
+.sg-thumbs { display: grid; grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); gap: 8px; margin-top: 16px; }
+.sg-thumbs a { display: block; border: 2px solid transparent; }
 .sg-thumbs a[aria-current="true"] { border-color: var(--cyan); }
 .sg-thumbs img { width: 100%; aspect-ratio: 1; object-fit: cover; opacity: .6; transition: opacity .2s; }
 .sg-thumbs a:hover img, .sg-thumbs a[aria-current="true"] img { opacity: 1; }
@@ -357,7 +356,7 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-mail-items li::before { content: "・"; }
 .btn .ico { margin-right: 8px; }
 @media (max-width: 760px) {
-  .sg-thumbs a { width: 64px; }
+  .sg-thumbs { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 6px; }
   .shoot-toc { grid-template-columns: minmax(0, 1fr); }
   .shoot-toc a { min-height: 72px; }
   .sg-stage .sg-nav { width: 36px; height: 36px; }

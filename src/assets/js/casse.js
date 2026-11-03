@@ -153,7 +153,6 @@
       capT.textContent = a.dataset.alt;
       capN.textContent = label(cur);
       thumbs.forEach(function (t, k) { t.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
-      if (scroll) a.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
       if (lb && lb.open) {
         big.src = a.getAttribute('href');
         big.alt = a.dataset.alt;
