@@ -311,7 +311,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 /* ページ冒頭の分かれ道（撮影へ／取材へ） */
 .shoot-toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; max-width: 34em; }
 .shoot-toc a { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; min-height: 88px; padding: 14px 18px; text-decoration: none; }
-.shoot-toc b { font-size: clamp(15px, 1.6vw, 17px); white-space: nowrap; }
+.shoot-toc b { display: inline-flex; align-items: center; gap: 8px; font-size: clamp(15px, 1.6vw, 17px); white-space: nowrap; }
+.shoot-toc b .ico { margin: 0; }
 .shoot-toc b::after { content: "↓"; margin-left: 6px; font-family: var(--en); font-weight: 500; }
 .shoot-toc span { font-size: 12px; font-weight: 500; line-height: 1.6; }
 /* 撮影のギャラリー：大きな写真1枚＋下に小さい写真の帯。小さい写真を押すと入れ替わり、大きい写真を押すと拡大表示 */
@@ -357,6 +358,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 .btn .ico { margin-right: 8px; }
 @media (max-width: 760px) {
   .sg-thumbs a { width: 64px; }
+  .shoot-toc { grid-template-columns: minmax(0, 1fr); }
+  .shoot-toc a { min-height: 72px; }
   .sg-stage .sg-nav { width: 36px; height: 36px; }
   .sec-s { padding-top: 64px; }
 }
