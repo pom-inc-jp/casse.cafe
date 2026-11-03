@@ -98,7 +98,7 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 
 ## 公開
 
-`.github/workflows/deploy.yml`。`main` に変更が入ると書き出し、Xserver の公開フォルダへ rsync で反映する。
+`.github/workflows/deploy.yml`。中身は店舗サイト共通のワークフロー（[pom-inc-jp/site-tools](https://github.com/pom-inc-jp/site-tools) の `deploy-static.yml@v1`）で、ここには動かすタイミングと、CASSEだけの設定（残すフォルダ・切り替えの変数）だけを書いている。`main` に変更が入ると書き出し、Xserver の公開フォルダへ rsync で反映する。公開の仕組み自体を直すときは site-tools を直す（README 参照）。
 
 - 公開先は GitHub の環境 `production` の Secrets（`XSERVER_HOST`・`XSERVER_USER`・`XSERVER_PATH`・`XSERVER_SSH_KEY`）
 - 変数 `CASSE_LIVE` が `true` になるまでは「試し（dry-run）」だけで、消えるファイルの一覧を実行結果に出す

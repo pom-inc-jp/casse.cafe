@@ -1,15 +1,16 @@
 # =================================================================
 # casse.cafe の書き出しと公開
 #
+# 中身は店舗サイト共通のワークフロー（pom-inc-jp/site-tools の deploy-static.yml）。
+# ここでは、いつ動かすかと、CASSE だけの設定（残すフォルダ・切り替えの変数）だけを書く。
+#
 # - main に変更が入ると書き出し、Xserver の公開フォルダへ反映する
 # - 毎日1回も書き出し直す（お知らせの「NEW」を日付で外すため）
-# - 公開フォルダにある次のフォルダ・ファイルは消さない・上書きしない
-#     ・casse_movie_app/ など名前が _movie_app で終わるフォルダ、casse_app/、movie/、movie_app/
-#       （店内iPadの動画など。フォルダの中身もすべてそのまま）
-#     ・反映の直前にサーバーを調べ、mp4 が入っているフォルダはすべて
-#     ・.well-known/（SSL証明書の更新に使う）
-#     ・wp-content/uploads/（旧サイトの画像。外部からのリンクのため。中のPDFは .htaccess で /menu/ へ転送）
-#     ・google*.html、BingSiteAuth.xml（Search Console などの確認ファイル）
+# - 公開フォルダにある次のものは消さない・上書きしない
+#     ・どの店でも：名前が _movie_app で終わるフォルダ（casse_movie_app/ など）、movie/、movie_app/、
+#       mp4 が入っているフォルダすべて、.well-known/
+#     ・CASSE だけ：casse_app/、wp-content/uploads/（旧サイトの画像。中のPDFは .htaccess で /menu/ へ転送）、
+#       Search Console などの確認ファイル
 #
 # 安全のための切り替え
 #   リポジトリの変数（Settings → Secrets and variables → Actions → Variables）
@@ -38,90 +39,13 @@ concurrency:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
-    environment: production
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-
-      - name: 書き出し
-        run: node build.mjs
-
-      - name: 公開先の設定があるか確認
-        id: check
-        env:
-          XSERVER_HOST: ${{ secrets.XSERVER_HOST }}
-        run: |
-          if [ -z "$XSERVER_HOST" ]; then
-            echo "ready=false" >> "$GITHUB_OUTPUT"
-            echo "公開先（XSERVER_HOST など）が未設定のため、書き出しだけで終了します" >> "$GITHUB_STEP_SUMMARY"
-          else
-            echo "ready=true" >> "$GITHUB_OUTPUT"
-          fi
-
-      - name: SSH の準備
-        if: steps.check.outputs.ready == 'true'
-        env:
-          KEY: ${{ secrets.XSERVER_SSH_KEY }}
-          HOST: ${{ secrets.XSERVER_HOST }}
-        run: |
-          mkdir -p ~/.ssh
-          echo "$KEY" > ~/.ssh/deploy_key
-          chmod 600 ~/.ssh/deploy_key
-          ssh-keyscan -p 10022 "$HOST" >> ~/.ssh/known_hosts 2>/dev/null
-
-      - name: 残すフォルダを調べる（mp4 が入っているフォルダ＋固定のもの）
-        if: steps.check.outputs.ready == 'true'
-        env:
-          HOST: ${{ secrets.XSERVER_HOST }}
-          USER_: ${{ secrets.XSERVER_USER }}
-          DEST: ${{ secrets.XSERVER_PATH }}
-        run: |
-          set -o pipefail
-          # 公開フォルダ直下で、mp4 を含むフォルダ（直下に mp4 がある場合はそのファイル）を洗い出す
-          ssh -i ~/.ssh/deploy_key -p 10022 "$USER_@$HOST" \
-            "cd '$DEST' && find . -type f -iname '*.mp4' -printf '%P\n'" \
-            | awk -F/ '{ if (NF>1) print "/" $1 "/"; else print "/" $1 }' | sort -u > keep.txt
-          printf '/casse_app/\n/movie/\n/movie_app/\n*_movie_app/\n/.well-known/\n/wp-content/uploads/\n/google*.html\n/BingSiteAuth.xml\n' >> keep.txt
-          echo '--- 残すフォルダ ---'; cat keep.txt
-          sort -u keep.txt -o keep.txt
-          {
-            echo "## 残すフォルダ・ファイル（消さない・上書きしない）"
-            echo '```'; cat keep.txt; echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-
-      - name: 試し（dry-run）：変わるファイルと消えるファイルの一覧
-        if: steps.check.outputs.ready == 'true'
-        env:
-          HOST: ${{ secrets.XSERVER_HOST }}
-          USER_: ${{ secrets.XSERVER_USER }}
-          DEST: ${{ secrets.XSERVER_PATH }}
-        run: |
-          rsync -az --delete --dry-run --itemize-changes --exclude-from=keep.txt \
-            -e "ssh -i ~/.ssh/deploy_key -p 10022" dist/ "$USER_@$HOST:$DEST" > plan.txt
-          deleted=$(grep -c '^\*deleting' plan.txt || true)
-          {
-            echo "## 消えるファイル（${deleted}件）"
-            echo '```'; grep '^\*deleting' plan.txt | sed 's/^\*deleting *//' | head -n 500; echo '```'
-            echo "## 追加・更新されるファイル"
-            echo '```'; grep -v '^\*deleting' plan.txt | awk '{print $2}' | head -n 300; echo '```'
-          } >> "$GITHUB_STEP_SUMMARY"
-          cat plan.txt
-
-      - name: 反映
-        if: >-
-          steps.check.outputs.ready == 'true' && (
-            (github.event_name == 'workflow_dispatch' && inputs.mode == 'deploy') ||
-            (github.event_name != 'workflow_dispatch' && vars.CASSE_LIVE == 'true')
-          )
-        env:
-          HOST: ${{ secrets.XSERVER_HOST }}
-          USER_: ${{ secrets.XSERVER_USER }}
-          DEST: ${{ secrets.XSERVER_PATH }}
-        run: |
-          rsync -avz --delete --exclude-from=keep.txt \
-            -e "ssh -i ~/.ssh/deploy_key -p 10022" dist/ "$USER_@$HOST:$DEST"
-          echo "## 反映しました" >> "$GITHUB_STEP_SUMMARY"
+    uses: pom-inc-jp/site-tools/.github/workflows/deploy-static.yml@v1
+    with:
+      live: ${{ vars.CASSE_LIVE == 'true' }}
+      mode: ${{ github.event_name == 'workflow_dispatch' && inputs.mode || 'auto' }}
+      keep: |
+        /casse_app/
+        /wp-content/uploads/
+        /google*.html
+        /BingSiteAuth.xml
+    secrets: inherit
