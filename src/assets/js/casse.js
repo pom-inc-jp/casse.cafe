@@ -191,8 +191,8 @@
       lb.querySelector('.lb-prev').addEventListener('click', function () { show(cur - 1, true); });
       lb.querySelector('.lb-next').addEventListener('click', function () { show(cur + 1, true); });
       lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
-      // 写真の外（黒いところ）を押しても閉じる
-      lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+      // 写真と矢印・閉じるボタン以外（黒いところや説明の文字）を押したら閉じる
+      lb.addEventListener('click', function (e) { if (!e.target.closest('img, button')) lb.close(); });
       lb.addEventListener('keydown', function (e) {
         if (e.key === 'ArrowLeft') show(cur - 1, true);
         if (e.key === 'ArrowRight') show(cur + 1, true);

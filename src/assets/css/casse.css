@@ -121,7 +121,7 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 /* --- 楽しみ方 --- */
 .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(176px, 1fr)); gap: 40px 32px; margin-top: 40px; }
 .steps li { border-top: var(--line); padding-top: 18px; }
-.steps .num { font-family: var(--en); font-size: 36px; line-height: 1; }
+.steps .num { font-family: var(--en); font-size: clamp(36px, 4.6vw, 64px); font-weight: 300; line-height: .9; }
 .steps h3 { margin-top: 18px; font-size: 16px; line-height: 1.6; }
 .steps p { margin-top: 8px; font-size: 14px; line-height: 1.9; }
 
@@ -283,7 +283,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 }
 
 /* 楽しみ方：番号の横のアイコン */
-.step-head { display: flex; align-items: center; gap: 14px; }
+.step-head { display: flex; align-items: flex-end; gap: 14px; }
+.step-head .ico { color: var(--sub); margin-bottom: 4px; }
 .step-head .ico { flex: none; }
 
 /* 撮影・取材のご依頼（/shooting/ と トップの入口） */
@@ -378,6 +379,7 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-mail-items li::before { content: "・"; }
 .btn .ico { margin-right: 8px; }
 @media (max-width: 760px) {
+  .steps .num { font-size: 36px; }
   .sg-thumbs { grid-template-columns: repeat(auto-fill, minmax(56px, 1fr)); gap: 6px; }
   .shoot-toc { grid-template-columns: minmax(0, 1fr); }
   .shoot-toc a { min-height: 72px; }
