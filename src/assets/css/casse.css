@@ -354,8 +354,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 .alert { margin-top: 16px; font-size: 14px; font-weight: 700; line-height: 1.8; color: var(--alert); }
 .alert + .foot-note { margin-top: 6px; }
 .kome { margin-top: 8px; }
-.kome li { padding-left: 1.2em; text-indent: -1.2em; }
-.kome li::before { content: "※"; }
+.kome li { display: flex; gap: .4em; }
+.kome .k { flex: none; }
 .shoot-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; counter-reset: none; }
 .shoot-flow li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
 .shoot-flow .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--cyan-deep); color: var(--paper); font-family: var(--en); font-size: 13px; }
