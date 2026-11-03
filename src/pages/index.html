@@ -15,15 +15,14 @@
 
 <section class="sec wrap" id="news">
   <div class="indent">
-    <div class="sec-head">
-      <div><span class="bar" aria-hidden="true"></span><h2>お知らせ</h2></div>
-      <a class="more" href="/news/">一覧を見る</a>
-    </div>
+    <span class="bar" aria-hidden="true"></span>
+    <h2 class="news-h">お知らせ</h2>
     <div class="filters" role="group" aria-label="カテゴリで絞り込む" data-target="news-latest">
       {{{news.filters}}}
     </div>
     {{{news.latest}}}
     <p class="empty" data-empty="news-latest" hidden>このカテゴリのお知らせはまだありません。</p>
+    <p class="news-more"><a class="more" href="/news/">お知らせ一覧を見る</a></p>
   </div>
 </section>
 

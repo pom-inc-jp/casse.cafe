@@ -4,7 +4,7 @@
 //   2) お知らせの絞り込み（カテゴリのボタン）
 //   3) 今いるページのメニューに印を付ける
 //   4) 計測用：外部リンクや地図のクリックを GTM に送る
-//   5) PCのポインターをカセットのリールにする（リンクの上では水色になって回る）
+//   5) PCのポインターを黒い点と輪にする（リンクの上では輪が水色になって大きくなる）
 // =================================================================
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -94,29 +94,38 @@
     (window.dataLayer = window.dataLayer || []).push({ event: 'link_click', link_type: type, link_store: 'casse', link_place: place, link_url: a.href });
   });
 
-  // --- 5) PCのポインター（カセットのリール）。マウス操作の画面で、動きを減らす設定でないときだけ ---
+  // --- 5) PCのポインター（黒い点と、少し遅れてついてくる輪）。マウス操作の画面で、動きを減らす設定でないときだけ ---
   var fine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (fine && !reduce) {
-    var cur = document.createElement('div');
-    cur.className = 'reel-cursor';
-    cur.setAttribute('aria-hidden', 'true');
-    cur.innerHTML = '<svg viewBox="0 0 24 24"><circle class="rim" cx="12" cy="12" r="11"/>' +
-      '<g class="hub"><circle cx="12" cy="12" r="5" fill="#fff"/>' +
-      '<path d="M12 7v2.2M12 14.8V17M7.7 9.5l1.9 1.1M14.4 13.4l1.9 1.1M7.7 14.5l1.9-1.1M14.4 10.6l1.9-1.1" stroke="#000" stroke-width="1.3" stroke-linecap="round"/></g></svg>';
-    document.body.appendChild(cur);
-    document.documentElement.classList.add('has-reel-cursor');
-    var mx = 0, my = 0, raf = 0;
-    var draw = function () { raf = 0; cur.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)'; };
+    var dot = document.createElement('div');
+    var ring = document.createElement('div');
+    dot.className = 'cur-dot';
+    ring.className = 'cur-ring';
+    dot.setAttribute('aria-hidden', 'true');
+    ring.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(ring);
+    document.body.appendChild(dot);
+    document.documentElement.classList.add('has-dot-cursor');
+    var mx = 0, my = 0, rx = 0, ry = 0, loop = 0;
+    var step = function () {
+      // 輪は点を追いかけて少しずつ近づく
+      rx += (mx - rx) * 0.2;
+      ry += (my - ry) * 0.2;
+      dot.style.transform = 'translate3d(' + mx + 'px,' + my + 'px,0)';
+      ring.style.transform = 'translate3d(' + rx + 'px,' + ry + 'px,0)';
+      loop = (Math.abs(mx - rx) > 0.1 || Math.abs(my - ry) > 0.1) ? window.requestAnimationFrame(step) : 0;
+    };
     document.addEventListener('mousemove', function (e) {
       mx = e.clientX; my = e.clientY;
-      cur.classList.add('is-on');
-      if (!raf) raf = window.requestAnimationFrame(draw);
+      if (!dot.classList.contains('is-on')) { rx = mx; ry = my; }
+      dot.classList.add('is-on'); ring.classList.add('is-on');
+      if (!loop) loop = window.requestAnimationFrame(step);
     }, { passive: true });
     document.addEventListener('mouseover', function (e) {
-      cur.classList.toggle('is-link', !!e.target.closest('a, button, [role="button"]'));
+      ring.classList.toggle('is-link', !!e.target.closest('a, button, [role="button"]'));
     });
-    document.addEventListener('mousedown', function () { cur.classList.add('is-down'); });
-    document.addEventListener('mouseup', function () { cur.classList.remove('is-down'); });
-    document.documentElement.addEventListener('mouseleave', function () { cur.classList.remove('is-on'); });
+    document.addEventListener('mousedown', function () { ring.classList.add('is-down'); });
+    document.addEventListener('mouseup', function () { ring.classList.remove('is-down'); });
+    document.documentElement.addEventListener('mouseleave', function () { dot.classList.remove('is-on'); ring.classList.remove('is-on'); });
   }
 })();
