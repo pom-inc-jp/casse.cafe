@@ -268,6 +268,7 @@ function shootingParts(site, news) {
     features: sh.features.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
     flow: sh.flow.map((x, i) => `<li><span class="n">${i + 1}</span><span><b>${esc(x.title)}</b><small>${esc(x.sub)}</small></span></li>`).join(''),
     priceNotes: sh.priceNotes.map((x, i) => `<li><span class="k">※${i + 1}</span>${esc(x)}</li>`).join(''),
+    pressTopics: sh.pressTopics.map((x) => `<li><span class="t">${esc(x.topic)}</span><span class="m">${esc(x.media)}</span></li>`).join(''),
     mailItems: lis(sh.mailItems),
     mailHref: mailto(sh.mailSubject, sh.mailItems),
     pressMailItems: lis(sh.pressMailItems),
