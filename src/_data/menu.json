@@ -28,7 +28,7 @@
       ]
     },
     {
-      "id": "alcohol", "name": "アルコール", "en": "Alcohol", "note": "店内のみ",
+      "id": "alcohol", "name": "アルコール", "en": "Alcohol", "note": "店内のみ", "noteEn": "Eat-in only",
       "items": [
         { "name": "ハイネケン", "en": "Heineken", "in": 990, "out": null },
         { "name": "バドワイザー", "en": "Budweiser", "in": 950, "out": null },
@@ -54,7 +54,7 @@
       ]
     },
     {
-      "id": "ice-cream", "name": "アイスクリーム", "en": "Ice cream", "note": "店内のみ",
+      "id": "ice-cream", "name": "アイスクリーム", "en": "Ice cream", "note": "店内のみ", "noteEn": "Eat-in only",
       "items": [
         { "name": "チョコレート", "en": "Chocolate", "in": 550, "out": null },
         { "name": "バニラ", "en": "Vanilla", "in": 550, "out": null },
@@ -63,7 +63,7 @@
       ]
     },
     {
-      "id": "appetizers", "name": "おつまみ", "en": "Appetizers", "note": "店内のみ",
+      "id": "appetizers", "name": "おつまみ", "en": "Appetizers", "note": "店内のみ", "noteEn": "Eat-in only",
       "items": [
         { "name": "トリュフオリーブ", "en": "Truffle Olive", "in": 660, "out": null },
         { "name": "ミックスナッツ", "en": "Mixed nuts", "in": 550, "out": null }

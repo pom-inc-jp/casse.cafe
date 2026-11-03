@@ -192,6 +192,13 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .menu-items .en { font-size: 13px; }
 .menu-items .pr { font-size: clamp(14px, 3.8vw, 17px); }
 .menu-foot { margin-top: 64px; font-size: 13px; line-height: 1.9; color: var(--sub); }
+/* 日英併記（メニューページは英語のお客さまと共通） */
+.page-title .en { display: block; margin-top: 4px; font-size: 15px; font-weight: 500; letter-spacing: .06em; }
+.body-text.body-en, .foot-note.body-en { margin-top: 8px; font-size: 13px; line-height: 1.8; color: var(--sub); }
+.chips a span[lang] { margin-left: 8px; font-size: 12px; font-weight: 500; color: var(--sub); }
+.charge-bi th .en { display: block; font-size: 11px; font-weight: 400; line-height: 1.4; color: var(--sub); letter-spacing: 0; }
+.menu-cols span span[lang] { display: block; font-size: 10px; }
+.menu-cat .note span[lang] { margin-left: 4px; }
 
 /* --- お知らせの記事 --- */
 .article { max-width: 760px; }

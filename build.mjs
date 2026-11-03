@@ -261,10 +261,13 @@ function articleJsonLd(n, site, url) {
 // ---------------------------------------------------------------
 // トップとメニューページの部品
 // ---------------------------------------------------------------
-function chargeTable(charge) {
-  const head = `<tr><th scope="col"><span class="vh">区分</span></th>${charge.columns.map((c) => `<th scope="col">${esc(c)}</th>`).join('')}</tr>`;
-  const rows = charge.rows.map((r) => `<tr><th scope="row">${esc(r.label)}</th>${r.prices.map((p) => `<td>${yen(p)}</td>`).join('')}</tr>`).join('\n              ');
-  return `<div class="table-wrap"><table class="charge">\n            <thead>${head}</thead>\n            <tbody>\n              ${rows}\n            </tbody>\n          </table></div>`;
+// 料金の表。en を付けると英語を小さく添える（メニューページは日英共通）
+function chargeTable(charge, { en = false } = {}) {
+  const bi = (ja, e) => (en && e ? `${esc(ja)}<span class="en" lang="en">${esc(e)}</span>` : esc(ja));
+  const cols = charge.columns.map((c, i) => `<th scope="col">${bi(c, (charge.columnsEn || [])[i])}</th>`).join('');
+  const head = `<tr><th scope="col"><span class="vh">区分</span></th>${cols}</tr>`;
+  const rows = charge.rows.map((r) => `<tr><th scope="row">${bi(r.label, r.labelEn)}</th>${r.prices.map((p) => `<td>${yen(p)}</td>`).join('')}</tr>`).join('\n              ');
+  return `<div class="table-wrap"><table class="charge${en ? ' charge-bi' : ''}">\n            <thead>${head}</thead>\n            <tbody>\n              ${rows}\n            </tbody>\n          </table></div>`;
 }
 
 function menuSections(menu) {
@@ -283,11 +286,11 @@ function menuSections(menu) {
           <div class="menu-cat-head">
             <h2>${esc(c.name)}</h2>
             <p class="en" lang="en">${esc(c.en)}</p>
-            ${c.note ? `<p class="note">${esc(c.note)}</p>` : ''}
+            ${c.note ? `<p class="note">${esc(c.note)}${c.noteEn ? ` <span lang="en">${esc(c.noteEn)}</span>` : ''}</p>` : ''}
           </div>
           <div class="menu-cat-body">
             <ul class="strip" aria-label="${esc(c.name)}の写真">${strip}</ul>
-            <div class="menu-cols" aria-hidden="true"><span>店内</span><span>テイクアウト</span></div>
+            <div class="menu-cols" aria-hidden="true"><span>店内<span lang="en">Eat-in</span></span><span>テイクアウト<span lang="en">To go</span></span></div>
             <ul class="menu-items">
               ${rows}
             </ul>
@@ -356,7 +359,7 @@ async function build() {
       img: img(site.about.photo, '(max-width: 760px) calc(100vw - 40px), 560px')
     },
     steps: site.steps.map((s, i) => `<li><span class="num">${i + 1}</span><h3>${esc(s.title)}</h3><p>${esc(s.text)}</p></li>`).join('\n          '),
-    charge: { table: chargeTable(site.charge) },
+    charge: { table: chargeTable(site.charge), tableBi: chargeTable(site.charge, { en: true }) },
     info: site.info.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
     menuPreview: {
       img: img(site.menuPreview.photo, '(max-width: 760px) calc(100vw - 40px), 600px'),
@@ -371,7 +374,7 @@ async function build() {
     },
     menu: {
       updated: menu.updated,
-      chips: menu.categories.map((c) => `<a href="#${esc(c.id)}">${esc(c.name)}</a>`).join('\n          '),
+      chips: menu.categories.map((c) => `<a href="#${esc(c.id)}">${esc(c.name)}<span lang="en">${esc(c.en)}</span></a>`).join('\n          '),
       sections: menuSections(menu)
     }
   };

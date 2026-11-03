@@ -11,20 +11,48 @@
   "hero": {
     "file": "interior-white",
     "alt": "自然光が入る、白を基調にしたCASSEの店内",
-    "lead": ["プレーヤーとヘッドホンを、1人に1台。", "棚から選んだテープを、席でゆっくり聴けます。", "渋谷駅から歩いて6分です。"]
+    "lead": [
+      "プレーヤーとヘッドホンを、1人に1台。",
+      "棚から選んだテープを、席でゆっくり聴けます。",
+      "渋谷駅から歩いて6分です。"
+    ]
   },
   "about": {
-    "title": ["巻き戻す時間も、", "音楽のうち。"],
+    "title": [
+      "巻き戻す時間も、",
+      "音楽のうち。"
+    ],
     "text": "スマホならすぐに聴ける時代だからこそ、テープを入れて、再生ボタンを押して、A面とB面を入れ替える。そのひと手間ごと楽しんでもらいたくて、カセットを実際に手に取れるカフェをつくりました。カセットにさわったことがない方も大歓迎です。",
-    "photo": { "file": "tapes-table", "alt": "陽の差すテーブルに並んだカセットテープとカフェラテ" }
+    "photo": {
+      "file": "tapes-table",
+      "alt": "陽の差すテーブルに並んだカセットテープとカフェラテ"
+    }
   },
   "nav": [
-    { "label": "お知らせ", "href": "/#news" },
-    { "label": "楽しみ方", "href": "/#guide" },
-    { "label": "料金", "href": "/#price" },
-    { "label": "ご利用案内", "href": "/#info" },
-    { "label": "メニュー", "href": "/menu/" },
-    { "label": "アクセス", "href": "/#access" }
+    {
+      "label": "お知らせ",
+      "href": "/#news"
+    },
+    {
+      "label": "楽しみ方",
+      "href": "/#guide"
+    },
+    {
+      "label": "料金",
+      "href": "/#price"
+    },
+    {
+      "label": "ご利用案内",
+      "href": "/#info"
+    },
+    {
+      "label": "メニュー",
+      "href": "/menu/"
+    },
+    {
+      "label": "アクセス",
+      "href": "/#access"
+    }
   ],
   "genres": {
     "announce": "お知らせ",
@@ -35,54 +63,154 @@
   },
   "newDays": 14,
   "steps": [
-    { "title": "チャージとドリンクを注文", "text": "お支払いはキャッシュレスのみです。" },
-    { "title": "使い方の動画を見る", "text": "カセットテープの扱い方を、短い動画で確認します。" },
-    { "title": "プレーヤーを受け取る", "text": "ヘッドホンと一緒に、1人1台お貸しします。" },
-    { "title": "棚からテープを選ぶ", "text": "往年の名盤から、今のアーティストまで。" },
-    { "title": "席で聴く", "text": "全席指定席。混雑時は90分制です。" }
+    {
+      "title": "チャージとドリンクを注文",
+      "text": "お支払いはキャッシュレスのみです。"
+    },
+    {
+      "title": "使い方の動画を見る",
+      "text": "カセットテープの扱い方を、短い動画で確認します。"
+    },
+    {
+      "title": "プレーヤーを受け取る",
+      "text": "ヘッドホンと一緒に、1人1台お貸しします。"
+    },
+    {
+      "title": "棚からテープを選ぶ",
+      "text": "往年の名盤から、今のアーティストまで。"
+    },
+    {
+      "title": "席で聴く",
+      "text": "全席指定席。混雑時は90分制です。"
+    }
   ],
   "charge": {
     "note": "チャージ（入場料）と、1ドリンクのご注文をお願いしています。表示は1名分・税込です。",
-    "columns": ["平日", "土日祝・特別営業日"],
-    "rows": [
-      { "label": "LINE会員", "prices": [1100, 1430] },
-      { "label": "一般", "prices": [1320, 1650] }
+    "columns": [
+      "平日",
+      "土日祝・特別営業日"
     ],
-    "footnote": "学生の方はLINE会員料金から110円引き（学生証をご提示ください）。LINE会員は当日その場で無料登録できます。特別営業日は年末年始・3月〜4月上旬・7月中旬〜8月末・GWなどです。"
+    "rows": [
+      {
+        "label": "LINE会員",
+        "prices": [
+          1100,
+          1430
+        ],
+        "labelEn": "LINE member"
+      },
+      {
+        "label": "一般",
+        "prices": [
+          1320,
+          1650
+        ],
+        "labelEn": "Guest"
+      }
+    ],
+    "footnote": "学生の方はLINE会員料金から110円引き（学生証をご提示ください）。LINE会員は当日その場で無料登録できます。特別営業日は年末年始・3月〜4月上旬・7月中旬〜8月末・GWなどです。",
+    "columnsEn": [
+      "Weekdays",
+      "Weekends, holidays & peak days"
+    ],
+    "footnoteEn": "Students get ¥110 off the LINE member price (show your student ID). LINE membership is free and can be set up on the day. No charge for takeout only.",
+    "titleEn": "Charge ／ per person, tax included"
   },
   "info": [
-    { "icon": "ticket", "label": "システム", "text": "チャージ（入場料）＋1ドリンク制" },
-    { "icon": "card", "label": "お支払い", "text": "完全キャッシュレス（クレジットカード／PayPay／交通系IC／QUICPay／iD）" },
-    { "icon": "tag", "label": "割引", "text": "LINE会員割引・学生割引あり（LINE会員は当日無料で登録できます）" },
-    { "icon": "chair", "label": "席", "text": "全席指定席・混雑時は90分制。席のご予約はできません" },
-    { "icon": "wifi", "label": "設備", "text": "無料Wi-Fi・電源あり。全席禁煙" },
-    { "icon": "paw", "label": "ペット", "text": "ベンチ席のみご一緒できます" },
-    { "icon": "nocassette", "label": "カセットの持ち込み", "text": "防犯上の理由から、お断りしています" },
-    { "icon": "parking", "label": "駐車場", "text": "ありません（近くに大きなコインパーキングがあります）" }
+    {
+      "icon": "ticket",
+      "label": "システム",
+      "text": "チャージ（入場料）＋1ドリンク制"
+    },
+    {
+      "icon": "card",
+      "label": "お支払い",
+      "text": "完全キャッシュレス（クレジットカード／PayPay／交通系IC／QUICPay／iD）"
+    },
+    {
+      "icon": "tag",
+      "label": "割引",
+      "text": "LINE会員割引・学生割引あり（LINE会員は当日無料で登録できます）"
+    },
+    {
+      "icon": "chair",
+      "label": "席",
+      "text": "全席指定席・混雑時は90分制。席のご予約はできません"
+    },
+    {
+      "icon": "wifi",
+      "label": "設備",
+      "text": "無料Wi-Fi・電源あり。全席禁煙"
+    },
+    {
+      "icon": "paw",
+      "label": "ペット",
+      "text": "ベンチ席のみご一緒できます"
+    },
+    {
+      "icon": "nocassette",
+      "label": "カセットの持ち込み",
+      "text": "防犯上の理由から、お断りしています"
+    },
+    {
+      "icon": "parking",
+      "label": "駐車場",
+      "text": "ありません（近くに大きなコインパーキングがあります）"
+    }
   ],
   "menuPreview": {
     "text": "看板は、カセットテープの箱に入ったパウンドケーキ。音楽と一緒に楽しめるドリンクとデザートを揃えています。",
-    "photo": { "file": "pound-cake", "alt": "カセットテープ型の箱に入ったパウンドケーキとコーヒー" },
+    "photo": {
+      "file": "pound-cake",
+      "alt": "カセットテープ型の箱に入ったパウンドケーキとコーヒー"
+    },
     "items": [
-      { "name": "カセットテープパウンドケーキ", "price": 680 },
-      { "name": "カフェラテ", "price": 790 },
-      { "name": "チャイラテ", "price": 890 },
-      { "name": "レモンスカッシュ", "price": 770 }
+      {
+        "name": "カセットテープパウンドケーキ",
+        "price": 680
+      },
+      {
+        "name": "カフェラテ",
+        "price": 790
+      },
+      {
+        "name": "チャイラテ",
+        "price": 890
+      },
+      {
+        "name": "レモンスカッシュ",
+        "price": 770
+      }
     ]
   },
   "gallery": [
-    { "file": "listening", "alt": "ヘッドホンでカセットを聴きながらドリンクを飲むお客さま" },
-    { "file": "counter", "alt": "ガラスブロックのカウンターとオーディオ機器" }
+    {
+      "file": "listening",
+      "alt": "ヘッドホンでカセットを聴きながらドリンクを飲むお客さま"
+    },
+    {
+      "file": "counter",
+      "alt": "ガラスブロックのカウンターとオーディオ機器"
+    }
   ],
   "store": {
     "zip": "150-0002",
     "address": "東京都渋谷区渋谷3-2-13 高橋ビル1階",
     "mapQuery": "CASSE 東京都渋谷区渋谷3-2-13",
-    "access": ["渋谷駅C1出口から徒歩4分", "表参道駅から徒歩11分"],
+    "access": [
+      "渋谷駅C1出口から徒歩4分",
+      "表参道駅から徒歩11分"
+    ],
     "hours": "11:00〜21:00（L.O. 20:30）",
     "holiday": "なし（年末年始を除く）",
-    "photo": { "file": "storefront", "alt": "CASSEの外観" },
+    "photo": {
+      "file": "storefront",
+      "alt": "CASSEの外観"
+    },
     "jasrac": "K9666751号",
-    "sister": { "name": "レコードカフェ RECOCO", "url": "https://recoco.cafe/" }
+    "sister": {
+      "name": "レコードカフェ RECOCO",
+      "url": "https://recoco.cafe/"
+    }
   }
 }
