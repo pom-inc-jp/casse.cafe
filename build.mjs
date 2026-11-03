@@ -131,7 +131,10 @@ const ICONS = {
   wifi: '<path d="M2 9a15 15 0 0 1 20 0M5 12.5a10 10 0 0 1 14 0M8.5 16a5 5 0 0 1 7 0"/><circle cx="12" cy="19.5" r=".8"/>',
   paw: '<circle cx="6.5" cy="10" r="1.8"/><circle cx="10" cy="5.5" r="1.8"/><circle cx="14" cy="5.5" r="1.8"/><circle cx="17.5" cy="10" r="1.8"/><path d="M8 17.5c0-3 1.8-5.5 4-5.5s4 2.5 4 5.5c0 2-2 2.5-4 2.5s-4-.5-4-2.5z"/>',
   nocassette: '<rect x="3" y="6" width="18" height="12" rx="1.5"/><circle cx="9" cy="11" r="1.5"/><circle cx="15" cy="11" r="1.5"/><path d="M7.5 18l1.5-3h6l1.5 3"/><path d="M3 3l18 18"/>',
-  parking: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>'
+  parking: '<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>',
+  seat: '<circle cx="12" cy="7" r="3"/><path d="M6 21v-3a6 6 0 0 1 12 0v3"/>',
+  quiet: '<path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9.5l4 5M21 9.5l-4 5"/>',
+  store: '<path d="M4 10l8-6 8 6v10H4z"/><path d="M10 20v-6h4v6"/>'
 };
 function icon(name) {
   if (!ICONS[name]) throw new Error(`アイコンが見つかりません: ${name}（使えるもの: ${Object.keys(ICONS).join(' / ')}）`);

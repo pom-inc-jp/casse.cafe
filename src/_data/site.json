@@ -160,6 +160,13 @@
       "textEn": "All seats are assigned. 90-minute limit when busy. No reservations"
     },
     {
+      "icon": "seat",
+      "label": "指定席",
+      "text": "指定された席以外には座らないでください（撮影なども含みます）",
+      "labelEn": "Assigned seats",
+      "textEn": "Please do not sit in seats other than your assigned one, including for photos"
+    },
+    {
       "icon": "wifi",
       "label": "設備",
       "text": "無料Wi-Fi・電源あり。全席禁煙",
@@ -174,6 +181,13 @@
       "textEn": "Welcome on bench seats only"
     },
     {
+      "icon": "quiet",
+      "label": "店内での会話",
+      "text": "音楽を楽しむカフェです。大きな声での会話や通話はご遠慮ください",
+      "labelEn": "Keep it quiet",
+      "textEn": "This is a cafe for enjoying music. Please refrain from loud conversations and phone calls"
+    },
+    {
       "icon": "nocassette",
       "label": "カセットの持ち込み",
       "text": "防犯上の理由から、お断りしています",
@@ -186,6 +200,13 @@
       "text": "ありません（近くに大きなコインパーキングがあります）",
       "labelEn": "Parking",
       "textEn": "None (large coin parking nearby)"
+    },
+    {
+      "icon": "store",
+      "label": "お隣のRECOCO",
+      "text": "当店はカセットテープカフェです。レコードカフェ RECOCO はお隣です",
+      "labelEn": "RECOCO next door",
+      "textEn": "We are a cassette tape cafe. The record cafe RECOCO is next door"
     }
   ],
   "menuPreview": {
