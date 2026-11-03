@@ -267,3 +267,9 @@ html[lang="en"] .body-text { max-width: 32em; }
 .cur-ring.is-link::after { transform: scale(1.6); border-color: var(--cyan); background-color: rgba(3, 163, 198, .12); }
 .cur-ring.is-down::after { transform: scale(.8); }
 .has-dot-cursor, .has-dot-cursor a, .has-dot-cursor button { cursor: none; }
+
+/* --- PCのファーストビュー：見出しと説明文まで最初の画面に収める（写真の高さを画面の高さに合わせる） --- */
+@media (min-width: 761px) {
+  .hero-media img, .hero-media video { height: clamp(360px, calc(100vh - 340px), 660px); height: clamp(360px, calc(100svh - 340px), 660px); }
+  .hero-text { padding-top: 32px; }
+}
