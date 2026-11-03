@@ -33,7 +33,6 @@
 <section class="sec-s wrap" aria-labelledby="works-h">
   <div class="indent">
     <h3 id="works-h" class="shoot-h2">撮影の実績</h3>
-    <p class="small-text">{{{shooting.shootNames}}}などの撮影に、店内をご利用いただきました。</p>
     <div class="shoot-list">
       {{{shooting.shootList}}}
     </div>
@@ -48,12 +47,15 @@
     <div class="col-body">
       <h4 class="shoot-h3">撮影できる時間</h4>
       <ul class="shoot-times">{{{shooting.timesHtml}}}</ul>
+      <p class="alert">{{site.shooting.timesAlert}}</p>
       <p class="foot-note">{{site.shooting.timesNote}}</p>
       <h4 class="shoot-h3">料金の目安</h4>
       <dl class="shoot-prices">
         {{{shooting.prices}}}
       </dl>
+      <p class="alert">{{site.shooting.minTime}}</p>
       <p class="foot-note">{{site.shooting.priceNote}}</p>
+      <ul class="foot-note kome">{{{shooting.priceNotes}}}</ul>
       <h4 class="shoot-h3">ご予約までの流れ</h4>
       <ol class="shoot-flow">{{{shooting.flow}}}</ol>
       <p class="foot-note">{{site.shooting.flowNote}}</p>

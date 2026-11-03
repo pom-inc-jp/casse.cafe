@@ -267,6 +267,7 @@ function shootingParts(site, news) {
     prices: sh.prices.map((x) => `<div><dt>${esc(x.label)}</dt><dd>${esc(x.value)}<small>（税抜）</small></dd></div>`).join('\n        '),
     features: sh.features.map((x) => `<div><dt>${icon(x.icon)}${esc(x.label)}</dt><dd>${esc(x.text)}</dd></div>`).join('\n          '),
     flow: sh.flow.map((x, i) => `<li><span class="n">${i + 1}</span>${esc(x)}</li>`).join(''),
+    priceNotes: sh.priceNotes.map((x) => `<li>${esc(x)}</li>`).join(''),
     mailItems: lis(sh.mailItems),
     mailHref: mailto(sh.mailSubject, sh.mailItems),
     pressMailItems: lis(sh.pressMailItems),
