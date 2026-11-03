@@ -1,0 +1,32 @@
+---
+{ "title": "メニュー Menu", "description": "カセットテープカフェ CASSE（渋谷）のメニューと料金。エスプレッソ、ノンアルコール、アルコール、カセットテープ型のパウンドケーキなど。価格はすべて税込です。Menu and prices of CASSE, a cassette tape cafe in Shibuya, Tokyo." }
+---
+<!-- メニューは日本語・英語で共通のページ（英語ページからもここにつなぐ） -->
+<div class="wrap page-top" id="menu-top">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h1 class="page-title">メニュー<span class="en" lang="en">Menu</span></h1>
+    <p class="body-text">チャージ（入場料）と、1ドリンクのご注文をお願いしています。価格はすべて税込で、左が店内、右がテイクアウトです。</p>
+    <p class="body-text body-en" lang="en">A table charge and one drink per person are required. All prices include tax. Left: eat-in, right: to go.</p>
+    <nav class="chips" aria-label="メニューの種類 Categories">
+      <a href="#charge">料金<span lang="en">Charge</span></a>
+      {{{menu.chips}}}
+    </nav>
+  </div>
+
+  <section class="menu-cat" id="charge" aria-labelledby="charge-h">
+    <div class="menu-cat-head">
+      <h2 id="charge-h">料金</h2>
+      <p class="en" lang="en">{{site.charge.titleEn}}</p>
+    </div>
+    <div class="menu-cat-body">
+      {{{charge.tableBi}}}
+      <p class="foot-note">{{site.charge.footnote}}{{site.charge.takeoutNote}}</p>
+      <p class="foot-note body-en" lang="en">{{site.charge.footnoteEn}} {{site.charge.takeoutNoteEn}}</p>
+    </div>
+  </section>
+
+  {{{menu.sections}}}
+
+  <p class="indent menu-foot">メニューと価格は変わることがあります。最新の情報は店頭と<a href="{{ig}}" target="_blank" rel="noopener">Instagram</a>でお知らせしています。（{{menu.updated}}現在）<br><span lang="en">Menu and prices are subject to change.</span></p>
+</div>

@@ -1,0 +1,363 @@
+{
+  "name": "CASSE",
+  "fullName": "カセットテープカフェ CASSE（カッセ）",
+  "url": "https://casse.cafe",
+  "catch": "カセットテープが聴けるカフェ＠渋谷",
+  "description": "渋谷のカセットテープカフェ CASSE（カッセ）。プレーヤーとヘッドホンを1人1台お貸しし、棚から選んだカセットテープを席でゆっくり聴けます。渋谷駅C1出口から徒歩4分。",
+  "themeColor": "#03A3C6",
+  "gtmId": "GTM-MGV4V8R6",
+  "instagram": "casse.cafe",
+  "email": "contact@casse.cafe",
+  "hero": {
+    "file": "interior-white",
+    "alt": "自然光が入る、白を基調にしたCASSEの店内",
+    "lead": [
+      "プレーヤーとヘッドホンを、1人に1台。",
+      "棚から選んだテープを、席でゆっくり聴けます。",
+      "渋谷駅から歩いて6分です。"
+    ],
+    "altEn": "The bright, white interior of CASSE with natural light"
+  },
+  "about": {
+    "title": [
+      "巻き戻す時間も、",
+      "音楽のうち。"
+    ],
+    "text": "スマホならすぐに聴ける時代だからこそ、テープを入れて、再生ボタンを押して、A面とB面を入れ替える。そのひと手間ごと楽しんでもらいたくて、カセットを実際に手に取れるカフェをつくりました。カセットにさわったことがない方も大歓迎です。",
+    "photo": {
+      "file": "tapes-table",
+      "alt": "陽の差すテーブルに並んだカセットテープとカフェラテ",
+      "altEn": "Cassette tapes and a café latte on a sunlit table"
+    }
+  },
+  "nav": [
+    {
+      "label": "お知らせ",
+      "href": "/#news"
+    },
+    {
+      "label": "楽しみ方",
+      "href": "/#guide"
+    },
+    {
+      "label": "料金",
+      "href": "/#price"
+    },
+    {
+      "label": "メニュー",
+      "href": "/menu/"
+    },
+    {
+      "label": "ご利用案内",
+      "href": "/#info"
+    },
+    {
+      "label": "アクセス",
+      "href": "/#access"
+    }
+  ],
+  "genres": {
+    "announce": "お知らせ",
+    "press": "メディア掲載",
+    "collab": "コラボ",
+    "campaign": "イベント",
+    "other": "その他"
+  },
+  "newDays": 14,
+  "steps": [
+    {
+      "title": "チャージとドリンクを注文",
+      "text": "お支払いはキャッシュレスのみです。",
+      "titleEn": "Order",
+      "textEn": "Pay the table charge and order a drink. Cashless only."
+    },
+    {
+      "title": "使い方の動画を見る",
+      "text": "カセットテープの扱い方を、短い動画で確認します。",
+      "titleEn": "Watch the video",
+      "textEn": "A short video shows you how to handle cassette tapes."
+    },
+    {
+      "title": "プレーヤーを受け取る",
+      "text": "ヘッドホンと一緒に、1人1台お貸しします。",
+      "titleEn": "Get your player",
+      "textEn": "One player and a pair of headphones for each guest."
+    },
+    {
+      "title": "棚からテープを選ぶ",
+      "text": "往年の名盤から、今のアーティストまで。",
+      "titleEn": "Choose your tapes",
+      "textEn": "From classic albums to today's artists."
+    },
+    {
+      "title": "席で聴く",
+      "text": "全席指定席。混雑時は90分制です。",
+      "titleEn": "Listen at your seat",
+      "textEn": "All seats are assigned. 90-minute limit when busy."
+    }
+  ],
+  "charge": {
+    "note": "チャージ（入場料）と、1ドリンクのご注文をお願いしています。表示は1名分・税込です。",
+    "columns": [
+      "平日",
+      "土日祝・特別営業日"
+    ],
+    "rows": [
+      {
+        "label": "LINE会員",
+        "prices": [
+          1100,
+          1430
+        ],
+        "labelEn": "LINE member"
+      },
+      {
+        "label": "一般",
+        "prices": [
+          1320,
+          1650
+        ],
+        "labelEn": "Guest"
+      }
+    ],
+    "footnote": "学生の方はLINE会員料金から110円引き（学生証をご提示ください）。LINE会員は当日その場で無料登録できます。特別営業日は年末年始・3月〜4月上旬・7月中旬〜8月末・GWなどです。",
+    "columnsEn": [
+      "Weekdays",
+      "Weekends, holidays & peak days"
+    ],
+    "footnoteEn": "Students get ¥110 off the LINE member price (show your student ID). LINE membership is free and can be set up on the day.",
+    "titleEn": "Charge ／ per person, tax included",
+    "takeoutNote": "テイクアウトのみの場合、チャージはかかりません。",
+    "takeoutNoteEn": "No charge for takeout only."
+  },
+  "info": [
+    {
+      "icon": "ticket",
+      "label": "システム",
+      "text": "チャージ（入場料）＋1ドリンク制",
+      "labelEn": "System",
+      "textEn": "Table charge + one drink per person"
+    },
+    {
+      "icon": "card",
+      "label": "お支払い",
+      "text": "完全キャッシュレス（クレジットカード／PayPay／交通系IC／QUICPay／iD）",
+      "labelEn": "Payment",
+      "textEn": "Cashless only (credit cards, PayPay, transit IC cards, QUICPay, iD)"
+    },
+    {
+      "icon": "tag",
+      "label": "割引",
+      "text": "LINE会員割引・学生割引あり（LINE会員は当日無料で登録できます）",
+      "labelEn": "Discounts",
+      "textEn": "LINE member and student discounts (LINE membership is free and can be set up on the day)"
+    },
+    {
+      "icon": "chair",
+      "label": "席",
+      "text": "全席指定席・混雑時は90分制。席のご予約はできません",
+      "labelEn": "Seating",
+      "textEn": "All seats are assigned. 90-minute limit when busy. No reservations"
+    },
+    {
+      "icon": "wifi",
+      "label": "設備",
+      "text": "無料Wi-Fi・電源あり。全席禁煙",
+      "labelEn": "Facilities",
+      "textEn": "Free Wi-Fi and power outlets. Non-smoking"
+    },
+    {
+      "icon": "paw",
+      "label": "ペット",
+      "text": "ベンチ席のみご一緒できます",
+      "labelEn": "Pets",
+      "textEn": "Welcome on bench seats only"
+    },
+    {
+      "icon": "nocassette",
+      "label": "カセットの持ち込み",
+      "text": "防犯上の理由から、お断りしています",
+      "labelEn": "Your own tapes",
+      "textEn": "Not allowed, for security reasons"
+    },
+    {
+      "icon": "parking",
+      "label": "駐車場",
+      "text": "ありません（近くに大きなコインパーキングがあります）",
+      "labelEn": "Parking",
+      "textEn": "None (large coin parking nearby)"
+    }
+  ],
+  "menuPreview": {
+    "text": "看板は、カセットテープの箱に入ったパウンドケーキ。音楽と一緒に楽しめるドリンクとデザートを揃えています。",
+    "photo": {
+      "file": "pound-cake",
+      "alt": "カセットテープ型の箱に入ったパウンドケーキとコーヒー",
+      "altEn": "A pound cake in a cassette tape box, with coffee"
+    },
+    "items": [
+      {
+        "item": "カセットテープパウンドケーキ（塩キャラメル）",
+        "label": "カセットテープパウンドケーキ"
+      },
+      {
+        "item": "カフェラテ"
+      },
+      {
+        "item": "チャイラテ"
+      },
+      {
+        "item": "レモンスカッシュ"
+      }
+    ],
+    "_説明": "items の item は menu.json の品名（name）と同じ文字で書く。価格は menu.json から引く。label を書くとトップではその名前で出す"
+  },
+  "gallery": [
+    {
+      "file": "listening",
+      "alt": "ヘッドホンでカセットを聴きながらドリンクを飲むお客さま",
+      "altEn": "A guest drinking while listening to a cassette with headphones"
+    },
+    {
+      "file": "counter",
+      "alt": "ガラスブロックのカウンターとオーディオ機器",
+      "altEn": "The glass-block counter and audio equipment"
+    }
+  ],
+  "store": {
+    "zip": "150-0002",
+    "address": "東京都渋谷区渋谷3-2-13 高橋ビル1階",
+    "mapQuery": "CASSE 東京都渋谷区渋谷3-2-13",
+    "access": [
+      "渋谷駅C1出口から徒歩4分",
+      "表参道駅から徒歩11分"
+    ],
+    "holiday": "なし（年末年始を除く）",
+    "photo": {
+      "file": "storefront",
+      "alt": "CASSEの外観",
+      "altEn": "The front of CASSE"
+    },
+    "jasrac": "K9666751",
+    "sister": {
+      "name": "レコードカフェ RECOCO",
+      "url": "https://recoco.cafe/",
+      "nameEn": "RECOCO"
+    },
+    "region": "東京都",
+    "locality": "渋谷区",
+    "street": "渋谷3-2-13 高橋ビル1階",
+    "opens": "11:00",
+    "closes": "21:00",
+    "lastOrder": "20:30",
+    "_説明": "address は表示用。検索エンジン向けのデータは region・locality・street から作る。営業時間は opens・closes・lastOrder から日本語・英語の両方を作る"
+  },
+  "en": {
+    "title": "CASSE | Cassette Tape Café in Shibuya, Tokyo",
+    "description": "CASSE is a café in Shibuya, Tokyo, where you can listen to cassette tapes. Borrow your own player and headphones, pick tapes from our shelves and listen at your seat. 4 minutes' walk from Shibuya Station Exit C1.",
+    "nav": [
+      {
+        "label": "How it works",
+        "href": "/en/#guide"
+      },
+      {
+        "label": "Charge",
+        "href": "/en/#price"
+      },
+      {
+        "label": "Menu",
+        "href": "/menu/"
+      },
+      {
+        "label": "Good to know",
+        "href": "/en/#info"
+      },
+      {
+        "label": "Access",
+        "href": "/en/#access"
+      }
+    ],
+    "hero": {
+      "lead": [
+        "Borrow your own player and headphones,",
+        "pick tapes from our shelves, and listen at your seat.",
+        "6 minutes' walk from Shibuya Station."
+      ]
+    },
+    "about": {
+      "title": "Rewinding is part of the music.",
+      "text": "In an age when music is one tap away, we want you to enjoy every small step: loading a tape, pressing play, flipping from side A to side B. Never touched a cassette before? You are very welcome."
+    },
+    "charge": {
+      "note": "A table charge and one drink per person are required. Prices are per person and include tax."
+    },
+    "menu": {
+      "text": "Our signature is a pound cake served in a cassette tape box. The menu page shows every item in English, with eat-in and to-go prices."
+    },
+    "store": {
+      "address": "Takahashi Bldg. 1F, 3-2-13 Shibuya, Shibuya-ku, Tokyo 150-0002",
+      "access": [
+        "4 minutes' walk from Shibuya Station Exit C1",
+        "11 minutes' walk from Omotesando Station"
+      ],
+      "holiday": "Open every day except New Year holidays"
+    }
+  },
+  "footer": {
+    "ja": {
+      "contact": "取材・撮影のご依頼",
+      "noReserve": "席のご予約は受け付けていません",
+      "jasrac": "JASRAC許諾番号",
+      "sister": "姉妹店",
+      "company": "運営",
+      "companyName": "株式会社ポム"
+    },
+    "en": {
+      "contact": "Press and location inquiries",
+      "noReserve": "We do not take seat reservations.",
+      "jasrac": "JASRAC license",
+      "sister": "Sister shop",
+      "company": "Operated by",
+      "companyName": "POM Inc."
+    }
+  },
+  "ui": {
+    "_説明": "トップ（/）と英語ページ（/en/）の見出しなど。2つのページは同じテンプレート（_partials/home-*.html）を使い、ここの言葉だけが変わる",
+    "ja": {
+      "heroTitle": [
+        "カセットテープが",
+        "聴けるカフェ"
+      ],
+      "guide": "楽しみ方",
+      "price": "料金",
+      "menu": "メニュー",
+      "menuButton": "メニューをすべて見る",
+      "info": "ご利用案内",
+      "gallery": "店内の様子",
+      "access": "アクセス",
+      "address": "住所",
+      "gettingHere": "行き方",
+      "hours": "営業時間",
+      "holiday": "定休日",
+      "map": "地図を開く"
+    },
+    "en": {
+      "heroTitle": [
+        "A café where you can",
+        "listen to cassette tapes"
+      ],
+      "guide": "How it works",
+      "price": "Charge",
+      "menu": "Menu",
+      "menuButton": "See the menu",
+      "info": "Good to know",
+      "gallery": "Inside CASSE",
+      "access": "Access",
+      "address": "Address",
+      "gettingHere": "Getting here",
+      "hours": "Hours",
+      "holiday": "",
+      "map": "Open in Google Maps"
+    }
+  }
+}

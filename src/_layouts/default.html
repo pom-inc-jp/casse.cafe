@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{page.lang}}">
+<head>
+{{> head}}
+</head>
+<body>
+<a class="skip" href="#main">{{page.skip}}</a>
+{{> header}}
+<main id="main">
+{{{content}}}
+</main>
+{{> footer}}
+{{> fab}}
+<script src="/assets/js/casse.js?v={{build.version}}" defer></script>
+</body>
+</html>

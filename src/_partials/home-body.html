@@ -1,0 +1,81 @@
+<!-- トップと英語ページで共通の本文（ストーリー → 楽しみ方 → 料金 → メニュー → ご利用案内 → 店内写真 → アクセス）。
+     セクションを足す・並べ替えるときは、このファイルだけを直す。言葉は site.json の ui と各項目から言語ごとに入る -->
+<section class="sec wrap" aria-labelledby="about-h">
+  <div class="split">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h2 id="about-h">{{{page.t.aboutTitleHtml}}}</h2>
+      <p class="body-text">{{page.t.aboutText}}</p>
+    </div>
+    <div class="split-photo portrait">{{{page.t.aboutImg}}}</div>
+  </div>
+</section>
+
+<section class="sec wrap" id="guide">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2>{{page.t.ui.guide}}</h2>
+    <ol class="steps">
+      {{{page.t.steps}}}
+    </ol>
+  </div>
+</section>
+
+<section class="sec wrap" id="price" aria-labelledby="price-h">
+  <div class="indent two-col">
+    <div class="col-head">
+      <span class="bar" aria-hidden="true"></span>
+      <h2 id="price-h">{{page.t.ui.price}}</h2>
+      <p class="small-text">{{page.t.chargeNote}}</p>
+    </div>
+    <div class="col-body">
+      {{{page.t.chargeTable}}}
+      <p class="foot-note">{{page.t.chargeFootnote}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="menu">
+  <div class="split">
+    <div class="split-photo portrait">{{{page.t.menuImg}}}</div>
+    <div class="split-text menu-preview">
+      <span class="bar" aria-hidden="true"></span>
+      <h2>{{page.t.ui.menu}}</h2>
+      <p class="small-text">{{page.t.menuText}}</p>
+      <ul class="price-list">
+        {{{page.t.menuItems}}}
+      </ul>
+      <p><a class="btn" href="/menu/">{{page.t.ui.menuButton}}</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="info" aria-labelledby="info-h">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="info-h">{{page.t.ui.info}}</h2>
+    <dl class="info">
+      {{{page.t.info}}}
+    </dl>
+  </div>
+</section>
+
+<section class="sec wrap gallery" aria-label="{{page.t.ui.gallery}}">
+  {{{page.t.gallery}}}
+</section>
+
+<section class="sec wrap" id="access">
+  <div class="split">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h2>{{page.t.ui.access}}</h2>
+      <dl class="acc-list acc-{{page.lang}}">
+        <dt>{{page.t.ui.address}}</dt><dd>{{{page.t.addressHtml}}}</dd>
+        <dt>{{page.t.ui.gettingHere}}</dt><dd>{{{page.t.accessHtml}}}</dd>
+        <dt>{{page.t.ui.hours}}</dt><dd>{{{page.t.hoursHtml}}}</dd>
+      </dl>
+      <p class="links"><a href="{{store.mapUrl}}" target="_blank" rel="noopener">{{page.t.ui.map}}</a><a href="{{ig}}" target="_blank" rel="noopener" lang="en">Instagram</a></p>
+    </div>
+    <div class="split-photo">{{{page.t.storeImg}}}</div>
+  </div>
+</section>
