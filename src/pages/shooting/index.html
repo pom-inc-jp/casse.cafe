@@ -1,0 +1,86 @@
+---
+{ "title": "撮影・取材のご依頼", "description": "渋谷のカセットテープカフェ CASSE は、営業時間外の店内を雑誌やアパレルのルック、商品の物撮り、映像の撮影にお貸ししています。撮影の実績、撮影できる時間、料金の目安、お問い合わせ方法をご案内します。" }
+---
+<!-- 撮影・取材のご依頼（日本語のみ）。言葉と料金は site.json の shooting、実績は news.json から自動で入る -->
+<div class="wrap page-top">
+  <div class="split shoot-intro">
+    <div class="indent split-text">
+      <span class="bar" aria-hidden="true"></span>
+      <h1 class="page-title">{{site.shooting.title}}</h1>
+      <p class="shoot-lead">{{{shooting.leadHtml}}}</p>
+      <p class="body-text">{{site.shooting.copy}}</p>
+      <p class="btns"><a class="btn" href="#contact">お問い合わせ方法を見る</a></p>
+    </div>
+    <div class="split-photo">{{{shooting.photo}}}</div>
+  </div>
+
+  <div class="shoot-photos">
+    {{{shooting.photos}}}
+  </div>
+</div>
+
+<section class="sec wrap" id="works" aria-labelledby="works-h">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="works-h">撮影の実績</h2>
+    <p class="small-text">{{{shooting.shootNames}}}などの撮影に、店内をご利用いただきました。</p>
+    <div class="shoot-list">
+      {{{shooting.shootList}}}
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="time" aria-labelledby="time-h">
+  <div class="indent two-col">
+    <div class="col-head">
+      <span class="bar" aria-hidden="true"></span>
+      <h2 id="time-h">撮影できる時間と料金</h2>
+    </div>
+    <div class="col-body">
+      <h3 class="shoot-h3">撮影できる時間</h3>
+      <ul class="shoot-times">{{{shooting.timesHtml}}}</ul>
+      <p class="foot-note">{{site.shooting.timesNote}}</p>
+      <h3 class="shoot-h3">料金の目安</h3>
+      <dl class="shoot-prices">
+        {{{shooting.prices}}}
+      </dl>
+      <p class="foot-note">{{site.shooting.priceNote}}</p>
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="facility" aria-labelledby="facility-h">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="facility-h">設備とご協力できること</h2>
+    <dl class="info">
+      {{{shooting.features}}}
+    </dl>
+  </div>
+</section>
+
+<section class="sec wrap" id="press" aria-labelledby="press-h">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="press-h">取材・掲載の実績</h2>
+    <p class="small-text">テレビ、ラジオ、雑誌、WEBメディアなどで紹介されました。</p>
+    <div class="marquee shoot-marquee">
+      {{{media.track}}}
+    </div>
+    <div class="shoot-list">
+      {{{shooting.pressList}}}
+    </div>
+  </div>
+</section>
+
+<section class="sec wrap" id="contact" aria-labelledby="contact-h">
+  <div class="indent shoot-contact">
+    <span class="bar" aria-hidden="true"></span>
+    <h2 id="contact-h">お問い合わせ</h2>
+    <p class="small-text">撮影・取材のご依頼は、メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
+    <ul class="shoot-mail-items">{{{shooting.mailItems}}}</ul>
+    <p class="btns"><a class="btn" href="{{shooting.mailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>メールで問い合わせる</a></p>
+    <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
+    <p class="foot-note">店舗の住所や営業時間は<a href="/#access">店舗概要</a>をご覧ください。</p>
+  </div>
+</section>

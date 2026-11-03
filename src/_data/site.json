@@ -69,31 +69,36 @@
       "title": "チャージとドリンクを注文",
       "text": "お支払いはキャッシュレスのみです。",
       "titleEn": "Order",
-      "textEn": "Pay the table charge and order a drink. Cashless only."
+      "textEn": "Pay the table charge and order a drink. Cashless only.",
+      "icon": "cup"
     },
     {
       "title": "使い方の動画を見る",
       "text": "カセットテープの扱い方を、短い動画で確認します。",
       "titleEn": "Watch the video",
-      "textEn": "A short video shows you how to handle cassette tapes."
+      "textEn": "A short video shows you how to handle cassette tapes.",
+      "icon": "play"
     },
     {
       "title": "プレーヤーを受け取る",
       "text": "ヘッドホンと一緒に、1人1台お貸しします。",
       "titleEn": "Get your player",
-      "textEn": "One player and a pair of headphones for each guest."
+      "textEn": "One player and a pair of headphones for each guest.",
+      "icon": "player"
     },
     {
       "title": "棚からテープを選ぶ",
       "text": "往年の名盤から、今のアーティストまで。",
       "titleEn": "Choose your tapes",
-      "textEn": "From classic albums to today's artists."
+      "textEn": "From classic albums to today's artists.",
+      "icon": "cassette"
     },
     {
       "title": "席で聴く",
       "text": "全席指定席。混雑時は90分制です。",
       "titleEn": "Listen at your seat",
-      "textEn": "All seats are assigned. 90-minute limit when busy."
+      "textEn": "All seats are assigned. 90-minute limit when busy.",
+      "icon": "headphones"
     }
   ],
   "charge": {
@@ -203,10 +208,10 @@
     },
     {
       "icon": "store",
-      "label": "お隣のRECOCO",
-      "text": "当店はカセットテープカフェです。レコードカフェ RECOCO はお隣です",
-      "labelEn": "RECOCO next door",
-      "textEn": "We are a cassette tape cafe. The record cafe RECOCO is next door"
+      "label": "お隣の姉妹店 RECOCO",
+      "text": "当店はカセットテープカフェです。姉妹店のレコードカフェ RECOCO はお隣です",
+      "labelEn": "Our sister shop RECOCO next door",
+      "textEn": "We are a cassette tape cafe. Our sister shop, the record cafe RECOCO, is next door"
     }
   ],
   "menuPreview": {
@@ -326,7 +331,7 @@
   },
   "footer": {
     "ja": {
-      "contact": "取材・撮影のご依頼",
+      "contact": "撮影・取材のご依頼",
       "noReserve": "席のご予約は受け付けていません",
       "jasrac": "JASRAC許諾番号",
       "sister": "姉妹店",
@@ -382,5 +387,104 @@
       "map": "Open in Google Maps",
       "jasrac": "JASRAC license"
     }
+  },
+  "shooting": {
+    "_説明": "撮影・取材のご依頼ページ（/shooting/）。料金は「〜から」の目安だけを載せ、条件ごとの金額はメールでのお問い合わせで案内する。撮影は「場所の貸し出し」で、撮影や制作を請け負う書き方はしない",
+    "title": "撮影・取材のご依頼",
+    "lead": [
+      "雑誌やアパレルのルック、商品の物撮り、映像の撮影に、営業時間外の店内をお貸ししています。"
+    ],
+    "copy": "ガラス張りの大きな窓から、柔らかな光が差し込む店内。物流倉庫をリノベーションした空間に、ミニマルな内装とカセットテープの温もり、名作家具が共存しています。作り込みすぎない空間なので、ルックや物撮り、映像のワンシーンにもなじみます。店の外にある青いスタジアムベンチも好評です。",
+    "photo": {
+      "file": "counter",
+      "alt": "自然光が入るCASSEのカウンターまわり"
+    },
+    "photos": [
+      {
+        "file": "interior-white",
+        "alt": "白を基調にした店内"
+      },
+      {
+        "file": "storefront",
+        "alt": "ガラス張りの店の外観"
+      },
+      {
+        "file": "tapes-table",
+        "alt": "テーブルに並んだカセットテープ"
+      }
+    ],
+    "times": [
+      "8:00〜10:30",
+      "21:30〜"
+    ],
+    "timesNote": "朝の撮影は、10:30までに撤収を終えてください。営業時間中や、24時以降に始まる撮影もご相談いただけます。その場合は営業補償費や深夜料金がかかります。土日祝、夏休み・冬休みの期間は営業補償費が高くなります。",
+    "prices": [
+      {
+        "label": "スチール撮影",
+        "value": "1時間 25,000円〜"
+      },
+      {
+        "label": "ムービー撮影",
+        "value": "1時間 30,000円〜"
+      }
+    ],
+    "priceNote": "施設利用料の目安です（税抜）。最低利用時間、土日祝の料金、誌面やSNSでのクレジット表記などによる宣伝協力割引は、撮影の内容に合わせてご案内します。",
+    "features": [
+      {
+        "icon": "seat",
+        "label": "座席数",
+        "text": "25席"
+      },
+      {
+        "icon": "door",
+        "label": "個室",
+        "text": "個室があります"
+      },
+      {
+        "icon": "kitchen",
+        "label": "キッチン設備",
+        "text": "ご利用いただけます"
+      },
+      {
+        "icon": "layout",
+        "label": "レイアウト変更",
+        "text": "できます（撮影後は元の配置に戻してください）"
+      },
+      {
+        "icon": "cup",
+        "label": "お水・食器",
+        "text": "お水やコップなどの食器は無料でお使いいただけます。料理や飲みものの用意（消えもの）は有料で承ります"
+      },
+      {
+        "icon": "parking",
+        "label": "駐車場",
+        "text": "店の近くに大型のコインパーキングがあります"
+      },
+      {
+        "icon": "card",
+        "label": "お支払い",
+        "text": "請求書でのお支払いに対応しています（初回のみ事前のお支払い）"
+      },
+      {
+        "icon": "nofire",
+        "label": "禁煙・火気",
+        "text": "店内は禁煙で、火気は使えません"
+      },
+      {
+        "icon": "paw",
+        "label": "ペット",
+        "text": "ペットの入店はできません"
+      }
+    ],
+    "mailSubject": "撮影・取材のご依頼（CASSE）",
+    "mailItems": [
+      "会社名・ご担当者名・ご連絡先",
+      "媒体名・作品名",
+      "撮影の内容（スチール／ムービー、使いたい場所）",
+      "撮影日の候補と、おおよその時間",
+      "人数と、持ち込む機材",
+      "クレジット表記の有無"
+    ],
+    "mailNote": "取材のご依頼もこちらのメールアドレスで承ります。返信まで数日いただくことがあります。"
   }
 }

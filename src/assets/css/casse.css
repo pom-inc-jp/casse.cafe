@@ -227,6 +227,7 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .article-body blockquote { margin: 0; padding-left: 20px; border-left: 3px solid var(--cyan); }
 .notice { padding: 16px 20px; background: var(--cyan-pale); font-size: 14px; }
 .back { margin-top: 56px; font-size: 14px; font-weight: 700; }
+.back a { display: inline-flex; align-items: center; gap: 6px; padding: 10px 0; }
 
 /* --- スマホの追従メニュー（カセット） --- */
 .fab { display: none; position: fixed; right: 12px; top: 12px; z-index: 50; flex-direction: column; align-items: flex-end; gap: 10px; opacity: 0; visibility: hidden; transform: translateY(-12px); transition: opacity .25s ease, transform .25s ease, visibility .25s; }
@@ -276,4 +277,42 @@ html[lang="en"] .body-text { max-width: 32em; }
 @media (min-width: 761px) {
   .hero-media img, .hero-media video { height: clamp(360px, calc(100vh - 340px), 660px); height: clamp(360px, calc(100svh - 340px), 660px); }
   .hero-text { padding-top: 32px; }
+}
+
+/* 楽しみ方：番号の横のアイコン */
+.step-head { display: flex; align-items: center; gap: 14px; }
+.step-head .ico { flex: none; }
+
+/* 撮影・取材のご依頼（/shooting/ と トップの入口） */
+.shoot-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 48px; padding-top: 40px; padding-bottom: 40px; border-top: var(--line); border-bottom: var(--line); }
+.shoot-band h2 { font-size: clamp(18px, 2vw, 22px); }
+.shoot-band .small-text { max-width: 36em; margin-top: 8px; }
+.shoot-intro { align-items: flex-start; }
+.shoot-lead { margin-top: 24px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.9; font-weight: 700; }
+.shoot-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
+.shoot-photos img { width: 100%; aspect-ratio: 1; object-fit: cover; }
+.shoot-list { margin-top: 32px; }
+.shoot-h3 { margin-top: 40px; font-size: 16px; line-height: 1.6; }
+.shoot-h3:first-child { margin-top: 0; }
+.shoot-times { margin-top: 12px; font-family: var(--en); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.7; }
+.shoot-times li { display: inline-block; margin-right: 1.2em; }
+.shoot-prices { margin-top: 12px; border-bottom: var(--line); }
+.shoot-prices div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-top: var(--line); }
+.shoot-prices dt { font-size: 14px; font-weight: 700; }
+.shoot-prices dd { font-size: clamp(18px, 2vw, 22px); font-weight: 700; }
+.shoot-prices small { font-size: 12px; font-weight: 500; }
+.shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
+.shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }
+.shoot-mail-items li { padding-left: 1.2em; text-indent: -1.2em; }
+.shoot-mail-items li::before { content: "・"; }
+.btn .ico { margin-right: 8px; }
+@media (max-width: 760px) {
+  .shoot-photos { gap: 8px; margin-top: 32px; }
+}
+
+/* ストーリー：PCでは写真と見出しを控えめにして、ひと目で収まる大きさに */
+@media (min-width: 761px) {
+  .about-split .split-photo { flex: 0 1 400px; }
+  .about-split h2 { font-size: clamp(20px, 2vw, 24px); }
+  .about-split .body-text { font-size: 14px; }
 }
