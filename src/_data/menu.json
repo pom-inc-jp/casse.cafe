@@ -22,6 +22,17 @@
       ]
     },
     {
+      "id": "alcohol", "name": "アルコール", "en": "Alcohol", "note": "店内のみ", "noteEn": "Eat-in only",
+      "items": [
+        { "name": "ハイネケン", "en": "Heineken", "in": 990, "out": null },
+        { "name": "バドワイザー", "en": "Budweiser", "in": 950, "out": null },
+        { "name": "白ワイン", "en": "White wine", "in": 1100, "out": null },
+        { "name": "オレンジワイン", "en": "Orange wine", "in": 1100, "out": null },
+        { "name": "ウイスキー（ソーダ／コーラ／ジンジャー）", "en": "Whiskey", "in": 950, "out": null },
+        { "name": "カシス（ソーダ／オレンジ／ウーロン）", "en": "Cassis", "in": 950, "out": null }
+      ]
+    },
+    {
       "id": "non-alcohol", "name": "ノンアルコール", "en": "Non Alcohol",
       "items": [
         { "name": "紅茶", "en": "Tea ／ Ice・Hot", "in": 640, "out": 629 },
@@ -33,17 +44,6 @@
         { "name": "レモンスカッシュ", "en": "Lemon squash", "in": 770, "out": 756 },
         { "name": "オレンジジュース", "en": "Orange juice", "in": 750, "out": 737 },
         { "name": "ウーロン茶", "en": "Oolong tea", "in": 690, "out": 677 }
-      ]
-    },
-    {
-      "id": "alcohol", "name": "アルコール", "en": "Alcohol", "note": "店内のみ", "noteEn": "Eat-in only",
-      "items": [
-        { "name": "ハイネケン", "en": "Heineken", "in": 990, "out": null },
-        { "name": "バドワイザー", "en": "Budweiser", "in": 950, "out": null },
-        { "name": "白ワイン", "en": "White wine", "in": 1100, "out": null },
-        { "name": "オレンジワイン", "en": "Orange wine", "in": 1100, "out": null },
-        { "name": "ウイスキー（ソーダ／コーラ／ジンジャー）", "en": "Whiskey", "in": 950, "out": null },
-        { "name": "カシス（ソーダ／オレンジ／ウーロン）", "en": "Cassis", "in": 950, "out": null }
       ]
     },
     {
