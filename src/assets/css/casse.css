@@ -1,6 +1,6 @@
 /* =================================================================
    casse.css　casse.cafe の見た目
-   色は下の変数だけを使う（黒・白・メニュー表の水色が基本）
+   色は下の変数だけを使う（黒・白・メニュー表の水色が基本。紫は撮影・取材ページの「取材」側だけ）
    ================================================================= */
 :root {
   --ink: #000;
@@ -8,6 +8,8 @@
   --cyan: #03a3c6;        /* メニュー表の水色 */
   --cyan-pale: #ccedf4;   /* 水色を薄めた色（コラボのタグなど） */
   --cyan-deep: #02809c;   /* 水色を少し濃くした色。白い文字をのせるとき用（メディア掲載のタグ）。白との明るさの差 4.5:1 以上 */
+  --purple: #6b5b8e;      /* 落ち着いた紫。撮影・取材ページの「取材」側だけに使う。白い文字をのせても読める濃さ */
+  --purple-pale: #e9e5f0; /* 紫を薄めた色（取材側のボタンを押したとき） */
   --sub: #555;            /* 補足の文字 */
   --line: 1px solid var(--ink);
   --ja: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
@@ -287,25 +289,45 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-band { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px 48px; padding-top: 40px; padding-bottom: 40px; border-top: var(--line); border-bottom: var(--line); }
 .shoot-band h2 { font-size: clamp(18px, 2vw, 22px); }
 .shoot-band .small-text { max-width: 36em; margin-top: 8px; }
+.shoot-band .btns { margin-top: 0; }
 .shoot-intro { align-items: flex-start; }
 .shoot-lead { margin-top: 24px; font-size: clamp(16px, 1.6vw, 19px); line-height: 1.9; font-weight: 700; }
 /* 撮影と取材の2部構成。大見出し（shoot-part）の下に小見出し（shoot-h2）が続く */
 .sec-s { padding-top: 88px; }
 .shoot-kicker { font-family: var(--en); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan-deep); }
-.shoot-part { margin-top: 8px; padding-top: 0; font-size: clamp(24px, 3vw, 34px); }
+.shoot-part { margin-top: 8px; font-size: clamp(24px, 3vw, 34px); padding-left: 18px; border-left: 4px solid var(--cyan); }
 .shoot-h2 { font-size: clamp(18px, 2vw, 22px); line-height: 1.6; padding-left: 14px; border-left: 3px solid var(--cyan); }
 .shoot-wide { max-width: 40em; }
 #shoot, #press { padding-top: var(--gap); }
 .shoot-press { margin-top: 32px; border-top: var(--line); }
-.shoot-toc { display: grid; gap: 0; margin-top: 32px; max-width: 30em; border-bottom: var(--line); }
-.shoot-toc a { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 16px; padding: 16px 0; border-top: var(--line); text-decoration: none; }
-.shoot-toc b { font-size: 16px; }
-.shoot-toc span { font-size: 13px; }
-.shoot-toc a::after { content: "↓"; margin-left: auto; font-family: var(--en); }
-.shoot-gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 40px; }
-.shoot-gallery a { display: block; overflow: hidden; cursor: zoom-in; }
-.shoot-gallery img { width: 100%; aspect-ratio: 1; object-fit: cover; transition: transform .4s ease; }
-.shoot-gallery a:hover img { transform: scale(1.04); }
+/* 取材側は紫（見出しの縦線・英字の見出し・ボタン） */
+.is-press .shoot-kicker { color: var(--purple); }
+.is-press .shoot-part, .is-press .shoot-h2 { border-left-color: var(--purple); }
+.btn-purple { background: var(--purple); color: var(--paper); }
+.btn-purple:hover { background: var(--purple-pale); color: var(--ink); }
+.btn .arrow { margin-left: 10px; font-family: var(--en); }
+/* ページ冒頭の分かれ道（撮影へ／取材へ） */
+.shoot-toc { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 32px; max-width: 34em; }
+.shoot-toc a { display: flex; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; min-height: 88px; padding: 14px 18px; text-decoration: none; }
+.shoot-toc b { font-size: clamp(15px, 1.6vw, 17px); white-space: nowrap; }
+.shoot-toc b::after { content: "↓"; margin-left: 6px; font-family: var(--en); font-weight: 500; }
+.shoot-toc span { font-size: 12px; font-weight: 500; line-height: 1.6; }
+/* 撮影のギャラリー：大きな写真1枚＋下に小さい写真の帯。小さい写真を押すと入れ替わり、大きい写真を押すと拡大表示 */
+.sg { margin-top: 40px; }
+.sg-stage { position: relative; }
+.sg-open { display: block; width: 100%; padding: 0; border: 0; background: none; cursor: zoom-in; }
+.sg-open img { width: 100%; height: clamp(260px, 52vw, 640px); object-fit: contain; }
+.sg-stage .sg-nav { position: absolute; top: 50%; transform: translateY(-50%); display: grid; place-items: center; width: 44px; height: 44px; border: 0; background: var(--paper); color: var(--ink); cursor: pointer; }
+.sg-prev { left: 0; }
+.sg-next { right: 0; }
+.sg-cap { display: flex; justify-content: space-between; gap: 16px; margin-top: 12px; font-size: 13px; }
+.sg-cap .n { font-family: var(--en); white-space: nowrap; }
+.sg-thumbs { display: flex; gap: 8px; margin-top: 16px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; }
+.sg-thumbs li { flex: none; scroll-snap-align: start; }
+.sg-thumbs a { display: block; width: 88px; border: 2px solid transparent; }
+.sg-thumbs a[aria-current="true"] { border-color: var(--cyan); }
+.sg-thumbs img { width: 100%; aspect-ratio: 1; object-fit: cover; opacity: .6; transition: opacity .2s; }
+.sg-thumbs a:hover img, .sg-thumbs a[aria-current="true"] img { opacity: 1; }
 /* 写真の拡大表示 */
 .lightbox { width: 100vw; height: 100dvh; max-width: none; max-height: none; margin: 0; padding: 56px 16px 48px; border: 0; background: rgba(0, 0, 0, .92); color: var(--paper); }
 .lightbox[open] { display: flex; flex-direction: column; align-items: center; justify-content: center; }
@@ -332,7 +354,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-mail-items li::before { content: "・"; }
 .btn .ico { margin-right: 8px; }
 @media (max-width: 760px) {
-  .shoot-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 6px; }
+  .sg-thumbs a { width: 64px; }
+  .sg-stage .sg-nav { width: 36px; height: 36px; }
   .sec-s { padding-top: 64px; }
 }
 

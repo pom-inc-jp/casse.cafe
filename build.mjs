@@ -242,11 +242,23 @@ function shootingParts(site, news) {
   const shootNames = [...new Set(shoots.map((n) => mag(n.title)).filter(Boolean))];
   const mailto = (subject, items) => `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(['お世話になっております。', '', ...items.map((x) => `・${x}：`), ''].join('\n'))}`;
   const lis = (items) => items.map((x) => `<li>${esc(x)}</li>`).join('');
-  // ギャラリー：小さい写真を並べ、押すと大きく表示する（casse.js の lightbox）
-  const gallery = sh.gallery.map((p) => {
-    const o = photo(p.file);
-    return `<li><a href="${o.src}" data-lightbox data-w="${o.w}" data-h="${o.h}">${img(p, '(max-width: 760px) 50vw, 25vw')}</a></li>`;
-  }).join('\n      ');
+  // ギャラリー：大きな写真1枚と、下に小さい写真の帯（動きは casse.js）。
+  // 小さい写真のリンク先が大きい写真なので、JS が動かなくても写真は見られる
+  const first = sh.gallery[0];
+  const gallery = `<div class="sg" data-gallery>
+    <figure class="sg-stage">
+      <button type="button" class="sg-open" aria-label="写真を大きく表示">${img(first, '(max-width: 760px) 100vw, 1200px')}</button>
+      <button type="button" class="sg-nav sg-prev" aria-label="前の写真"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg></button>
+      <button type="button" class="sg-nav sg-next" aria-label="次の写真"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg></button>
+      <figcaption class="sg-cap"><span class="t">${esc(first.alt)}</span><span class="n">1 / ${sh.gallery.length}</span></figcaption>
+    </figure>
+    <ul class="sg-thumbs" aria-label="写真の一覧">
+      ${sh.gallery.map((p, i) => {
+        const o = photo(p.file);
+        return `<li><a href="${o.src}" data-srcset="${o.srcset}" data-alt="${esc(p.alt)}"${i === 0 ? ' aria-current="true"' : ''}>${img(p, '88px', { alt: '' })}</a></li>`;
+      }).join('\n      ')}
+    </ul>
+  </div>`;
   return {
     leadHtml: sh.lead.map(esc).join('<br>'),
     photo: img(sh.photo, '(min-width: 761px) 50vw, 100vw', { lazy: false, priority: true }),

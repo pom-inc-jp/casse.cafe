@@ -130,46 +130,68 @@
   }
 
   // ---------------------------------------------------------------
-  // 写真の拡大表示（撮影ページのギャラリー）。a[data-lightbox] を押すと大きく出す
+  // 撮影ページのギャラリー。小さい写真を押すと上の大きい写真が入れ替わり、
+  // 大きい写真を押すと画面いっぱいに拡大表示（dialog.lightbox）する
   // ---------------------------------------------------------------
-  const lb = document.querySelector('dialog.lightbox');
-  const shots = Array.prototype.slice.call(document.querySelectorAll('a[data-lightbox]'));
-  if (lb && shots.length && typeof lb.showModal === 'function') {
-    const big = lb.querySelector('img');
-    const cap = lb.querySelector('.lb-cap');
+  const sg = document.querySelector('[data-gallery]');
+  if (sg) {
+    const thumbs = Array.prototype.slice.call(sg.querySelectorAll('.sg-thumbs a'));
+    const stage = sg.querySelector('.sg-open img');
+    const capT = sg.querySelector('.sg-cap .t');
+    const capN = sg.querySelector('.sg-cap .n');
+    const lb = document.querySelector('dialog.lightbox');
+    const big = lb && lb.querySelector('img');
+    const lbCap = lb && lb.querySelector('.lb-cap');
     let cur = 0;
-    const show = function (i) {
-      cur = (i + shots.length) % shots.length;
-      const a = shots[cur];
-      const alt = (a.querySelector('img') || {}).alt || '';
-      big.src = a.getAttribute('href');
-      big.alt = alt;
-      cap.textContent = alt + '（' + (cur + 1) + ' / ' + shots.length + '）';
+    const label = function (i) { return (i + 1) + ' / ' + thumbs.length; };
+    const show = function (i, scroll) {
+      cur = (i + thumbs.length) % thumbs.length;
+      const a = thumbs[cur];
+      stage.srcset = a.dataset.srcset;
+      stage.src = a.getAttribute('href');
+      stage.alt = a.dataset.alt;
+      capT.textContent = a.dataset.alt;
+      capN.textContent = label(cur);
+      thumbs.forEach(function (t, k) { t.setAttribute('aria-current', k === cur ? 'true' : 'false'); });
+      if (scroll) a.scrollIntoView({ block: 'nearest', inline: 'nearest', behavior: 'smooth' });
+      if (lb && lb.open) {
+        big.src = a.getAttribute('href');
+        big.alt = a.dataset.alt;
+        lbCap.textContent = a.dataset.alt + '（' + label(cur) + '）';
+      }
     };
-    shots.forEach(function (a, i) {
-      a.addEventListener('click', function (e) {
-        e.preventDefault();
-        show(i);
+    thumbs.forEach(function (a, i) {
+      a.addEventListener('click', function (e) { e.preventDefault(); show(i, false); });
+    });
+    sg.querySelector('.sg-prev').addEventListener('click', function () { show(cur - 1, true); });
+    sg.querySelector('.sg-next').addEventListener('click', function () { show(cur + 1, true); });
+
+    if (lb && typeof lb.showModal === 'function') {
+      sg.querySelector('.sg-open').addEventListener('click', function () {
         lb.showModal();
+        show(cur, false);
       });
-    });
-    lb.querySelector('.lb-prev').addEventListener('click', function () { show(cur - 1); });
-    lb.querySelector('.lb-next').addEventListener('click', function () { show(cur + 1); });
-    lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
-    // 写真の外（黒いところ）を押しても閉じる
-    lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
-    lb.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowLeft') show(cur - 1);
-      if (e.key === 'ArrowRight') show(cur + 1);
-    });
-    // スマホは左右にスワイプで送る
-    let x0 = null;
-    lb.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
-    lb.addEventListener('touchend', function (e) {
-      if (x0 === null) return;
-      const dx = e.changedTouches[0].clientX - x0;
-      if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1));
-      x0 = null;
+      lb.querySelector('.lb-prev').addEventListener('click', function () { show(cur - 1, true); });
+      lb.querySelector('.lb-next').addEventListener('click', function () { show(cur + 1, true); });
+      lb.querySelector('.lb-close').addEventListener('click', function () { lb.close(); });
+      // 写真の外（黒いところ）を押しても閉じる
+      lb.addEventListener('click', function (e) { if (e.target === lb) lb.close(); });
+      lb.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowLeft') show(cur - 1, true);
+        if (e.key === 'ArrowRight') show(cur + 1, true);
+      });
+    }
+    // スマホは左右にスワイプで送る（大きい写真・拡大表示どちらでも）
+    [sg.querySelector('.sg-stage'), lb].forEach(function (el) {
+      if (!el) return;
+      let x0 = null;
+      el.addEventListener('touchstart', function (e) { x0 = e.touches[0].clientX; }, { passive: true });
+      el.addEventListener('touchend', function (e) {
+        if (x0 === null) return;
+        const dx = e.changedTouches[0].clientX - x0;
+        if (Math.abs(dx) > 40) show(cur + (dx < 0 ? 1 : -1), true);
+        x0 = null;
+      });
     });
   }
 })();

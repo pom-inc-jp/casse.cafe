@@ -9,9 +9,9 @@
       <span class="bar" aria-hidden="true"></span>
       <h1 class="page-title">{{site.shooting.title}}</h1>
       <p class="shoot-lead">{{{shooting.leadHtml}}}</p>
-      <nav class="shoot-toc" aria-label="このページの内容">
-        <a href="#shoot"><b>撮影</b><span>商用撮影のための場所の貸し出し</span></a>
-        <a href="#press"><b>取材</b><span>テレビ・雑誌・WEBメディアでの紹介</span></a>
+      <nav class="shoot-toc" aria-label="ご依頼の種類">
+        <a class="btn" href="#shoot"><b>撮影のご依頼</b><span>商用撮影のための場所の貸し出し</span></a>
+        <a class="btn btn-purple" href="#press"><b>取材のご依頼</b><span>テレビ・雑誌・WEBメディアでの紹介</span></a>
       </nav>
     </div>
     <div class="split-photo">{{{shooting.photo}}}</div>
@@ -25,9 +25,9 @@
     <h2 id="shoot-h" class="shoot-part">{{site.shooting.shootTitle}}</h2>
     <p class="small-text shoot-wide">{{site.shooting.shootLead}}{{site.shooting.copy}}</p>
   </div>
-  <ul class="shoot-gallery" aria-label="店内と外観の写真（押すと大きく表示されます）">
-      {{{shooting.gallery}}}
-  </ul>
+  <div class="indent">
+  {{{shooting.gallery}}}
+  </div>
 </section>
 
 <section class="sec-s wrap" aria-labelledby="works-h">
@@ -78,7 +78,7 @@
 </section>
 
 <!-- ここから 取材（メディア） -->
-<section class="sec wrap shoot-press" id="press" aria-labelledby="press-h">
+<section class="sec wrap shoot-press is-press" id="press" aria-labelledby="press-h">
   <div class="indent">
     <p class="shoot-kicker" lang="en">Press</p>
     <h2 id="press-h" class="shoot-part">{{site.shooting.pressTitle}}</h2>
@@ -89,7 +89,7 @@
   </div>
 </section>
 
-<section class="sec-s wrap" aria-labelledby="pressworks-h">
+<section class="sec-s wrap is-press" aria-labelledby="pressworks-h">
   <div class="indent">
     <h3 id="pressworks-h" class="shoot-h2">取材・掲載の実績</h3>
     <div class="shoot-list">
@@ -98,12 +98,12 @@
   </div>
 </section>
 
-<section class="sec-s wrap" id="press-contact" aria-labelledby="press-contact-h">
+<section class="sec-s wrap is-press" id="press-contact" aria-labelledby="press-contact-h">
   <div class="indent shoot-contact">
     <h3 id="press-contact-h" class="shoot-h2">取材のお問い合わせ</h3>
     <p class="small-text">メールでお送りください。次の内容を書いていただくと、ご案内がスムーズです。</p>
     <ul class="shoot-mail-items">{{{shooting.pressMailItems}}}</ul>
-    <p class="btns"><a class="btn" href="{{shooting.pressMailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
+    <p class="btns"><a class="btn btn-purple" href="{{shooting.pressMailHref}}"><svg class="ico" aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1.5"/><path d="M3.5 6l8.5 7 8.5-7"/></svg>取材について問い合わせる</a></p>
     <p class="foot-note">{{site.email}}<br>{{site.shooting.mailNote}}</p>
     <p class="foot-note">店舗の住所や営業時間は<a href="/#access">店舗概要</a>をご覧ください。</p>
   </div>
