@@ -32,10 +32,6 @@
   },
   "nav": [
     {
-      "label": "お知らせ",
-      "href": "/#news"
-    },
-    {
       "label": "楽しみ方",
       "href": "/#guide"
     },
@@ -52,8 +48,12 @@
       "href": "/#info"
     },
     {
-      "label": "アクセス",
+      "label": "店舗概要",
       "href": "/#access"
+    },
+    {
+      "label": "お知らせ",
+      "href": "/#news"
     }
   ],
   "genres": {
@@ -160,6 +160,13 @@
       "textEn": "All seats are assigned. 90-minute limit when busy. No reservations"
     },
     {
+      "icon": "seat",
+      "label": "指定席",
+      "text": "指定された席以外には座らないでください（撮影なども含みます）",
+      "labelEn": "Assigned seats",
+      "textEn": "Please do not sit in seats other than your assigned one, including for photos"
+    },
+    {
       "icon": "wifi",
       "label": "設備",
       "text": "無料Wi-Fi・電源あり。全席禁煙",
@@ -174,6 +181,13 @@
       "textEn": "Welcome on bench seats only"
     },
     {
+      "icon": "quiet",
+      "label": "店内での会話",
+      "text": "音楽を楽しむカフェです。大きな声での会話や通話はご遠慮ください",
+      "labelEn": "Keep it quiet",
+      "textEn": "This is a cafe for enjoying music. Please refrain from loud conversations and phone calls"
+    },
+    {
       "icon": "nocassette",
       "label": "カセットの持ち込み",
       "text": "防犯上の理由から、お断りしています",
@@ -186,6 +200,13 @@
       "text": "ありません（近くに大きなコインパーキングがあります）",
       "labelEn": "Parking",
       "textEn": "None (large coin parking nearby)"
+    },
+    {
+      "icon": "store",
+      "label": "お隣のRECOCO",
+      "text": "当店はカセットテープカフェです。レコードカフェ RECOCO はお隣です",
+      "labelEn": "RECOCO next door",
+      "textEn": "We are a cassette tape cafe. The record cafe RECOCO is next door"
     }
   ],
   "menuPreview": {
@@ -273,7 +294,7 @@
         "href": "/en/#info"
       },
       {
-        "label": "Access",
+        "label": "Shop info",
         "href": "/en/#access"
       }
     ],
@@ -334,12 +355,13 @@
       "menuButton": "メニューをすべて見る",
       "info": "ご利用案内",
       "gallery": "店内の様子",
-      "access": "アクセス",
+      "access": "店舗概要",
       "address": "住所",
       "gettingHere": "行き方",
       "hours": "営業時間",
       "holiday": "定休日",
-      "map": "地図を開く"
+      "map": "地図を開く",
+      "jasrac": "JASRAC許諾番号"
     },
     "en": {
       "heroTitle": [
@@ -352,12 +374,13 @@
       "menuButton": "See the menu",
       "info": "Good to know",
       "gallery": "Inside CASSE",
-      "access": "Access",
+      "access": "Shop info",
       "address": "Address",
       "gettingHere": "Getting here",
       "hours": "Hours",
       "holiday": "",
-      "map": "Open in Google Maps"
+      "map": "Open in Google Maps",
+      "jasrac": "JASRAC license"
     }
   }
 }

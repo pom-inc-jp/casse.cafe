@@ -7,6 +7,7 @@
   --paper: #fff;
   --cyan: #03a3c6;        /* メニュー表の水色 */
   --cyan-pale: #ccedf4;   /* 水色を薄めた色（コラボのタグなど） */
+  --cyan-deep: #02809c;   /* 水色を少し濃くした色。白い文字をのせるとき用（メディア掲載のタグ）。白との明るさの差 4.5:1 以上 */
   --sub: #555;            /* 補足の文字 */
   --line: 1px solid var(--ink);
   --ja: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', 'Yu Gothic', sans-serif;
@@ -84,9 +85,9 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 /* --- 見出しの行（お知らせなど） --- */
 .sec-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 12px 24px; margin-bottom: 24px; }
 .more { font-size: 14px; font-weight: 700; padding: 10px 0; }
-#news { padding-top: 72px; }
+#news { padding-top: var(--gap); }
 .news-h { margin-bottom: 24px; }
-.news-more { margin-top: 16px; text-align: right; }
+.news-more { margin-top: 16px; }
 
 /* --- お知らせ --- */
 .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
@@ -99,9 +100,9 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .news .cat { flex: none; }
 .news .t { flex: 1 1 320px; line-height: 1.7; }
 .new { margin-left: 10px; font-family: var(--en); font-size: 11px; font-weight: 600; color: var(--ink); background: var(--cyan-pale); padding: 1px 6px; vertical-align: 2px; }
-.cat { display: inline-block; min-width: 7.5em; text-align: center; padding: 2px 10px; font-size: 12px; font-weight: 700; line-height: 1.7; white-space: nowrap; border: 1px solid transparent; }
+.cat { display: inline-block; min-width: 7.5em; text-align: center; padding: 2px 10px; font-size: 13px; font-weight: 700; line-height: 1.7; white-space: nowrap; border: 1px solid transparent; }
 .c-announce { background: var(--ink); color: var(--paper); }
-.c-press { background: var(--cyan); color: var(--paper); }
+.c-press { background: var(--cyan-deep); color: var(--paper); }
 .c-collab { background: var(--cyan-pale); color: var(--ink); }
 .c-campaign { background: var(--paper); color: var(--ink); border-color: var(--cyan); box-shadow: inset 0 0 0 1px var(--cyan); }
 .c-other { background: var(--paper); color: var(--ink); border-color: var(--ink); }
@@ -152,15 +153,17 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .g-wide { flex: 2 1 480px; aspect-ratio: 4 / 3; }
 
 /* --- アクセス --- */
-.acc-list { display: grid; grid-template-columns: 6.5em minmax(0, 1fr); margin-top: 32px; font-size: 14px; line-height: 1.9; border-bottom: var(--line); }
+.acc-list { display: grid; grid-template-columns: max-content minmax(0, 1fr); margin-top: 32px; font-size: 14px; line-height: 1.9; border-bottom: var(--line); }
 .acc-list dt, .acc-list dd { padding: 14px 0; border-top: var(--line); }
+.acc-list dt { padding-right: 28px; }
 .links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; font-size: 14px; font-weight: 700; }
 .links a { display: inline-flex; align-items: center; gap: 8px; padding: 10px 0; }
 
 /* --- フッター --- */
 .site-foot { margin-top: 160px; }
 .foot-in { border-top: var(--line); padding-top: 48px; padding-bottom: 40px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px 48px; }
-.foot-in img { width: 180px; height: auto; align-self: flex-start; }
+.foot-logo { align-self: flex-start; }
+.foot-in img { width: 180px; height: auto; }
 .foot-text { font-size: 13px; line-height: 2; }
 .copy { margin-top: 8px; }
 .foot-bar { height: 8px; background: var(--cyan); }
@@ -194,6 +197,9 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .menu-items .en { font-size: 13px; }
 .menu-items .pr { font-size: clamp(14px, 3.8vw, 17px); }
 .menu-foot { margin-top: 64px; font-size: 13px; line-height: 1.9; color: var(--sub); }
+.to-top { margin-top: 40px; }
+.to-top .btn { gap: 8px; }
+.to-top .btn span[lang] { font-size: 12px; font-weight: 500; color: var(--sub); }
 /* 日英併記（メニューページは英語のお客さまと共通） */
 .page-title .en { display: block; margin-top: 4px; font-size: 15px; font-weight: 500; letter-spacing: .06em; }
 .body-text.body-en, .foot-note.body-en { margin-top: 8px; font-size: 13px; line-height: 1.8; color: var(--sub); }
@@ -253,7 +259,6 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .hero-en p { max-width: 30em; }
 html[lang="en"] body { letter-spacing: .01em; }
 html[lang="en"] .body-text { max-width: 32em; }
-.acc-en { grid-template-columns: 8.5em minmax(0, 1fr); }
 .menu-btn { margin-top: 32px; }
 @media (max-width: 760px) { .hero-en p br { display: none; } }
 
@@ -266,3 +271,9 @@ html[lang="en"] .body-text { max-width: 32em; }
 .cur-ring.is-link::after { transform: scale(1.6); border-color: var(--cyan); background-color: rgba(3, 163, 198, .12); }
 .cur-ring.is-down::after { transform: scale(.8); }
 .has-dot-cursor, .has-dot-cursor a, .has-dot-cursor button { cursor: none; }
+
+/* --- PCのファーストビュー：見出しと説明文まで最初の画面に収める（写真の高さを画面の高さに合わせる） --- */
+@media (min-width: 761px) {
+  .hero-media img, .hero-media video { height: clamp(360px, calc(100vh - 340px), 660px); height: clamp(360px, calc(100svh - 340px), 660px); }
+  .hero-text { padding-top: 32px; }
+}
