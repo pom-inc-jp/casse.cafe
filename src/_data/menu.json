@@ -1,0 +1,73 @@
+{
+  "_説明": "メニューページ（/menu/）の中身。価格は税込。in＝店内、out＝テイクアウト（null はテイクアウトなし）。photo に assets/img/photos/ のファイル名（.webp を除く）を書くと、カテゴリの横スクロールに写真が出る。写真がない品は「写真を準備中」の枠になる。photoPosition（例：50% 80%）で正方形に切り抜く位置を調整できる",
+  "updated": "2026-10",
+  "categories": [
+    {
+      "id": "espresso", "name": "エスプレッソ", "en": "Espresso",
+      "items": [
+        { "name": "アメリカーノ", "en": "Americano ／ Ice・Hot", "in": 640, "out": 629 },
+        { "name": "カフェラテ", "en": "Cafe latte ／ Ice・Hot", "in": 790, "out": 775, "photo": "tapes-table" },
+        { "name": "カプチーノ", "en": "Cappuccino ／ Hot", "in": 750, "out": 737 },
+        { "name": "チャイラテ", "en": "Chai latte ／ Ice・Hot", "in": 890, "out": 874 },
+        { "name": "抹茶ラテ", "en": "Matcha latte ／ Ice・Hot", "in": 890, "out": 874 },
+        { "name": "カフェモカ", "en": "Cafe mocha ／ Ice・Hot", "in": 890, "out": 874 }
+      ]
+    },
+    {
+      "id": "non-alcohol", "name": "ノンアルコール", "en": "Non Alcohol",
+      "items": [
+        { "name": "紅茶", "en": "Tea ／ Ice・Hot", "in": 640, "out": 629 },
+        { "name": "オレンジルイボスティー（デカフェ）", "en": "Orange Rooibos Tea ／ Hot", "in": 660, "out": 648 },
+        { "name": "ココア", "en": "Cocoa ／ Ice・Hot", "in": 890, "out": 874 },
+        { "name": "ジンジャーエール", "en": "Ginger ale", "in": 750, "out": 737 },
+        { "name": "コーラ", "en": "Coke", "in": 750, "out": 737 },
+        { "name": "レモネード", "en": "Lemonade ／ Ice・Hot", "in": 750, "out": 737 },
+        { "name": "レモンスカッシュ", "en": "Lemon squash", "in": 770, "out": 756 },
+        { "name": "オレンジジュース", "en": "Orange juice", "in": 750, "out": 737 },
+        { "name": "ウーロン茶", "en": "Oolong tea", "in": 690, "out": 677 }
+      ]
+    },
+    {
+      "id": "alcohol", "name": "アルコール", "en": "Alcohol", "note": "店内のみ",
+      "items": [
+        { "name": "ハイネケン", "en": "Heineken", "in": 990, "out": null },
+        { "name": "バドワイザー", "en": "Budweiser", "in": 950, "out": null },
+        { "name": "白ワイン", "en": "White wine", "in": 1100, "out": null },
+        { "name": "オレンジワイン", "en": "Orange wine", "in": 1100, "out": null },
+        { "name": "ウイスキー（ソーダ／コーラ／ジンジャー）", "en": "Whiskey", "in": 950, "out": null },
+        { "name": "カシス（ソーダ／オレンジ／ウーロン）", "en": "Cassis", "in": 950, "out": null }
+      ]
+    },
+    {
+      "id": "option", "name": "オプション", "en": "Option",
+      "items": [
+        { "name": "ソイミルクに変更", "en": "Soy milk", "in": 60, "out": 59 },
+        { "name": "エスプレッソショット追加", "en": "Extra espresso shot", "in": 60, "out": 59 }
+      ]
+    },
+    {
+      "id": "cake", "name": "ケーキ", "en": "Cake",
+      "items": [
+        { "name": "カセットテープパウンドケーキ（塩キャラメル）", "en": "Tape pound cake ／ Salted caramel", "in": 680, "out": 667, "photo": "pound-cake", "photoPosition": "50% 80%" },
+        { "name": "カセットテープパウンドケーキ（チョコレート）", "en": "Tape pound cake ／ Chocolate", "in": 680, "out": 667, "photo": "pound-cake", "photoPosition": "50% 80%" },
+        { "name": "オレオチーズケーキ", "en": "Oreo cheesecake", "in": 880, "out": null }
+      ]
+    },
+    {
+      "id": "ice-cream", "name": "アイスクリーム", "en": "Ice cream", "note": "店内のみ",
+      "items": [
+        { "name": "チョコレート", "en": "Chocolate", "in": 550, "out": null },
+        { "name": "バニラ", "en": "Vanilla", "in": 550, "out": null },
+        { "name": "ストロベリー", "en": "Strawberry", "in": 550, "out": null },
+        { "name": "ソルトオリーブ", "en": "Salt olive", "in": 770, "out": null }
+      ]
+    },
+    {
+      "id": "appetizers", "name": "おつまみ", "en": "Appetizers", "note": "店内のみ",
+      "items": [
+        { "name": "トリュフオリーブ", "en": "Truffle Olive", "in": 660, "out": null },
+        { "name": "ミックスナッツ", "en": "Mixed nuts", "in": 550, "out": null }
+      ]
+    }
+  ]
+}

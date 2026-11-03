@@ -1,0 +1,26 @@
+# CLAUDE.md（casse.cafe）
+
+カセットテープカフェ CASSE のサイト。`src/` を編集し、`node build.mjs` で `dist/` に静的HTMLを書き出す。詳しい構成は README.md を参照。
+
+## 守ること
+
+- `dist/` は直接編集しない。必ず `src/` を直す
+- 店の情報（住所・営業時間・料金・ご利用案内・楽しみ方）は `src/_data/site.json`、メニューと価格は `src/_data/menu.json` だけを直す。HTML に直書きしない
+- 色は `src/assets/css/casse.css` 先頭の変数を使う。黒・白・メニュー表の水色（#03A3C6）と、その薄い水色だけ。ほかの色を足さない
+- ロゴ画像（`src/assets/img/common/logo*.png`）は加工しない
+- サーバーの `casse_movie_app/`（名前が `_movie_app` で終わるフォルダすべて）・`casse_app/`・`movie/`・`movie_app/`、mp4 が入っているフォルダ、`wp-content/uploads/` は消さない・上書きしない（公開の設定で除外している。除外を外さない）
+- 旧サイトのメニューPDF（`/wp-content/uploads/…pdf`）は印刷物のQRコードが指している。`.htaccess` の `/menu/` への転送を外さない
+- WordPress のバックアップやデータベースのファイルをこのリポジトリに入れない
+- 変更したら `node build.mjs` が成功することを確認し、`node build.mjs --serve` で見た目を確認する（スマホ幅も）
+- 公開は `main` へのマージで自動的に行われる。本番に関わる変更は、川浦の承認（プルリクエストのレビュー）を経る
+
+## 文章のトーン
+
+- です・ます調で、落ち着いた言い回し。顔文字や記号の飾りは使わない
+- 「日本初」は使わない
+- 撮影は「場所の貸し出し」。撮影・制作を請け負うような書き方をしない
+- 撮影で使われた雑誌は「〇〇の撮影に店内をご利用いただきました」と書く
+
+## お知らせ
+
+`src/_data/news.json` に追加する。`genre` が `announce` 以外（メディア掲載・コラボ・イベント・その他）は pom-inc.co.jp にも載る。`id` は公開後に変えない（URLになるため）。

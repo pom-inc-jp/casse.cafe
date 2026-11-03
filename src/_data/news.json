@@ -1,0 +1,376 @@
+{
+  "items": [
+    {
+      "id": "20261025-harumari-tokyo",
+      "date": "2026-10-25",
+      "store": "casse",
+      "genre": "press",
+      "title": "Harumari TOKYO「Tokyo 24hours Journey」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "東京のカルチャーを紹介するWEBメディア「Harumari TOKYO」のInstagram企画「Tokyo 24hours Journey」で、CASSEをご紹介いただきました。" },
+        "店内でカセットテープを選んで聴く時間を、動画で紹介していただいています。",
+        { "type": "buttons", "items": [ { "text": "動画を見る（Instagram）", "url": "https://www.instagram.com/reel/DeuKXq8j9_2/" } ] }
+      ]
+    },
+    {
+      "id": "20261007-very",
+      "date": "2026-10-07",
+      "store": "casse",
+      "genre": "press",
+      "title": "雑誌『VERY』11月号の撮影に店内をご利用いただきました",
+      "body": [
+        { "type": "lead", "text": "雑誌『VERY』11月号（光文社）のファッション撮影に、CASSEの店内をご利用いただきました。" },
+        "書店などで見かけたら、ぜひチェックしてみてください。"
+      ]
+    },
+    {
+      "id": "20260928-oggi-magazine",
+      "date": "2026-09-28",
+      "store": "casse",
+      "genre": "press",
+      "title": "雑誌『Oggi』11月号の撮影に店内をご利用いただきました",
+      "body": [
+        { "type": "lead", "text": "2026年9月28日発売の雑誌『Oggi』11月号（小学館）の撮影に、CASSEの店内をご利用いただきました。" },
+        "書店などで見かけたら、ぜひチェックしてみてください。"
+      ]
+    },
+    {
+      "id": "20260923-cancam",
+      "date": "2026-09-23",
+      "store": "casse",
+      "genre": "press",
+      "title": "雑誌『CanCam』11月号の撮影に店内をご利用いただきました",
+      "body": [
+        { "type": "lead", "text": "2026年9月23日発売の雑誌『CanCam』11月号（小学館）の企画「ブラウンコーデ」の撮影に、CASSEの店内をご利用いただきました。" },
+        "書店などで見かけたら、ぜひチェックしてみてください。"
+      ]
+    },
+    {
+      "id": "20260916-sequence-miyashita-park",
+      "date": "2026-09-16",
+      "store": "casse",
+      "genre": "press",
+      "title": "sequence MIYASHITA PARK公式Instagramで紹介されました",
+      "body": [
+        { "type": "lead", "text": "ホテル「sequence MIYASHITA PARK」の公式Instagramで、ホテル周辺のおすすめスポットとしてCASSEをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "投稿を見る（Instagram）", "url": "https://www.instagram.com/p/DdI7s8Oymwk/" } ] }
+      ]
+    },
+    {
+      "id": "20260911-oggi",
+      "date": "2026-09-11",
+      "store": "casse",
+      "genre": "press",
+      "title": "「Oggi.jp」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "小学館の女性向けWEBメディア「Oggi.jp」で、CASSEをご紹介いただきました。" },
+        "カセットテープの楽しみ方のほか、牛乳瓶ドリンクやオリジナルグッズも紹介していただいています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（Oggi.jp）", "url": "https://oggi.jp/7917903" } ] }
+      ]
+    },
+    {
+      "id": "20260907-lee",
+      "date": "2026-09-07",
+      "store": "casse",
+      "genre": "press",
+      "title": "雑誌『LEE』10月号に掲載されました",
+      "body": [
+        { "type": "lead", "text": "2026年9月7日発売の雑誌『LEE』10月号（集英社）に、CASSEを掲載いただきました。" },
+        "書店などで見かけたら、ぜひチェックしてみてください。"
+      ]
+    },
+    {
+      "id": "20260901-shokuhin-housou",
+      "date": "2026-09-01",
+      "store": "casse",
+      "genre": "press",
+      "title": "『月刊食品包装』9月号に掲載されました",
+      "body": [
+        { "type": "lead", "text": "包装業界の専門誌『月刊食品包装』9月号（日報ビジネス）で、CASSEの牛乳瓶ドリンクに関する記事を掲載いただきました。" }
+      ]
+    },
+    {
+      "id": "20260901-on-the-way",
+      "date": "2026-09-01",
+      "store": "casse",
+      "genre": "press",
+      "title": "WEBマガジン「ON THE WAY」渋谷編に掲載されました",
+      "body": [
+        { "type": "lead", "text": "UDS HOTELSのWEBマガジン「ON THE WAY」の渋谷編で、CASSEをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（ON THE WAY）", "url": "https://ontheway-mag.com/article/old-new-alldayplace/" } ] }
+      ]
+    },
+    {
+      "id": "20260816-asahi-chukousei",
+      "date": "2026-08-16",
+      "store": "casse",
+      "genre": "press",
+      "title": "「朝日中高生新聞」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "2026年8月16日号の「朝日中高生新聞」（朝日学生新聞社）で、CASSEをご紹介いただきました。" },
+        "レトロな音楽の楽しみ方をテーマにした記事で、読者の中学生のみなさんにカセットテープを体験していただきました。"
+      ]
+    },
+    {
+      "id": "20260815-daniel-seavey-fan-event",
+      "date": "2026-08-15",
+      "store": "casse",
+      "genre": "collab",
+      "title": "ワーナーミュージック・ジャパン「Daniel Seavey Fan Event」を開催しました",
+      "body": [
+        { "type": "lead", "text": "2026年8月15日、ワーナーミュージック・ジャパンによる「Daniel Seavey Fan Event」がCASSEで開催されました。" },
+        "X（旧Twitter）のキャンペーンで当選したファンのみなさまをお迎えしました。ご参加いただいたみなさま、ありがとうございました。"
+      ]
+    },
+    {
+      "id": "20260808-nhk-keizai-backyard",
+      "date": "2026-08-08",
+      "store": "casse",
+      "genre": "press",
+      "title": "NHK総合「経済バックヤード」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "2026年8月8日放送のNHK総合「経済バックヤード」で、CASSEをご紹介いただきました。" },
+        "10〜20代に広がるアナログ・レトロブームの現場として、店内のようすを取り上げていただきました。"
+      ]
+    },
+    {
+      "id": "20260804-non-no",
+      "date": "2026-08-04",
+      "store": "casse",
+      "genre": "press",
+      "title": "雑誌『non-no』の撮影に店内をご利用いただきました",
+      "body": [
+        { "type": "lead", "text": "雑誌『non-no』（集英社）の撮影に、CASSEの店内をご利用いただきました。" },
+        "書店などで見かけたら、ぜひチェックしてみてください。"
+      ]
+    },
+    {
+      "id": "20260725-cassette-day",
+      "date": "2026-07-25",
+      "store": "casse",
+      "genre": "campaign",
+      "title": "国産カセットテープ60周年記念イベント「カセットの日」の会場になりました",
+      "body": [
+        { "type": "lead", "text": "国産カセットテープの誕生60周年を記念したイベント「カセットの日」（主催：Side-Bクリエーションズ）の渋谷会場として、CASSEで展示・体験企画を行いました。" },
+        { "type": "table", "rows": [
+          ["開催期間", "2026年7月25日（土）〜7月31日（金）"],
+          ["内容", "日替わりのカセットDJ、録音・ダビング体験、ラベルデザイン体験、復刻カセットの展示・試聴など"]
+        ] },
+        "ご来場いただいたみなさま、ありがとうございました。",
+        { "type": "buttons", "items": [
+          { "text": "記事を読む（タイムアウト東京）", "url": "https://www.timeout.jp/tokyo/ja/news/cassette-day-event-2026-072226" },
+          { "text": "記事を読む（PHILE WEB）", "url": "https://www.phileweb.com/news/d-av/202606/09/65298.html" }
+        ] }
+      ]
+    },
+    {
+      "id": "20260722-shiritaikun",
+      "date": "2026-07-22",
+      "store": "casse",
+      "genre": "press",
+      "title": "「知りたい君」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "WEBメディア「知りたい君」で、CASSEをご紹介いただきました。" },
+        "カセットテープ型のケーキや、オリジナルの食器・アパレルも紹介していただいています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（知りたい君）", "url": "https://shiritaikun.jp/8521/" } ] }
+      ]
+    },
+    {
+      "id": "20260717-milk-bottle",
+      "date": "2026-07-17",
+      "store": "casse",
+      "genre": "collab",
+      "title": "関守製作所とのオリジナル牛乳瓶で「牛乳瓶ドリンク」を発売しました",
+      "body": [
+        { "type": "lead", "text": "ガラスびんへのプリントを手がける関守製作所と一緒に、CASSEオリジナルデザインの牛乳瓶を作りました。" },
+        "この牛乳瓶を使った「牛乳瓶ドリンク」を、2026年7月17日から販売しています。",
+        { "type": "buttons", "items": [ { "text": "プレスリリースを読む（PR TIMES）", "url": "https://prtimes.jp/main/html/rd/p/000000014.000074116.html" } ] }
+      ]
+    },
+    {
+      "id": "20260615-tbs-the-time",
+      "date": "2026-06-15",
+      "store": "casse",
+      "genre": "press",
+      "title": "TBS「THE TIME,」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "2026年6月15日放送のTBS「THE TIME,」のコーナー「プチマーケティング部」で、CASSEをご紹介いただきました。" },
+        "体験型カフェの特集で、カセットテープを選んで聴くようすを取り上げていただきました。"
+      ]
+    },
+    {
+      "id": "20260521-mezamashi",
+      "date": "2026-05-21",
+      "store": "casse",
+      "genre": "press",
+      "title": "フジテレビ「めざましテレビ」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "2026年5月21日放送のフジテレビ「めざましテレビ」のコーナー「やってユカ」で、CASSEをご紹介いただきました。" },
+        "没入できるスポットの企画で、店内でカセットテープを楽しむようすを取り上げていただきました。"
+      ]
+    },
+    {
+      "id": "20260501-sony-official-goods",
+      "date": "2026-05-01",
+      "store": "casse",
+      "genre": "collab",
+      "title": "ソニーストア公式グッズのサンプル展示を行いました",
+      "body": [
+        { "type": "lead", "text": "2026年5月1日から5月28日まで、ソニーストアの公式グッズをCASSEとRECOCOで展示しました。" },
+        "期間中は店内でサンプルを手に取っていただけるようにし、ソニーの公式サイトにも取り扱い店舗として掲載いただきました。",
+        { "type": "buttons", "items": [ { "text": "ソニーストア公式グッズを見る", "url": "https://www.sony.jp/store/retail/sonystore/sony_official_goods/" } ] }
+      ]
+    },
+    {
+      "id": "20260426-rurubu-andmore",
+      "date": "2026-04-26",
+      "store": "casse",
+      "genre": "press",
+      "title": "「るるぶ&more.」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "JTBパブリッシングのWEBメディア「るるぶ&more.」で、CASSEをご紹介いただきました。" },
+        "店内のようすや、カセットテープ型のパウンドケーキを写真たっぷりで紹介していただいています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（るるぶ&more.）", "url": "https://rurubu.jp/andmore/article/24590" } ] }
+      ]
+    },
+    {
+      "id": "20260301-tabi-labo",
+      "date": "2026-03-01",
+      "store": "casse",
+      "genre": "press",
+      "title": "「TABI LABO」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "WEBメディア「TABI LABO」で、CASSEをご紹介いただきました。" },
+        "アナログならではの「不便さ」を楽しむカフェとして取り上げていただいています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（TABI LABO）", "url": "https://tabi-labo.com/312292/cassettecasseopen" } ] }
+      ]
+    },
+    {
+      "id": "20260225-j-wave",
+      "date": "2026-02-25",
+      "store": "casse",
+      "genre": "press",
+      "title": "J-WAVE「MIDDAY LOUNGE」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "2026年2月25日放送のJ-WAVE「MIDDAY LOUNGE」のコーナー「MORI BUILDING TOKYO FINDS」で、CASSEをご紹介いただきました。" },
+        "店長が、巻き戻しや早送りの待ち時間も含めたカセットテープの楽しみ方についてお話ししています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（J-WAVE NEWS）", "url": "https://news.j-wave.co.jp/2026/03/content-5069.html" } ] }
+      ]
+    },
+    {
+      "id": "20260122-trendwatching",
+      "date": "2026-01-22",
+      "store": "casse",
+      "genre": "press",
+      "title": "海外のトレンドメディア「TrendWatching」で紹介されました",
+      "body": [
+        { "type": "lead", "text": "海外のトレンド分析メディア「TrendWatching」の英語記事で、CASSEをご紹介いただきました。" },
+        "あえて手間のかかる体験を価値にした、東京の新しいカフェとして取り上げていただいています。",
+        { "type": "buttons", "items": [ { "text": "記事を読む（TrendWatching・英語）", "url": "https://www.trendwatching.com/innovations/why-tokyos-new-cassette-cafe-treats-friction-as-a-feature-not-a-flaw" } ] }
+      ]
+    },
+    {
+      "id": "20260122-trepo",
+      "date": "2026-01-22",
+      "store": "casse",
+      "genre": "press",
+      "title": "「Trepo」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "トレンド情報メディア「Trepo」で、ライターさんの来店レポートとしてCASSEをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（Trepo）", "url": "https://trepo.jp/trip/299958/" } ] }
+      ]
+    },
+    {
+      "id": "20251217-shibukei",
+      "date": "2025-12-17",
+      "store": "casse",
+      "genre": "press",
+      "title": "「シブヤ経済新聞」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "渋谷の地域ニュースサイト「シブヤ経済新聞」で、CASSEのオープンをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（シブヤ経済新聞）", "url": "https://www.shibukei.com/headline/19626/" } ] }
+      ]
+    },
+    {
+      "id": "20251215-predge",
+      "date": "2025-12-15",
+      "store": "casse",
+      "genre": "press",
+      "title": "「PR EDGE」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "WEBメディア「PR EDGE」で、アナログメディアの人気を伝える記事の中でCASSEをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（PR EDGE）", "url": "https://predge.jp/333345/" } ] }
+      ]
+    },
+    {
+      "id": "20251209-enjoytokyo",
+      "date": "2025-12-09",
+      "store": "casse",
+      "genre": "press",
+      "title": "「レッツエンジョイ東京」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "おでかけ情報サイト「レッツエンジョイ東京」で、CASSEのオープンをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（レッツエンジョイ東京）", "url": "https://www.enjoytokyo.jp/news/204554/" } ] }
+      ]
+    },
+    {
+      "id": "20251203-phileweb",
+      "date": "2025-12-03",
+      "store": "casse",
+      "genre": "press",
+      "title": "「PHILE WEB」に掲載されました",
+      "body": [
+        { "type": "lead", "text": "オーディオ・ビジュアルの専門ニュースサイト「PHILE WEB」で、CASSEのオープンをご紹介いただきました。" },
+        { "type": "buttons", "items": [ { "text": "記事を読む（PHILE WEB）", "url": "https://www.phileweb.com/news/d-av/202512/03/63983.html" } ] }
+      ]
+    },
+    {
+      "id": "2026summer",
+      "date": "2026-07-08",
+      "store": "casse",
+      "genre": "announce",
+      "title": "特別営業期間のお知らせ 2026夏",
+      "body": [
+        { "type": "lead", "text": "夏休み期間中の2026年7月21日〜8月31日は、特別営業期間となります。" },
+        "期間中のチャージ料金は、土日祝日料金と同じです。"
+      ]
+    },
+    {
+      "id": "2026spring",
+      "date": "2026-02-10",
+      "store": "casse",
+      "genre": "announce",
+      "title": "特別営業期間のお知らせ 2026春",
+      "body": [
+        { "type": "lead", "text": "春休み期間中の2026年3月1日〜4月3日は、特別営業期間となります。" },
+        "期間中のチャージ料金は、土日祝日料金と同じです。"
+      ]
+    },
+    {
+      "id": "2025winter",
+      "date": "2025-12-24",
+      "store": "casse",
+      "genre": "announce",
+      "title": "特別営業期間と年末年始の営業のお知らせ 25/26冬",
+      "body": [
+        { "type": "lead", "text": "下記の期間は、営業のしかたが通常と異なります。" },
+        { "type": "table", "rows": [
+          ["特別営業期間（冬休み）", "2025年12月24日（水）〜12月29日（月）。チャージ料金は土日祝日料金と同じです"],
+          ["短縮営業", "2025年12月26日（金）は18:00閉店"],
+          ["年末年始のお休み", "2025年12月30日（火）〜2026年1月3日（土）。1月4日（日）から通常営業"]
+        ] },
+        "Please note that our business hours differ from usual during the periods above. We are closed from December 30, 2025 to January 3, 2026, and reopen on January 4."
+      ]
+    },
+    {
+      "id": "open",
+      "date": "2025-11-19",
+      "store": "casse",
+      "genre": "announce",
+      "title": "公式ホームページを公開しました",
+      "body": [
+        { "type": "lead", "text": "CASSEの公式ホームページを公開しました。" }
+      ]
+    }
+  ]
+}

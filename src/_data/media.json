@@ -1,0 +1,17 @@
+{
+  "_説明": "メディア掲載の帯。トップのお知らせの上を横に流れる。kind は局名・出版社名など（小さく表示）。logo に assets/img/media/ のファイル名を書くと、文字の代わりにロゴを出す",
+  "items": [
+    { "name": "めざましテレビ", "kind": "フジテレビ" },
+    { "name": "THE TIME,", "kind": "TBS" },
+    { "name": "経済バックヤード", "kind": "NHK総合" },
+    { "name": "MIDDAY LOUNGE", "kind": "J-WAVE" },
+    { "name": "CanCam", "kind": "小学館" },
+    { "name": "Oggi", "kind": "小学館" },
+    { "name": "VERY", "kind": "光文社" },
+    { "name": "non-no", "kind": "集英社" },
+    { "name": "LEE", "kind": "集英社" },
+    { "name": "朝日中高生新聞", "kind": "朝日学生新聞社" },
+    { "name": "るるぶ&more.", "kind": "JTBパブリッシング" },
+    { "name": "Harumari TOKYO", "kind": "WEB" }
+  ]
+}

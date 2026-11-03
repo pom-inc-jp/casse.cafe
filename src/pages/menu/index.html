@@ -1,0 +1,29 @@
+---
+{ "title": "メニュー", "description": "カセットテープカフェ CASSE（渋谷）のメニューと料金。エスプレッソ、ノンアルコール、アルコール、カセットテープ型のパウンドケーキなど。価格はすべて税込です。" }
+---
+<div class="wrap page-top" id="menu-top">
+  <div class="indent">
+    <span class="bar" aria-hidden="true"></span>
+    <h1 class="page-title">メニュー</h1>
+    <p class="body-text">チャージ（入場料）と、1ドリンクのご注文をお願いしています。価格はすべて税込で、左が店内、右がテイクアウトです。</p>
+    <nav class="chips" aria-label="メニューの種類">
+      <a href="#charge">料金</a>
+      {{{menu.chips}}}
+    </nav>
+  </div>
+
+  <section class="menu-cat" id="charge" aria-labelledby="charge-h">
+    <div class="menu-cat-head">
+      <h2 id="charge-h">料金</h2>
+      <p class="en" lang="en">Charge ／ 1名分</p>
+    </div>
+    <div class="menu-cat-body">
+      {{{charge.table}}}
+      <p class="foot-note">{{site.charge.footnote}} テイクアウトのみの場合、チャージはかかりません。</p>
+    </div>
+  </section>
+
+  {{{menu.sections}}}
+
+  <p class="indent menu-foot">メニューと価格は変わることがあります。最新の情報は店頭と<a href="{{ig}}" target="_blank" rel="noopener">Instagram</a>でお知らせしています。（{{menu.updated}}現在）</p>
+</div>

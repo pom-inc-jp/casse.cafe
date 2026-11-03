@@ -1,0 +1,18 @@
+<!-- スマホのときだけ出る、右上の追従メニュー（カセットの形。スクロールでリールが回る） -->
+<div class="fab" data-fab>
+  <button class="fab-btn" type="button" aria-expanded="false" aria-controls="fab-menu" aria-label="メニューを開く">
+    <svg width="76" height="52" viewBox="0 0 76 52" aria-hidden="true">
+      <rect x="1" y="1" width="74" height="50" rx="6" fill="#000"/>
+      <rect x="8" y="7" width="60" height="27" rx="3" fill="#fff"/>
+      <rect x="8" y="7" width="60" height="4" fill="#03a3c6"/>
+      <rect x="19" y="14" width="38" height="14" rx="7" fill="#000"/>
+      <g class="reel" style="transform-origin:28px 21px"><circle cx="28" cy="21" r="5" fill="#fff"/><path d="M28 17v8M24 21h8" stroke="#000" stroke-width="1.5"/></g>
+      <g class="reel" style="transform-origin:48px 21px"><circle cx="48" cy="21" r="5" fill="#fff"/><path d="M48 17v8M44 21h8" stroke="#000" stroke-width="1.5"/></g>
+      <path d="M18 51l4-10h32l4 10" fill="none" stroke="#fff" stroke-width="1.5"/>
+      <text x="38" y="49" text-anchor="middle" fill="#fff" font-family="Jost, sans-serif" font-size="7.5" font-weight="500" letter-spacing=".8">menu</text>
+    </svg>
+  </button>
+  <nav class="fab-menu" id="fab-menu" aria-label="メニュー" hidden>
+  {{{nav.fab}}}
+  </nav>
+</div>

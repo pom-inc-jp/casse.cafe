@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+{{> head}}
+</head>
+<body>
+<a class="skip" href="#main">本文へ移動</a>
+{{> header}}
+<main id="main">
+{{{content}}}
+</main>
+{{> footer}}
+{{> fab}}
+<script src="/assets/js/casse.js?v={{build.version}}" defer></script>
+</body>
+</html>
