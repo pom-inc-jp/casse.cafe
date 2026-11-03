@@ -32,10 +32,6 @@
   },
   "nav": [
     {
-      "label": "お知らせ",
-      "href": "/#news"
-    },
-    {
       "label": "楽しみ方",
       "href": "/#guide"
     },
@@ -52,8 +48,12 @@
       "href": "/#info"
     },
     {
-      "label": "アクセス",
+      "label": "店舗概要",
       "href": "/#access"
+    },
+    {
+      "label": "お知らせ",
+      "href": "/#news"
     }
   ],
   "genres": {
@@ -273,7 +273,7 @@
         "href": "/en/#info"
       },
       {
-        "label": "Access",
+        "label": "Shop info",
         "href": "/en/#access"
       }
     ],
@@ -334,12 +334,13 @@
       "menuButton": "メニューをすべて見る",
       "info": "ご利用案内",
       "gallery": "店内の様子",
-      "access": "アクセス",
+      "access": "店舗概要",
       "address": "住所",
       "gettingHere": "行き方",
       "hours": "営業時間",
       "holiday": "定休日",
-      "map": "地図を開く"
+      "map": "地図を開く",
+      "jasrac": "JASRAC許諾番号"
     },
     "en": {
       "heroTitle": [
@@ -352,12 +353,13 @@
       "menuButton": "See the menu",
       "info": "Good to know",
       "gallery": "Inside CASSE",
-      "access": "Access",
+      "access": "Shop info",
       "address": "Address",
       "gettingHere": "Getting here",
       "hours": "Hours",
       "holiday": "",
-      "map": "Open in Google Maps"
+      "map": "Open in Google Maps",
+      "jasrac": "JASRAC license"
     }
   }
 }

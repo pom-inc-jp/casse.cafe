@@ -447,6 +447,7 @@ async function build() {
       addressHtml: en ? esc(site.en.store.address) : `〒${esc(site.store.zip)}<br>${esc(site.store.address)}`,
       accessHtml: lines(en ? site.en.store.access : site.store.access).replace(/ <br>/g, '<br>'),
       hoursHtml: `${esc(hoursText(site.store, lang))}<br>${esc(en ? site.en.store.holiday : `${ui.holiday} ${site.store.holiday}`)}`,
+      jasracText: en ? site.store.jasrac : `${site.store.jasrac}号`,
       storeImg: pic(site.store.photo, '(max-width: 760px) calc(100vw - 40px), 600px')
     };
   }
