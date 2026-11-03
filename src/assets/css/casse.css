@@ -297,6 +297,12 @@ html[lang="en"] .body-text { max-width: 32em; }
 .sec-s { padding-top: 88px; }
 .shoot-kicker { font-family: var(--en); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--cyan-deep); }
 .shoot-part { margin-top: 8px; font-size: clamp(24px, 3vw, 34px); padding-left: 18px; border-left: 4px solid var(--cyan); }
+.shoot-part small { margin-left: 4px; font-size: .52em; font-weight: 500; letter-spacing: .02em; }
+.press-topics { margin-top: 12px; border-bottom: var(--line); }
+.press-topics li { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 24px; padding: 14px 0; border-top: var(--line); font-size: 15px; line-height: 1.7; }
+.press-topics .t::before { content: "「"; }
+.press-topics .t::after { content: "」"; }
+.press-topics .m { font-size: 12px; color: var(--purple); font-weight: 700; white-space: nowrap; }
 .shoot-h2 { font-size: clamp(18px, 2vw, 22px); line-height: 1.6; padding-left: 14px; border-left: 3px solid var(--cyan); }
 .shoot-wide { max-width: 40em; }
 #shoot, #press { padding-top: var(--gap); }
@@ -345,7 +351,10 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-h3 { margin-top: 40px; font-size: 16px; line-height: 1.6; }
 .shoot-h3:first-child { margin-top: 0; }
 .shoot-times { margin-top: 12px; font-family: var(--en); font-size: clamp(20px, 2.4vw, 26px); line-height: 1.7; }
-.shoot-times li { display: inline-block; margin-right: 1.2em; }
+.shoot-times li { display: inline-block; }
+.shoot-times .sep { margin: 0 .6em; color: var(--sub); }
+.consult { display: inline-flex; align-items: center; gap: 8px; margin-top: 12px; padding: 6px 14px; border: 1px solid var(--cyan-deep); color: var(--cyan-deep); font-size: 14px; font-weight: 700; }
+.consult::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--cyan-deep); }
 .shoot-prices { margin-top: 12px; border-bottom: var(--line); }
 .shoot-prices div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; padding: 16px 0; border-top: var(--line); }
 .shoot-prices dt { font-size: 14px; font-weight: 700; }
@@ -357,7 +366,9 @@ html[lang="en"] .body-text { max-width: 32em; }
 .kome li { display: flex; gap: .4em; }
 .kome .k { flex: none; }
 .shoot-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; counter-reset: none; }
-.shoot-flow li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow li { display: flex; align-items: flex-start; gap: 10px; padding: 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow b { display: block; font-size: 15px; }
+.shoot-flow small { display: block; margin-top: 2px; font-size: 12px; line-height: 1.6; }
 .shoot-flow .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--cyan-deep); color: var(--paper); font-family: var(--en); font-size: 13px; }
 .shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
 .shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }

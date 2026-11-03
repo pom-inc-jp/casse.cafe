@@ -22,7 +22,7 @@
 <section class="sec wrap" id="shoot" aria-labelledby="shoot-h">
   <div class="indent">
     <p class="shoot-kicker" lang="en">Location rental</p>
-    <h2 id="shoot-h" class="shoot-part">{{site.shooting.shootTitle}}</h2>
+    <h2 id="shoot-h" class="shoot-part">{{site.shooting.shootTitle}}<small>（{{site.shooting.shootTitleSub}}）</small></h2>
     <p class="small-text shoot-wide">{{site.shooting.shootLead}}{{site.shooting.copy}}</p>
   </div>
   <div class="indent">
@@ -47,6 +47,7 @@
     <div class="col-body">
       <h4 class="shoot-h3">撮影できる時間</h4>
       <ul class="shoot-times">{{{shooting.timesHtml}}}</ul>
+      <p class="consult">{{site.shooting.timesConsult}}</p>
       <p class="alert">{{site.shooting.timesAlert}}</p>
       <p class="foot-note">{{site.shooting.timesNote}}</p>
       <h4 class="shoot-h3">料金の目安</h4>
@@ -86,11 +87,13 @@
 <section class="sec wrap shoot-press is-press" id="press" aria-labelledby="press-h">
   <div class="indent">
     <p class="shoot-kicker" lang="en">Press</p>
-    <h2 id="press-h" class="shoot-part">{{site.shooting.pressTitle}}</h2>
+    <h2 id="press-h" class="shoot-part">{{site.shooting.pressTitle}}<small>（{{site.shooting.pressTitleSub}}）</small></h2>
     <p class="small-text shoot-wide">{{site.shooting.pressLead}}</p>
     <div class="marquee shoot-marquee">
       {{{media.track}}}
     </div>
+    <h3 class="shoot-h3">{{site.shooting.pressTopicsTitle}}</h3>
+    <ul class="press-topics">{{{shooting.pressTopics}}}</ul>
   </div>
 </section>
 
