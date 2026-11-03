@@ -350,6 +350,9 @@ html[lang="en"] .body-text { max-width: 32em; }
 .shoot-prices dt { font-size: 14px; font-weight: 700; }
 .shoot-prices dd { font-size: clamp(18px, 2vw, 22px); font-weight: 700; }
 .shoot-prices small { font-size: 12px; font-weight: 500; }
+.shoot-flow { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin-top: 12px; counter-reset: none; }
+.shoot-flow li { display: flex; align-items: center; gap: 10px; padding: 12px 14px; border: var(--line); font-size: 14px; line-height: 1.6; }
+.shoot-flow .n { flex: none; display: grid; place-items: center; width: 26px; height: 26px; border-radius: 50%; background: var(--cyan-deep); color: var(--paper); font-family: var(--en); font-size: 13px; }
 .shoot-marquee { margin-top: 32px; border-top: var(--line); border-bottom: var(--line); }
 .shoot-mail-items { margin-top: 20px; max-width: 36em; font-size: 14px; line-height: 1.9; }
 .shoot-mail-items li { padding-left: 1.2em; text-indent: -1.2em; }
