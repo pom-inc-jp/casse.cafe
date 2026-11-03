@@ -303,6 +303,8 @@ html[lang="en"] .body-text { max-width: 32em; }
 /* 取材側は紫（見出しの縦線・英字の見出し・ボタン） */
 .is-press .shoot-kicker { color: var(--purple); }
 .is-press .shoot-part, .is-press .shoot-h2 { border-left-color: var(--purple); }
+.btn-deep { background: var(--cyan-deep); color: var(--paper); }
+.btn-deep:hover { background: var(--cyan-pale); color: var(--ink); }
 .btn-purple { background: var(--purple); color: var(--paper); }
 .btn-purple:hover { background: var(--purple-pale); color: var(--ink); }
 .btn .arrow { margin-left: 10px; font-family: var(--en); }
