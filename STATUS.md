@@ -12,8 +12,9 @@
 | 公開のしくみ | site-tools の共通ワークフロー（`deploy-static.yml@v1`）。接続情報は組織の Secrets |
 | 残すもの | `casse_movie_app/` など `_movie_app` で終わるフォルダ、`casse_app/`、`movie/`・`movie_app/`、mp4 の入ったフォルダ、`.well-known/`、`wp-content/uploads/`、Search Console などの確認ファイル |
 | ページ | トップ・`/menu/`（日英）・`/news/`・`/en/`・`/shooting/`（撮影・取材） |
+| 共通の部品 | 右下の「上へ戻る」丸ボタン（全ページ）、薄い水色のフッター（住所・営業時間などの一覧）、スマホのカセットのメニュー（押すと裏返って全画面メニュー、閉じるたびにA面/B面が入れ替わり、面はブラウザに記憶）。RECOCO と同じ形 |
 | お知らせ | `/news.json` を公開し、announce 以外を pom-inc.co.jp が取り込む（`newsSources` 追加済み）。`campaign` は「イベント」と表示 |
-| 計測 | GTM `GTM-MGV4V8R6`。`link_click`・`click_cta` を dataLayer に送る。旧テーマに直接入っていた gtag（`G-Q9Y1B6JZJW`）はこのサイトには入れていない |
+| 計測 | GTM `GTM-MGV4V8R6`（公開バージョン2）に GA4 の Google タグ（`G-Q9Y1B6JZJW`、GA4 は株式会社ポム／casse.cafe プロパティ 514856526）と、`click_cta`・`link_click` の GA4 イベントタグを入れた。サイト側は dataLayer に送るだけで、gtag は直接入れていない。GA4 にカスタム定義（cta_name・cta_label・cta_place・link_type・link_place）と探索レポート「ボタン別クリック数（click_cta）」あり |
 
 ## やりかけ・次にやること
 
@@ -29,6 +30,7 @@
 - 撮影は「場所の貸し出し」。雑誌は「〇〇の撮影に店内をご利用いただきました」と書く
 - 旧メニューPDFのURLは印刷物のQRコードが指しているので、`/menu/` への転送を残す
 - 本番に関わる変更は、プルリクエストを出して管理者の承認後にマージする
+- スマホのメニュー・上へ戻る・フッターの形は RECOCO（`pom-inc-jp/recoco.cafe`）とそろえる
 
 ## 関連するサイト
 
