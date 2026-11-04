@@ -1,13 +1,13 @@
 # casse.cafe
 
-カセットテープカフェ CASSE（カッセ）のサイト。WordPress をやめて、静的サイトとして書き出す。しくみは retopo.cafe・pom-inc.co.jp と同じ。
+カセットテープカフェ CASSE（カッセ）のサイト。2026年11月に WordPress から静的サイトに切り替えて公開中。しくみは retopo.cafe・pom-inc.co.jp と同じ。
 
 ```
 node build.mjs           # dist/ に書き出す
 node build.mjs --serve   # 書き出して http://localhost:8080 で確認
 ```
 
-Node.js 18 以上だけで動く（追加のライブラリなし）。
+Node.js 18 以上だけで動く（npm install 不要）。
 
 ## ページ
 
@@ -17,7 +17,8 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 | `/menu/` | メニューと料金（旧メニューPDFのQRコードの転送先）。日本語と英語を併記し、英語ページからもここにつなぐ |
 | `/news/` | お知らせ一覧（カテゴリで絞り込み） |
 | `/news/記事ID/` | お知らせの記事 |
-| `/en/` | 英語の案内（次のプルリクエストで追加）。メニューは `/menu/` を日英共通で使う |
+| `/en/` | 英語の案内。メニューは `/menu/` を日英共通で使う |
+| `/shooting/` | 撮影・取材のご依頼（撮影は場所の貸し出し。取材側は紫） |
 
 ## ファイル
 
@@ -29,11 +30,12 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 | `src/_data/media.json` | メディア掲載の帯（番組名・雑誌名） |
 | `src/_partials/` | 共通部品（head・ヘッダー・フッター・スマホのカセット型メニュー）。`home-hero.html`・`home-body.html` はトップと英語ページで共通の本文（言葉は site.json の `ui` などから言語ごとに入る） |
 | `src/_templates/news-article.html` | お知らせ記事ページのひな形 |
-| `src/pages/` | トップ・メニュー・お知らせ一覧・英語ページ・404 |
+| `src/pages/` | トップ・メニュー・お知らせ一覧・英語ページ・撮影・取材・404 |
 | `src/assets/css/casse.css` | 見た目（色は先頭の変数を使う） |
 | `src/assets/js/casse.js` | カセット型メニュー・お知らせの絞り込み・クリック計測 |
 | `src/assets/img/photos/` | 写真（WebP）。`名前.webp` と、小さく出すとき用の `名前-400.webp` |
 | `src/static/` | `.htaccess`・ファビコン・robots.txt など（dist/ 直下にコピー） |
+| `lib/phrase.mjs` `lib/budoux/` | 日本語を文節の切れ目で改行させる（pom-inc.co.jp・retopo.cafe と同じ。BudouX は同梱の外部ライブラリなので書き換えない） |
 
 ## 店の情報を変えるとき（`src/_data/site.json`）
 
@@ -90,6 +92,13 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 
 `genre` が `announce` 以外の記事は、pom-inc.co.jp のお知らせにも自動で載る（書き出し時に `/news.json` を公開し、会社サイトが読みに来る）。
 
+## 改行の位置（文節）
+
+書き出しのとき `lib/phrase.mjs` が日本語を文節に区切り、切れ目に `<wbr>` を入れる（CSS は `word-break: keep-all`）。HTML に `<wbr>` を手で書かない。
+
+- メディア掲載の帯のように1行のまま見せる部分は、要素に `data-nobreak` を付ける（付け忘れると帯が何行にも崩れる）
+- 切りたくない語句は `<span class="nb">…</span>` で囲む
+
 ## 旧サイトからの転送（`src/static/.htaccess`）
 
 - `/wp-content/uploads/` の中のPDF → `/menu/`（印刷物のQRコード対策。CASSEのメニュー3つと、RECOCOの旧メニュー5つ）
@@ -102,12 +111,15 @@ Node.js 18 以上だけで動く（追加のライブラリなし）。
 
 `.github/workflows/deploy.yml`。中身は店舗サイト共通のワークフロー（[pom-inc-jp/site-tools](https://github.com/pom-inc-jp/site-tools) の `deploy-static.yml@v1`）で、ここには動かすタイミングと、CASSEだけの設定（残すフォルダ・切り替えの変数）だけを書いている。`main` に変更が入ると書き出し、Xserver の公開フォルダへ rsync で反映する。公開の仕組み自体を直すときは site-tools を直す（README 参照）。
 
-- 公開先は GitHub の環境 `production` の Secrets（`XSERVER_HOST`・`XSERVER_USER`・`XSERVER_PATH`・`XSERVER_SSH_KEY`）
-- 変数 `CASSE_LIVE` が `true` になるまでは「試し（dry-run）」だけで、消えるファイルの一覧を実行結果に出す
+- 公開先の接続情報は組織（pom-inc-jp）の Secrets を使う（site-tools の README）。このリポジトリの環境 `production` に同じ名前の Secrets があると、そちらが優先される
+- 本番に切り替え済み（変数 `CASSE_LIVE` が `true`）。`main` に入るたび、と毎日 3:10（日本時間）に反映される。反映の前に毎回「試し（dry-run）」の一覧を実行結果に出す
+- 反映を一時的に止めたいときは `CASSE_LIVE` を `false` にする（試しだけになる）。その間に1回だけ反映したいときは、Actions → 公開 → Run workflow で mode を `deploy` にする
 - 消さないもの：`casse_movie_app/` など `_movie_app` で終わるフォルダ、mp4 が入っているフォルダ、`.well-known/`、`wp-content/uploads/`、検索エンジンの確認ファイル
-- 切り替えたあとは、pom-inc.co.jp の `newsSources` に casse.cafe を足し、Search Console でサイトマップ（`https://casse.cafe/sitemap.xml`）を送信する
+- pom-inc.co.jp の `newsSources` に casse.cafe を追加済み。Search Console でのサイトマップ（`https://casse.cafe/sitemap.xml`）の送信は STATUS.md で管理
 
 ## 計測（Googleタグマネージャー → GA4）
+
+GTM は `GTM-MGV4V8R6`（`site.json` の `gtmId`）。
 
 サイトは `dataLayer` に次の2種類を送る（`src/assets/js/casse.js`）。GTM の「カスタムイベント」トリガーで受けて、GA4 のイベントタグで送る。
 

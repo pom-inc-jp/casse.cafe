@@ -10,6 +10,8 @@
 - ロゴ画像（`src/assets/img/common/logo*.png`）は加工しない
 - サーバーの `casse_movie_app/`（名前が `_movie_app` で終わるフォルダすべて）・`casse_app/`・`movie/`・`movie_app/`、mp4 が入っているフォルダ、`wp-content/uploads/` は消さない・上書きしない（公開の設定で除外している。除外を外さない）
 - 旧サイトのメニューPDF（`/wp-content/uploads/…pdf`）は印刷物のQRコードが指している。`.htaccess` の `/menu/` への転送を外さない
+- 改行は書き出し時に `lib/phrase.mjs` が文節で入れる。HTML に `<wbr>` を手で書かない。1行で見せる帯などには `data-nobreak`、切りたくない語句には `class="nb"` を付ける。`lib/budoux/` は書き換えない
+- 公開の仕組みは site-tools の共通ワークフロー。公開の処理そのものを直すときは site-tools を直す
 - WordPress のバックアップやデータベースのファイルをこのリポジトリに入れない
 - 変更したら `node build.mjs` が成功することを確認し、`node build.mjs --serve` で見た目を確認する（スマホ幅も）
 - 公開は `main` へのマージで自動的に行われる。本番に関わる変更は、管理者の承認（プルリクエストのレビュー）を経る
@@ -24,3 +26,7 @@
 ## お知らせ
 
 `src/_data/news.json` に追加する。`genre` が `announce` 以外（メディア掲載・コラボ・イベント・その他）は pom-inc.co.jp にも載る。`id` は公開後に変えない（URLになるため）。
+
+## いまの状況
+
+作業を始める前に `STATUS.md`（公開の状態・やりかけ・決めたこと）を読む。作業が終わったら、`STATUS.md` を最新に書き換えて同じプルリクエストに含める。
