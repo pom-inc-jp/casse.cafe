@@ -407,7 +407,6 @@ function footHtml(lang) {
     row(f.hours, esc(en ? `${st.opens}–${st.closes}` : `${st.opens}〜${st.closes}`) + `<span class="note">${esc(f.noReserve)}</span>`),
     row(f.contact, (en ? '' : `${a('/shooting/', f.contactPage)}<br>`) + `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`),
     row(f.sister, a(st.sister.url, sister)),
-    row(f.jasrac, esc(st.jasrac)),
     row(f.company, a('https://pom-inc.co.jp/', f.companyName))
   ];
   return `<dl class="foot-list">${rows.join('')}</dl>`;
