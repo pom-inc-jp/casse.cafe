@@ -1,6 +1,7 @@
 // =================================================================
 // casse.js　casse.cafe の動き
-//   1) スマホの追従メニュー（カセット）：少しスクロールすると右上に出る。スクロールでリールが回る
+//   0) 右下の「上へ戻る」丸ボタン
+//   1) スマホの追従メニュー（カセット）：少しスクロールすると右上に出る。スクロールでリールが回る。押すと裏返って全画面メニュー、閉じるたびにA面/B面
 //   2) お知らせの絞り込み（カテゴリのボタン）
 //   3) 今いるページのメニューに印を付ける
 //   4) 計測用：外部リンクや地図のクリックを GTM に送る
@@ -9,17 +10,54 @@
 (function () {
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  // --- 0) 右下の「上へ戻る」丸ボタン ---
+  // スクロールや画面の操作が止まって2秒たったら出す。1画面目では出さない
+  var topFab = document.querySelector('[data-top-fab]');
+  if (topFab) {
+    var topTimer;
+    var hideTop = function () {
+      topFab.classList.remove('is-on');
+      topFab.setAttribute('tabindex', '-1');
+      clearTimeout(topTimer);
+      topTimer = setTimeout(function () {
+        if (window.scrollY > window.innerHeight) { topFab.classList.add('is-on'); topFab.removeAttribute('tabindex'); }
+      }, 2000);
+    };
+    ['scroll', 'touchstart', 'pointerdown', 'wheel', 'keydown'].forEach(function (ev) {
+      window.addEventListener(ev, function (e) {
+        if (e.target && e.target.closest && e.target.closest('[data-top-fab]')) return; // ボタン自体を押したときは消さない
+        hideTop();
+      }, { passive: true });
+    });
+    topFab.addEventListener('click', function () { topFab.classList.remove('is-on'); });
+  }
+
   // --- 1) カセットのメニュー ---
+  // 押すと裏返って閉じるボタンになり、画面いっぱいのメニューが開く。
+  // 閉じるたびに A面 ↔ B面 が入れ替わる（ラベルの色が変わる。前回の面は覚えておく）
   var fab = document.querySelector('[data-fab]');
   if (fab) {
     var btn = fab.querySelector('.fab-btn');
-    var menu = fab.querySelector('.fab-menu');
+    var sheet = fab.querySelector('.fab-sheet');
+    var sideText = fab.querySelector('.cs-side');
     var reels = fab.querySelectorAll('.reel');
     var SHOW_AT = 240;
     var ticking = false;
-
+    var side = 'a';
+    try { side = localStorage.getItem('casse-side') === 'b' ? 'b' : 'a'; } catch (e) {}
+    var setSide = function (s) {
+      side = s;
+      fab.setAttribute('data-side', s);
+      if (sideText) sideText.textContent = s.toUpperCase();
+      try { localStorage.setItem('casse-side', s); } catch (e) {}
+    };
+    setSide(side);
+    var isOpen = function () { return !sheet.hidden; };
     var setOpen = function (open) {
-      menu.hidden = !open;
+      if (!open && isOpen()) setSide(side === 'a' ? 'b' : 'a'); // 閉じるときに裏返す
+      sheet.hidden = !open;
+      fab.classList.toggle('is-open', open);
+      document.documentElement.classList.toggle('menu-open', open);
       btn.setAttribute('aria-expanded', String(open));
       btn.setAttribute('aria-label', btn.getAttribute(open ? 'data-close-label' : 'data-open-label'));
     };
@@ -28,7 +66,7 @@
       var y = window.scrollY || 0;
       var show = y > SHOW_AT;
       fab.classList.toggle('is-shown', show);
-      if (!show) setOpen(false);
+      if (!show && isOpen()) setOpen(false);
       if (!reduce) {
         var deg = Math.round(y * 0.8) % 360;
         for (var i = 0; i < reels.length; i++) reels[i].style.transform = 'rotate(' + deg + 'deg)';
@@ -39,14 +77,13 @@
     }, { passive: true });
     update();
 
-    btn.addEventListener('click', function () { setOpen(menu.hidden); });
-    menu.addEventListener('click', function (e) { if (e.target.closest('a')) setOpen(false); });
+    btn.addEventListener('click', function () { setOpen(!isOpen()); });
+    // メニューの中は、リンクを押しても、何もないところを押しても閉じる
+    sheet.addEventListener('click', function () { setOpen(false); });
     document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); }
+      if (e.key === 'Escape' && isOpen()) { setOpen(false); btn.focus(); }
     });
-    document.addEventListener('click', function (e) {
-      if (!menu.hidden && !fab.contains(e.target)) setOpen(false);
-    });
+    window.addEventListener('resize', function () { if (window.innerWidth > 760 && isOpen()) setOpen(false); });
   }
 
   // --- 2) お知らせの絞り込み ---
