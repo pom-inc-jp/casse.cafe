@@ -396,12 +396,21 @@ function menuItem(menu, name) {
 let SITE;
 function footHtml(lang) {
   const site = SITE;
+  const en = lang === 'en';
   const f = site.footer[lang];
-  const sister = lang === 'en' ? site.store.sister.nameEn : site.store.sister.name;
+  const st = site.store;
+  const sister = en ? st.sister.nameEn : st.sister.name;
   const a = (url, text) => `<a href="${esc(url)}"${linkAttrs(url)}>${esc(text)}</a>`;
-  return lang === 'en'
-    ? `<p>${esc(f.contact)}: <a href="mailto:${esc(site.email)}">${esc(site.email)}</a> (${esc(f.noReserve)})</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)} / ${esc(f.sister)}: ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)} ${a('https://pom-inc.co.jp/', f.companyName)}</p>`
-    : `<p><a href="/shooting/">${esc(f.contact)}</a>：<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>（${esc(f.noReserve)}）</p>\n      <p>${esc(f.jasrac)} ${esc(site.store.jasrac)}号／${esc(f.sister)} ${a(site.store.sister.url, sister)}</p>\n      <p>${esc(f.company)}：${a('https://pom-inc.co.jp/', f.companyName)}</p>`;
+  const row = (dt, dd) => `<div><dt>${esc(dt)}</dt><dd>${dd}</dd></div>`;
+  const rows = [
+    row(f.address, en ? esc(site.en.store.address) : `〒${esc(st.zip)} ${esc(st.address)}`),
+    row(f.hours, esc(en ? `${st.opens}–${st.closes}` : `${st.opens}〜${st.closes}`) + `<span class="note">${esc(f.noReserve)}</span>`),
+    row(f.contact, (en ? '' : `${a('/shooting/', f.contactPage)}<br>`) + `<a href="mailto:${esc(site.email)}">${esc(site.email)}</a>`),
+    row(f.sister, a(st.sister.url, sister)),
+    row(f.jasrac, esc(st.jasrac)),
+    row(f.company, a('https://pom-inc.co.jp/', f.companyName))
+  ];
+  return `<dl class="foot-list">${rows.join('')}</dl>`;
 }
 
 // ---------------------------------------------------------------
@@ -479,11 +488,14 @@ async function build() {
       skip: en ? 'Skip to content' : '本文へ移動',
       navLabel: en ? 'Main menu' : 'メインメニュー',
       navHeader: navHtml(nav, '\n      '),
-      navFab: [navHtml(nav, '\n  '), `<a class="ig" href="${ig}" target="_blank" rel="noopener" lang="en">Instagram</a>`].join('\n  '),
+      // カセットのメニューには、上のメニューに加えて撮影・取材のご依頼も出す（日本語のみ）
+      navFab: navHtml(en ? nav : nav.concat([{ label: '撮影・取材のご依頼', href: '/shooting/' }]), '\n      '),
+      toTop: en ? 'Back to top' : 'ページの上へ戻る',
       fabOpen: en ? 'Open menu' : 'メニューを開く',
       fabClose: en ? 'Close menu' : 'メニューを閉じる',
       langSwitch: `<div class="lang" role="group" aria-label="${en ? 'Language' : '表示する言語'}"><a href="/" lang="ja"${en ? '' : ' aria-current="true"'}>JP</a><a href="/en/" lang="en"${en ? ' aria-current="true"' : ''}>EN</a></div>`,
-      foot: footHtml(lang)
+      foot: footHtml(lang),
+      footCatch: site.footer[lang].catch
     };
   }
 

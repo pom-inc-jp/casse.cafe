@@ -331,20 +331,27 @@
   },
   "footer": {
     "ja": {
-      "contact": "撮影・取材のご依頼",
+      "contact": "撮影・取材",
       "noReserve": "席のご予約は受け付けていません",
       "jasrac": "JASRAC許諾番号",
       "sister": "姉妹店",
       "company": "運営",
-      "companyName": "株式会社ポム"
+      "companyName": "株式会社ポム",
+      "catch": "カセットテープが聴けるカフェ＠渋谷",
+      "address": "住所",
+      "hours": "営業時間",
+      "contactPage": "撮影・取材のご依頼について"
     },
     "en": {
-      "contact": "Press and location inquiries",
+      "contact": "Press & location",
       "noReserve": "We do not take seat reservations.",
       "jasrac": "JASRAC license",
       "sister": "Sister shop",
       "company": "Operated by",
-      "companyName": "POM Inc."
+      "companyName": "POM Inc.",
+      "catch": "A café where you can listen to cassette tapes, in Shibuya",
+      "address": "Address",
+      "hours": "Hours"
     }
   },
   "ui": {
