@@ -24,7 +24,9 @@
 html { scroll-behavior: smooth; scroll-padding-top: 16px; }
 body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--ja); font-size: 16px; line-height: 1.9; letter-spacing: .03em; -webkit-font-smoothing: antialiased; word-break: keep-all; overflow-wrap: anywhere; }
 img { display: block; max-width: 100%; height: auto; }
-a { color: var(--ink); text-underline-offset: 6px; }
+a { color: var(--ink); text-decoration: none; }
+/* リンクには下線を付けない（マウスを乗せると水色）。文中のリンクだけ太字にして見分けられるようにする */
+.foot-note a, .body-text a { font-weight: 700; }
 a:hover { color: var(--cyan); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
@@ -174,8 +176,6 @@ h2 { font-size: clamp(22px, 2.4vw, 28px); line-height: 1.6; font-weight: 700; }
 .foot-list > div { display: grid; grid-template-columns: 8.5em 1fr; gap: 0 16px; padding-bottom: 12px; border-bottom: 1px solid var(--line-soft); }
 .foot-list dt { font-size: 12px; font-weight: 700; padding-top: 1px; }
 .foot-list dd { margin: 0; }
-.foot-list a { text-decoration: none; }
-.foot-list a:hover { text-decoration: underline; text-decoration-color: var(--cyan); }
 .foot-list .note { display: block; font-size: 12px; color: var(--sub); }
 .foot-text .copy { margin-top: 20px; font-size: 12px; color: var(--sub); }
 .foot-bar { height: 8px; background: var(--cyan); }
