@@ -27,6 +27,13 @@ img { display: block; max-width: 100%; height: auto; }
 a { color: var(--ink); text-decoration: none; }
 /* リンクには下線を付けない（マウスを乗せると水色）。文中のリンクだけ太字にして見分けられるようにする */
 .foot-note a, .body-text a { font-weight: 700; }
+/* アイコンのないリンクには、文字の後ろに細い線の矢印を付けてリンクだとわかるようにする */
+.more::after, .foot-list a::after, .foot-note a::after, .menu-foot a::after {
+  content: ""; display: inline-block; width: .9em; height: .9em; margin-left: .3em; vertical-align: -.08em; background: currentColor;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 12h16M14 6l6 6-6 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+.foot-note a::after, .menu-foot a::after { margin-right: .2em; }
 a:hover { color: var(--cyan); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
 h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
