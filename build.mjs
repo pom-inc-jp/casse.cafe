@@ -195,7 +195,13 @@ function renderBlock(b) {
     case 'quote': return `<blockquote><p>${inline(b.text)}</p>${b.cite ? `<cite>${esc(b.cite)}</cite>` : ''}</blockquote>`;
     case 'ul': return `<ul>${b.items.map((i) => `<li>${inline(i)}</li>`).join('')}</ul>`;
     case 'ol': return `<ol>${b.items.map((i) => `<li>${inline(i)}</li>`).join('')}</ol>`;
-    case 'img': return `<figure><img src="${esc(b.src)}" alt="${esc(b.alt || b.caption || '')}" loading="lazy">${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ''}</figure>`;
+    case 'img': {
+      // width（PC）・widthSp（スマホ）に数字（px）を書くと、その幅で表示する。画像の解像度はそのまま
+      const px = (v) => (Number.isFinite(v) && v > 0 ? `${Math.round(v)}px` : '');
+      const vars = [['--w', px(b.width)], ['--w-sp', px(b.widthSp)]].filter(([, v]) => v).map(([k, v]) => `${k}:${v}`).join(';');
+      const fig = vars ? `<figure class="fig-w" style="${vars}">` : '<figure>';
+      return `${fig}<img src="${esc(b.src)}" alt="${esc(b.alt || b.caption || '')}" loading="lazy">${b.caption ? `<figcaption>${esc(b.caption)}</figcaption>` : ''}</figure>`;
+    }
     case 'table': return `<table class="acc">${b.rows.map((r) => `<tr><th>${esc(r[0])}</th><td>${inline(r[1])}</td></tr>`).join('')}</table>`;
     case 'note': return `<div class="notice"><b>ご注意</b><p>${inline(b.text)}</p></div>`;
     case 'hr': return '<hr>';
