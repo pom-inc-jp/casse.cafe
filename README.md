@@ -88,7 +88,7 @@ Node.js 18 以上だけで動く（npm install 不要）。
 | store | いつも `"casse"` |
 | genre | `announce`（お知らせ）`press`（メディア掲載）`collab`（コラボ）`campaign`（イベント）`other`（その他） |
 | title | 一覧と記事の見出し |
-| body | 本文。文字だけの行は段落になる。`lead`・`h2`・`ul`・`img`・`table`・`note`・`buttons` などのブロックが使える（build.mjs の `renderBlock` を参照） |
+| body | 本文。文字だけの行は段落になる。`lead`・`h2`・`ul`・`img`・`table`・`note`・`buttons` などのブロックが使える（build.mjs の `renderBlock` を参照）。`img` は何も書かなければ本文の幅いっぱい（画像がそれより小さければ画像の大きさ）で出る。小さく見せたいときは `"width": 330`（PC）・`"widthSp": 260`（スマホ）のように表示幅を px で書く（片方だけなら両方に使う）。画像は縮小せずに使い、差し替えるときはファイル名を変える（画像はブラウザに1か月残るため） |
 
 `genre` が `announce` 以外の記事は、pom-inc.co.jp のお知らせにも自動で載る（書き出し時に `/news.json` を公開し、会社サイトが読みに来る）。
 
