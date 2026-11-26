@@ -6,15 +6,15 @@
       "store": "casse",
       "genre": "announce",
       "title": "12月1日（火）臨時休業のお知らせ",
-      "description": "2026年12月1日（火）は、終日撮影のため臨時休業いたします。",
+      "description": "2026年12月1日（火）は、撮影のため終日休業いたします。",
       "body": [
         { "type": "h2", "text": "臨時休業日" },
         "2026年12月1日（火）",
-        "※終日撮影のため休業いたします。",
+        "※撮影のため終日休業いたします。",
         "何卒ご理解のほど、よろしくお願いいたします。",
         { "type": "img", "src": "/assets/img/news/20261126-temporary-closure-calendar.png", "alt": "CASSEの2026年12月〜2027年1月の営業カレンダー。12月1日と、12月29日〜1月3日は休業。そのほかの日は11時〜21時営業" },
         { "type": "h2", "text": "Temporary Closure" },
-        "We will be closed for the entire day on December 1, 2026 (Tue), due to a scheduled photoshoot.",
+        "We will be closed all day on Tuesday, December 1, 2026, due to a photoshoot.",
         "Thank you for your understanding."
       ]
     },
