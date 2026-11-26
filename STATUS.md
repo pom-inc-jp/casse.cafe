@@ -13,7 +13,7 @@
 | 残すもの | `casse_movie_app/` など `_movie_app` で終わるフォルダ、`casse_app/`、`movie/`・`movie_app/`、mp4 の入ったフォルダ、`.well-known/`、`wp-content/uploads/`、Search Console などの確認ファイル |
 | ページ | トップ・`/menu/`（日英）・`/news/`・`/en/`・`/shooting/`（撮影・取材） |
 | 共通の部品 | 右下の「上へ戻る」丸ボタン（全ページ。操作が止まって1秒後に表示）、薄い水色のフッター（住所・営業時間などの一覧。JASRAC番号はフッターに出さない）、スマホのカセットのメニュー（押すと裏返って全画面メニュー、閉じるたびにA面/B面が入れ替わり、面はブラウザに記憶）。RECOCO と同じ形。リンクはサイト全体で下線なし（マウスを乗せると水色、文中のリンクは太字。アイコンのないリンクには細い線の矢印（→、外部サイトは ↗）を付ける。メニューの今いるページ印だけ下線） |
-| お知らせ | 最新は 2026-11-26「年末年始休業のお知らせ」（日英、営業カレンダーは `src/assets/img/news/20261126-new-year-holiday-calendar.webp`。受け取った画像の端の白い帯と線だけを切ったもの。休業明け以降も残す。11-20 に出した同じお知らせ（12/1の臨時休業の一文入り）は依頼者の指示で削除した）。`/news.json` を公開し、announce 以外を pom-inc.co.jp が取り込む（`newsSources` 追加済み）。`campaign` は「イベント」と表示 |
+| お知らせ | 最新は 2026-11-26「12月1日（火）臨時休業のお知らせ」（日英、終日撮影のため。カレンダーは `src/assets/img/news/20261126-temporary-closure-calendar.png`、受け取った画像のまま）と、同じ日の「年末年始休業のお知らせ」（日英、営業カレンダーは `src/assets/img/news/20261126-new-year-holiday-calendar.webp`。受け取った画像の端の白い帯と線だけを切ったもの。休業明け以降も残す。11-20 に出した同じお知らせ（12/1の臨時休業の一文入り）は依頼者の指示で削除した）。`/news.json` を公開し、announce 以外を pom-inc.co.jp が取り込む（`newsSources` 追加済み）。`campaign` は「イベント」と表示 |
 | 計測 | GTM `GTM-MGV4V8R6`（公開バージョン2）に GA4 の Google タグ（`G-Q9Y1B6JZJW`、GA4 は株式会社ポム／casse.cafe プロパティ 514856526）と、`click_cta`・`link_click` の GA4 イベントタグを入れた。サイト側は dataLayer に送るだけで、gtag は直接入れていない。GA4 にカスタム定義（cta_name・cta_label・cta_place・link_type・link_place）と探索レポート「ボタン別クリック数（click_cta）」あり |
 
 ## やりかけ・次にやること
